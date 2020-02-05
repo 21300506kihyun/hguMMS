@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <script type="text/javascript" src ="script.js"></script>
+  <link rel = "stylesheet" href = "Main.css"/>
+  <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
+  <title>handongMMS</title>
+</head>
+<body>
+  <div class = "header">
+    <h1>HGU Meeting Management System (MMS)</h1>
+    <br>
+    <p>한동대학교 면담 예약 및 관리 시스템입니다.</p>
+  </div>
+
+  <div class="row">
+    <div class="column left">
+      <h1 class="icon"> <i class="far fa-user"></i></h1>
+      <!-- <h1 class="icon"><i class="fas fa-snowman"></i></h1> -->
+      <h2>홍길동 님</h2>
+      <h3 class="info">이메일 : 21700123@handong.edu</h3>
+      <h3 class="info">오피스 위치 : none(영어?)</h3>
+      <h3 class="info">개인 면담 시트 : 없음(한글?)</h3>
+      
+
+
+      <input class="btn_left" type="button" value="면담 신청하기"/>
+      <input class="btn_left" type="button" value="개인 면담 시트 바로가기"/>
+      <input class="btn_left" type="button" value="개인정보 수정하기"/>
+      <input class="btn_left" type="button" value="면담승인 요청"/>
+
+    </div>
+    <div class="column middle">
+      <h2 class="subtitle">면담 일정</h2>
+      <br>
+      <table>
+        <tr>
+          <th>면담 시간</th>
+          <th>면담자</th>
+          <th>오피스</th>
+          <th>면담사유</th>
+          <th>상태</th>
+          <th></th>
+        </tr>
+        <tr>
+          <td>2020.02.03 (월) 17:00 ~ 17:30</td>
+          <td>이강</td>
+          <td>NTH 406</td>
+          <td>학부 행사 면담</td>
+          <td>승인</td>
+          <td><button id="top" class="btn_moreInfo" onclick="showInfo()"><i class="fas fa-caret-up"></i></button></td>
+          <td><span id="test" style="CURSOR: pointer" onclick="if(plain.style.display=='none'){plain.style.display=''; test.innerText = '🔻'} else { plain.style.display = 'none'; test.innerText = '🔺'}">🔻</span></td>
+          <!-- TODO: button drop down -->
+          <!-- TODO: 드롭다운 후 아이콘 거꾸로 변경하기 -->
+        </tr>
+        <tr id="plain" style="display: none">
+          <td>hi</td>
+        </tr>
+        
+        <tr>
+          <td>2020.02.04 (화) 17:00 ~ 17:30</td>
+          <td>이건</td>
+          <td>NTH 306</td>
+          <td>학부 행사 면담</td>
+          <td>승인</td>
+          <td><button class="btn_moreInfo"><i class="fas fa-caret-down"></i></button></td>
+        </tr>
+        <tr>
+          <td>2020.02.05 (수) 17:00 ~ 17:30</td>
+          <td>장소연</td>
+          <td>NTH 204</td>
+          <td>학부 행사 면담</td>
+          <td>승인</td>
+          <td><button class="btn_moreInfo"><i class="fas fa-caret-down"></i></button></td>
+        </tr>
+        <tr>
+          <td>2020.02.06 (목) 17:00 ~ 17:30</td>
+          <td>김광</td>
+          <td>NTH 203</td>
+          <td>학부 행사 면담</td>
+          <td>승인</td>
+          <td><button class="btn_moreInfo"><i class="fas fa-caret-down"></i></button></td>
+        </tr>
+      </table>
+
+    </div>
+    <!-- <div class="column side">
+      <h2>SIDE</h2>
+      <p>사이드 입니다.</p>
+    </div> -->
+  </div>
+
+
+  <div class = "footer">
+    <h3>Powered by WA lab 2020</h3>
+    <p>문의 및 버그제보: abcd@gmail.com</p>
+  </div>
+
+  <script>
+    function showInfo() {
+      if(plain.style.display=='none'){
+        plain.style.display=''; 
+        top.innerText = "<i class='fas fa-caret-down'>";
+      } 
+      else { 
+        plain.style.display = 'none'; 
+        top.innerText = "<i class='fas fa-caret-down'>";
+      }
+    }
+    </script>
+</body>
+</html>
+

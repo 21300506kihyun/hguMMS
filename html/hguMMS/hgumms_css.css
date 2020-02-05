@@ -1,0 +1,18 @@
+
+ .header {
+   border-bottom : 3px solid black;
+ }
+ #title {
+   text-align: center;
+ }
+ .container{
+   padding: 10px;
+   width: 200px;
+   margin: 0 auto;
+ }
+ .g-signin2{
+   width : 200px;
+ }
+.logout {
+  margin-top: 100px;
+}
