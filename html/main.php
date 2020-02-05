@@ -2,8 +2,10 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <script type="text/javascript" src ="../script.js"></script>
-  <link rel = "stylesheet" href = "../css/main.css"/>
+  <link rel = "stylesheet" href = "../CSS/Main.css"/>
+  <meta name="google-signin-scope" content="profile email">
+  <meta name="google-signin-client_id" content="924098158115-3oevbe0lurkhouu0fb98br6paj7i5e1a.apps.googleusercontent.com">
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
   <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
   <title>handongMMS</title>
 </head>
@@ -16,13 +18,14 @@
 
   <div class="row">
     <div class="column left">
-      <h1 class="icon"> <i class="far fa-user"></i></h1>
+      <h1 class="icon"> <img src="<?php echo $_POST['img1']?>"></i></h1>
       <!-- <h1 class="icon"><i class="fas fa-snowman"></i></h1> -->
-      <h2>홍길동 님</h2>
-      <h3 class="info">이메일 : 21700123@handong.edu</h3>
+
+      <h2><?php echo $_POST['name1']?> 님</h2>
+      <h3 class="info">E-mail : <?php echo $_POST['email1']?>"</h3>
       <h3 class="info">오피스 위치 : none(영어?)</h3>
       <h3 class="info">개인 면담 시트 : 없음(한글?)</h3>
-      
+
 
 
       <input class="btn_left" type="button" value="면담 신청하기"/>
@@ -55,7 +58,7 @@
         <tr id="more1" style="display: none">
           <td colspan = "5" >hi</td colspan = "5">
         </tr>
-        
+
         <tr>
           <td>2020.02.04 (화) 17:00 ~ 17:30</td>
           <td>이건</td>
@@ -81,7 +84,7 @@
         <tr id="more3" style="display: none">
           <td colspan = "5" >hi</td>
         </tr>
-        
+
         <tr>
           <td>2020.02.06 (목) 17:00 ~ 17:30</td>
           <td>김광</td>
@@ -107,9 +110,9 @@
   <script>
     function clickMore(str, info) {
       if(str.style.display=='none'){
-        str.style.display=''; 
+        str.style.display='';
         info.innerText = '닫기 ▲'
-      } else { 
+      } else {
         str.style.display = 'none'; 
         info.innerText = '더 보기 ▼'
       }
@@ -117,4 +120,3 @@
     </script>
 </body>
 </html>
-
