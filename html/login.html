@@ -5,18 +5,23 @@
     <meta name="google-signin-client_id" content="493425768498-uasnr9m32vcs4tksloc6lj6fq6493goi.apps.googleusercontent.com">
     <script src="https://apis.google.com/js/platform.js" async defer></script>
     <meta charset="utf-8">
-    <script type="text/javascript" src ="script.js"></script>
-    <link rel = "stylesheet" href = "hgumms_css.css"/>
+    <script type="text/javascript" src ="../script.js"></script>
+    <link rel = "stylesheet" href = "../css/hgumms_css.css"/>
     <title>handongMMS</title>
   </head>
 
   <body>
     <div class = "header">
-      <h1 id = "title"> 한동 면담 시스템 </h1>
+      <h1 id = "title">HGU Meeting Management System (MMS)</h1>
+      <br>
+      <p>한동대학교 면담 예약 및 관리 시스템입니다.</p>
     </div>
     <div class = "container">
-      <h2> Google Login </h2>
+      <h2 class="subtitle"> Google Login </h2>
+      <br>
       <div class="g-signin2" data-onsuccess="onSignIn"></div>
+      <br>
+      
       <a class = "logout" href="#" onclick="signOut();">Logout</a>
     </div>
 
