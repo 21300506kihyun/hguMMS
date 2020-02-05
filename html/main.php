@@ -52,13 +52,11 @@
           <td>NTH 406</td>
           <td>학부 행사 면담</td>
           <td>승인</td>
-          <td><button id="top" class="btn_moreInfo" onclick="showInfo()"><i class="fas fa-caret-up"></i></button></td>
-          <td><span id="test" style="CURSOR: pointer" onclick="if(plain.style.display=='none'){plain.style.display=''; test.innerText = '🔻'} else { plain.style.display = 'none'; test.innerText = '🔺'}">🔻</span></td>
-          <!-- TODO: button drop down -->
-          <!-- TODO: 드롭다운 후 아이콘 거꾸로 변경하기 -->
+          <!-- <td><button id="top" class="btn_moreInfo" onclick="showInfo()"><i class="fas fa-caret-up"></i></button></td> -->
+          <td><span id="moreInfo1" style="CURSOR: pointer" onclick="clickMore(more1, moreInfo1)">더 보기 ▼</span></td>
         </tr>
-        <tr id="plain" style="display: none">
-          <td>hi</td>
+        <tr id="more1" style="display: none">
+          <td colspan = "5" >hi</td colspan = "5">
         </tr>
 
         <tr>
@@ -67,31 +65,40 @@
           <td>NTH 306</td>
           <td>학부 행사 면담</td>
           <td>승인</td>
-          <td><button class="btn_moreInfo"><i class="fas fa-caret-down"></i></button></td>
+          <!-- <td><button class="btn_moreInfo"><i class="fas fa-caret-down"></i></button></td> -->
+          <td><span id="moreInfo2" style="CURSOR: pointer" onclick="clickMore(more2, moreInfo2)">더 보기 ▼</span></td>
         </tr>
+        <tr id="more2" style="display: none">
+          <td colspan = "5" >hi</td colspan = "5">
+        </tr>
+
         <tr>
           <td>2020.02.05 (수) 17:00 ~ 17:30</td>
           <td>장소연</td>
           <td>NTH 204</td>
           <td>학부 행사 면담</td>
           <td>승인</td>
-          <td><button class="btn_moreInfo"><i class="fas fa-caret-down"></i></button></td>
+          <!-- <td><button class="btn_moreInfo"><i class="fas fa-caret-down"></i></button></td> -->
+          <td><span id="moreInfo3" style="CURSOR: pointer" onclick="clickMore(more3, moreInfo3)">더 보기 ▼</span></td>
         </tr>
+        <tr id="more3" style="display: none">
+          <td colspan = "5" >hi</td>
+        </tr>
+
         <tr>
           <td>2020.02.06 (목) 17:00 ~ 17:30</td>
           <td>김광</td>
           <td>NTH 203</td>
           <td>학부 행사 면담</td>
           <td>승인</td>
-          <td><button class="btn_moreInfo"><i class="fas fa-caret-down"></i></button></td>
+          <!-- <td><button class="btn_moreInfo"><i class="fas fa-caret-down"></i></button></td> -->
+          <td><span id="moreInfo4" style="CURSOR: pointer" onclick="clickMore(more4, moreInfo4)">더 보기 ▼</span></td>
+        </tr>
+        <tr id="more4" style="display: none">
+          <td colspan = "5" >메시지 기록</td>
         </tr>
       </table>
-
     </div>
-    <!-- <div class="column side">
-      <h2>SIDE</h2>
-      <p>사이드 입니다.</p>
-    </div> -->
   </div>
 
 
@@ -101,14 +108,13 @@
   </div>
 
   <script>
-    function showInfo() {
-      if(plain.style.display=='none'){
-        plain.style.display='';
-        top.innerText = "<i class='fas fa-caret-down'>";
-      }
-      else {
-        plain.style.display = 'none';
-        top.innerText = "<i class='fas fa-caret-down'>";
+    function clickMore(str, info) {
+      if(str.style.display=='none'){
+        str.style.display='';
+        info.innerText = '닫기 ▲'
+      } else {
+        str.style.display = 'none'; 
+        info.innerText = '더 보기 ▼'
       }
     }
     </script>
