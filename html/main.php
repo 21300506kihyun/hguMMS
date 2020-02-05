@@ -2,8 +2,8 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <script type="text/javascript" src ="script.js"></script>
-  <link rel = "stylesheet" href = "Main.css"/>
+  <script type="text/javascript" src ="../script.js"></script>
+  <link rel = "stylesheet" href = "../css/main.css"/>
   <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
   <title>handongMMS</title>
 </head>
