@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <link rel = "stylesheet" href = "../CSS/Main.css"/>
+  <link rel = "stylesheet" href = "../css/main.css"/>
   <meta name="google-signin-scope" content="profile email">
   <meta name="google-signin-client_id" content="924098158115-3oevbe0lurkhouu0fb98br6paj7i5e1a.apps.googleusercontent.com">
   <script src="https://apis.google.com/js/platform.js" async defer></script>
@@ -64,7 +64,7 @@
           <!-- <td><button id="top" class="btn_moreInfo" onclick="showInfo()"><i class="fas fa-caret-up"></i></button></td> -->
           <td><span id="moreInfo1" style="CURSOR: pointer" onclick="clickMore(more1, moreInfo1)">더 보기 ▼</span></td>
         </tr>
-        <tr id="more1" style="display: none">
+        <tr class="additional" id="more1" style="display: none">
           <td colspan = "6" >hi</td colspan = "5">
         </tr>
 
@@ -77,7 +77,7 @@
           <!-- <td><button class="btn_moreInfo"><i class="fas fa-caret-down"></i></button></td> -->
           <td><span id="moreInfo2" style="CURSOR: pointer" onclick="clickMore(more2, moreInfo2)">더 보기 ▼</span></td>
         </tr>
-        <tr id="more2" style="display: none">
+        <tr class="additional" id="more2" style="display: none">
           <td colspan = "6" >hi</td colspan = "5">
         </tr>
 
@@ -90,7 +90,7 @@
           <!-- <td><button class="btn_moreInfo"><i class="fas fa-caret-down"></i></button></td> -->
           <td><span id="moreInfo3" style="CURSOR: pointer" onclick="clickMore(more3, moreInfo3)">더 보기 ▼</span></td>
         </tr>
-        <tr id="more3" style="display: none">
+        <tr class="additional" id="more3" style="display: none">
           <td colspan = "6" >hi</td>
         </tr>
 
@@ -103,7 +103,7 @@
           <!-- <td><button class="btn_moreInfo"><i class="fas fa-caret-down"></i></button></td> -->
           <td><span id="moreInfo4" style="CURSOR: pointer" onclick="clickMore(more4, moreInfo4)">더 보기 ▼</span></td>
         </tr>
-        <tr id="more4" style="display: none">
+        <tr class="additional" id="more4" style="display: none">
           <td colspan = "6" >메시지 기록</td>
         </tr>
       </table>

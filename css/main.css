@@ -80,6 +80,9 @@ tr:first-child{
 tr:last-child{
   border-bottom: 2px solid #aaa;
 }
+.additional{
+  background-color: #efefef;
+}
 .btn_moreInfo{
   background-color: #f1f1f1; 
   font-size: 16px;
@@ -96,13 +99,6 @@ tr:last-child{
   content: "";
   display: table;
   clear: both;
-}
-#myDIV{
-  width: 100%;
-  padding: 50px 0;
-  text-align: center;
-  background-color: lightblue;
-  margin-top: 20px;
 }
 .footer{
   background-color: #f1f1f1;
