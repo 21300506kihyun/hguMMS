@@ -113,7 +113,7 @@
         str.style.display='';
         info.innerText = '닫기 ▲'
       } else {
-        str.style.display = 'none'; 
+        str.style.display = 'none';
         info.innerText = '더 보기 ▼'
       }
     }
