@@ -20,8 +20,8 @@ body{
 .column.left{
   width: 20%;
   background-color: #fff;
-  /* border-right: 1px solid #bbb; */
   bottom: 0;
+  /* border-right: 1px solid #bbb; */
 }
 .icon{
   margin-bottom: 50px;
@@ -43,7 +43,6 @@ body{
   cursor: pointer;
   width: 80%;
   border-radius: 15px;
-  /* border: 1px solid black; */
   /* text-decoration: none; */
   /* display: inline-block; */
 }
@@ -59,17 +58,17 @@ body{
 }
 .subtitle{
   margin: 10px;
-  border: 1px solid black;
+  /* border: 1px solid black; */
 }
 .left_subtitle{
   float: left;
   margin-left: 20px;
-  border: 1px solid black;
+  /* border: 1px solid black; */
 }
 .right_subtitle{
   float: right;
   margin-right: 20px;
-  border: 1px solid blue;
+  /* border: 1px solid blue; */
 }
 
 table{
