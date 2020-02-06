@@ -15,33 +15,33 @@ body{
   /* font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; */
   background-color: #eeeeee;
 }
-.container{
-  text-align: center;
-  align-items: center;
-  padding: 3%;
-}
-.subtitle{
-  font-size: 200%;
-  /* padding: 3%; */
-}
-.g-signin2{
-  padding: 1% 45.4%;
-}
-.form{
-  padding: 1%;
-  height: 100%;
-}
-.submit{
-  background-color: #ccc; 
-  color: #333;
-  font-size: 15px;
-  padding: 1%;
-  margin-top: 3%;
-  text-align: center;
-  cursor: pointer;
-  border-radius: 5px;
-}
-.submit:hover{
-  background-color: #7dc2ff;
-  color: black;
-}
+  .container{
+    text-align: center;
+    align-items: center;
+    padding: 3%;
+  }
+    .subtitle{
+      font-size: 200%;
+      /* padding: 3%; */
+    }
+    .g-signin2{
+      padding: 1% 45.4%;
+    }
+    .form{
+      padding: 1%;
+      height: 100%;
+    }
+    .submit{
+      background-color: #ccc; 
+      color: #333;
+      font-size: 15px;
+      padding: 1%;
+      margin-top: 3%;
+      text-align: center;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+    .submit:hover{
+      background-color: #7dc2ff;
+      color: black;
+    }
