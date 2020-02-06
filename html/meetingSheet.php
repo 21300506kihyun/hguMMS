@@ -22,7 +22,7 @@
   <title>handongMMS</title>
 </head>
 <body>
-  <div class = "header">
+  <div class = "header" onclick="location.href='main.php'">
     <h1>HGU Meeting Management System (MMS)</h1>
     <br>
     <p>한동대학교 면담 예약 및 관리 시스템입니다.</p>

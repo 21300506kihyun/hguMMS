@@ -21,7 +21,7 @@
   <title>handongMMS</title>
 </head>
 <body>
-  <div class = "header">
+  <div class = "header" onclick="location.href='main.php'">
     <h1>HGU Meeting Management System (MMS)</h1>
     <br>
     <p>한동대학교 면담 예약 및 관리 시스템입니다.</p>
@@ -36,9 +36,6 @@
       <h3 class="info">E-mail : <?php echo $_POST['email1']?></h3>
       <h3 class="info">오피스 위치 : none(영어?)</h3>
       <h3 class="info">개인 면담 시트 : 없음(한글?)</h3>
-
-
-
 
 
 
