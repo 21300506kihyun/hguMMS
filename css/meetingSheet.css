@@ -87,21 +87,24 @@ td, th{
   padding: 18px 10px;
 }
 tr:first-child{
-  background-color: #dddddd;
-  border-top: 2px solid #aaa;
+  background-color: #aaa;
+  border-top: 2px solid #999;
+  border-left: 2px solid #999;
+  border-right: 2px solid #999;
 }
 tr:nth-child(2){
-  background-color: #dddddd;
-  border-left: 2px solid #aaa;
+  background-color: #bbb;
+  border-left: 2px solid #999;
+  border-right: 2px solid #999;
 }
 tr:last-child{
-  border-bottom: 2px solid #aaa;
+  border-bottom: 2px solid #999;
 }
 td:first-child{
-  border-left: 2px solid #aaa;
+  border-left: 2px solid #999;
 }
 td:last-child{
-  border-right: 2px solid #aaa;
+  border-right: 2px solid #999;
 }
 .btns{
   width: 90%;
@@ -168,7 +171,12 @@ td:last-child{
 
 
 
-/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+
+
+
+
+
+/* Responsive layout - makes the three columns stack on top of each other instead of next to each other ------------------------------*/
 @media screen and (max-width: 930px){
   .column.left{
     width: 100%;

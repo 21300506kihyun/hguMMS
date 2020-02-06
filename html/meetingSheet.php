@@ -7,14 +7,15 @@
   <meta name="google-signin-client_id" content="924098158115-3oevbe0lurkhouu0fb98br6paj7i5e1a.apps.googleusercontent.com">
   <script src="https://apis.google.com/js/platform.js" async defer></script>
   <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
-  <script>
-    function clickMore(str, info) {
-      if(str.style.display=='none'){
-        str.style.display='';
-        info.innerText = '닫기 ▲'
-      } else {
-        str.style.display = 'none';
-        info.innerText = '더 보기 ▼'
+  <script type="text/javascript">
+    function clickTrEvent(obj){
+      if(obj.style.backgroundColor == "white"){
+        obj.style.backgroundColor = "Gainsboro";
+        obj.innerHTML = "OFF";
+      }
+      else{
+        obj.style.backgroundColor = "white";
+        obj.innerHTML = "ON";
       }
     }
   </script>
@@ -57,7 +58,7 @@
       </div>
 
       <script language="JavaScript">
-        document.write("<table class='table'>");
+        document.write("<table class='table' id='tableId'>");
         document.write("<tr>")
         document.write("<th></th>")
         for(col=2; col<=8; col++){
@@ -78,10 +79,7 @@
             document.write("<td>"+(row/2-0.5)+" : 30 ~ "+(row/2 + 0.5)+" : 00</td>");
           }
           for(col=2; col<=8; col++) {
-            // document.write("<td bgcolor='#bbb'>&nbsp;</td>");
-            // TODO: 오프시 색깔/ 오픈시 색깔 추가하기
-            // TODO: 클릭 가능하게, 클릭하면 색깔 변화하게 만들기
-            document.write("<td bgcolor='#eee'>OFF</td>");
+            document.write("<td id=${//TODO:color} bgcolor='Gainsboro' onclick=\"javascript:clickTrEvent(this)\"  style='cursor:pointer color:blue'>OFF</td>");
           }
           document.write("</tr>");
           }
@@ -98,7 +96,6 @@
       </div>
     </div>
   </div>
-
 
   <div class = "footer">
     <h3>Powered by WA lab 2020</h3>
