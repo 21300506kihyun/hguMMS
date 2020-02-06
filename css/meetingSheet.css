@@ -105,30 +105,37 @@ td:last-child{
   border-right: 2px solid #aaa;
 }
 .btns{
-  text-align: center;
-  border: 1px solid red;
   width: 90%;
   margin: 5%;
+  padding-bottom: 1%;
 }
-.btn_back:{
-  width: 200px;
-  height: 200px;
-  /* float: left;
+.btn_back{
+  float: left;
   background-color: #f1f1f1;
   color: #333;
   font-size: 14px;
-  font-weight: bold;
-  padding: 5% 0%;
   text-align: center;
-  margin: 10% 0%;
   cursor: pointer;
-  width: 80%;
-  border-radius: 15px; */
+  padding: 1% 0%;
+  width: 10%;
+  border-radius: 5px;
 }
-.btn_save:{
+.btn_back:hover{
+  background-color: #dddddd;
+}
+.btn_save{
   float: right;
-  border: 1px solid black;
-  margin-right: 20px;
+  background-color: #f1f1f1;
+  color: #333;
+  font-size: 14px;
+  text-align: center;
+  cursor: pointer;
+  padding: 1% 0%;
+  width: 20%;
+  border-radius: 5px;
+}
+.btn_save:hover{
+  background-color: #dddddd;
 }
 .additional{
   background-color: #efefef;
@@ -193,6 +200,14 @@ td:last-child{
   .subtitle{
     margin: 0%;
   }
+  .left_subtitle{
+    float: left;
+    margin-left: 0%;
+  }
+  .right_subtitle{
+    float: right;
+    margin-right: 0%;
+  }
   .column.middle{
     margin-top: 20px;
     width: 100%;
@@ -212,5 +227,33 @@ td:last-child{
     border-top: 1px solid #333;
     border-bottom: 1px solid #333;
     padding: 8px;
+  }
+  .btns{
+    margin: 0%;
+    width: 100%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+  }
+  .btn_back{
+    float: left;
+    background-color: #f1f1f1;
+    color: #333;
+    font-size: 14px;
+    text-align: center;
+    cursor: pointer;
+    padding: 1% 0%;
+    width: 15%;
+    border-radius: 5px;
+  }
+  .btn_save{
+    float: right;
+    background-color: #f1f1f1;
+    color: #333;
+    font-size: 14px;
+    text-align: center;
+    cursor: pointer;
+    padding: 1% 0%;
+    width: 25%;
+    border-radius: 5px;
   }
 }
