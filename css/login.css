@@ -14,40 +14,34 @@
 body{
   /* font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; */
   background-color: #eeeeee;
-  border: 1px solid black;
 }
 .container{
   text-align: center;
+  align-items: center;
   padding: 3%;
-  border: 1px solid black;
 }
 .subtitle{
   font-size: 200%;
-  border: 1px solid black;
+  /* padding: 3%; */
 }
 .g-signin2{
-  width: 100%;
-  border: 2px solid black;
-  text-align: center;
-  align-content: center;
-  align-items: center;
-  margin: 0% 46.5%;
+  padding: 1% 45.4%;
 }
-/* 
- .header {
-   border-bottom : 3px solid black;
- }
- #title {
-   text-align: center;
- }
- .container{
-   padding: 10px;
-   width: 200px;
-   margin: 0 auto;
- }
- .g-signin2{
-   width : 200px;
- }
-.logout {
-  margin-top: 100px;
-} */
+.form{
+  padding: 1%;
+  height: 100%;
+}
+.submit{
+  background-color: #ccc; 
+  color: #333;
+  font-size: 15px;
+  padding: 1%;
+  margin-top: 3%;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 5px;
+}
+.submit:hover{
+  background-color: #7dc2ff;
+  color: black;
+}
