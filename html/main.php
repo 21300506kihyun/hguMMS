@@ -53,6 +53,7 @@
 
       <input class="btn_left" type="button" value="개인정보 수정하기"/>
       <input class="btn_left" type="button" value="면담승인 요청"/>
+      <input class="btn_left" type="button" value="로그아웃"/>
 
     </div>
     <div class="column middle">

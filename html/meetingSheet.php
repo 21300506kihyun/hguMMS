@@ -47,6 +47,7 @@
       </form>
       <input class="btn_left" type="button" value="개인정보 수정하기"/>
       <input class="btn_left" type="button" value="면담승인 요청"/>
+      <input class="btn_left" type="button" value="로그아웃"/>
 
     </div>
 
@@ -79,7 +80,7 @@
             document.write("<td>"+(row/2-0.5)+" : 30 ~ "+(row/2 + 0.5)+" : 00</td>");
           }
           for(col=2; col<=8; col++) {
-            document.write("<td id=${//TODO:color} bgcolor='Gainsboro' onclick=\"javascript:clickTrEvent(this)\"  style='cursor:pointer color:blue'>OFF</td>");
+            document.write("<td bgcolor='Gainsboro' onclick=\"javascript:clickTrEvent(this)\"  style='cursor:pointer'>OFF</td>");
           }
           document.write("</tr>");
           }
