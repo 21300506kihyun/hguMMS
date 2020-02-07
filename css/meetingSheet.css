@@ -11,6 +11,7 @@ body{
   padding: 20px;
   text-align: center;
   border-bottom: 3px solid #bbb;
+  cursor: pointer;
 }
 .column{
   float: left;
@@ -20,8 +21,8 @@ body{
 .column.left{
   width: 20%;
   background-color: #fff;
-  /* border-right: 1px solid #bbb; */
   bottom: 0;
+  /* border-right: 1px solid #bbb; */
 }
 .icon{
   margin-bottom: 50px;
@@ -43,7 +44,6 @@ body{
   cursor: pointer;
   width: 80%;
   border-radius: 15px;
-  /* border: 1px solid black; */
   /* text-decoration: none; */
   /* display: inline-block; */
 }
@@ -59,17 +59,17 @@ body{
 }
 .subtitle{
   margin: 10px;
-  border: 1px solid black;
+  /* border: 1px solid black; */
 }
 .left_subtitle{
   float: left;
   margin-left: 20px;
-  border: 1px solid black;
+  /* border: 1px solid black; */
 }
 .right_subtitle{
   float: right;
   margin-right: 20px;
-  border: 1px solid blue;
+  /* border: 1px solid blue; */
 }
 
 /* table{
@@ -85,49 +85,71 @@ body{
   border-bottom: 1px solid #333;
   border: 1px solid #333;
   padding: 18px 10px;
+<<<<<<< HEAD
 } */
 /* tr:first-child{
   background-color: #dddddd;
   border-top: 2px solid #aaa;
+=======
+}
+tr:first-child{
+  background-color: #aaa;
+  border-top: 2px solid #999;
+  border-left: 2px solid #999;
+  border-right: 2px solid #999;
+>>>>>>> f2276ed51b486467b39c2b84ae29ee01c4f4f7b3
 }
 tr:nth-child(2){
-  background-color: #dddddd;
-  border-left: 2px solid #aaa;
+  background-color: #bbb;
+  border-left: 2px solid #999;
+  border-right: 2px solid #999;
 }
 tr:last-child{
-  border-bottom: 2px solid #aaa;
+  border-bottom: 2px solid #999;
 }
 td:first-child{
-  border-left: 2px solid #aaa;
+  border-left: 2px solid #999;
 }
 td:last-child{
+<<<<<<< HEAD
   border-right: 2px solid #aaa;
 } */
+=======
+  border-right: 2px solid #999;
+}
+>>>>>>> f2276ed51b486467b39c2b84ae29ee01c4f4f7b3
 .btns{
-  text-align: center;
-  border: 1px solid red;
   width: 90%;
   margin: 5%;
+  padding-bottom: 1%;
 }
-.btn_back:{
-  width: 200px;
-  height: 200px;
-  /* float: left;
+.btn_back{
+  float: left;
   background-color: #f1f1f1;
   color: #333;
   font-size: 14px;
-  font-weight: bold;
-  padding: 5% 0%;
   text-align: center;
-  margin: 10% 0%;
   cursor: pointer;
-  width: 80%;
-  border-radius: 15px; */
+  padding: 1% 0%;
+  width: 10%;
+  border-radius: 5px;
 }
-.btn_save:{
+.btn_back:hover{
+  background-color: #dddddd;
+}
+.btn_save{
   float: right;
-  border: 1px solid black;
-  margin-right: 20px;
+  background-color: #f1f1f1;
+  color: #333;
+  font-size: 14px;
+  text-align: center;
+  cursor: pointer;
+  padding: 1% 0%;
+  width: 20%;
+  border-radius: 5px;
+}
+.btn_save:hover{
+  background-color: #dddddd;
 }
 .additional{
   background-color: #efefef;
@@ -161,7 +183,12 @@ td:last-child{
 
 
 
-/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+
+
+
+
+
+/* Responsive layout - makes the three columns stack on top of each other instead of next to each other ------------------------------*/
 @media screen and (max-width: 930px){
   .column.left{
     width: 100%;
@@ -192,6 +219,14 @@ td:last-child{
   .subtitle{
     margin: 0%;
   }
+  .left_subtitle{
+    float: left;
+    margin-left: 0%;
+  }
+  .right_subtitle{
+    float: right;
+    margin-right: 0%;
+  }
   .column.middle{
     margin-top: 20px;
     width: 100%;
@@ -211,5 +246,37 @@ td:last-child{
     border-top: 1px solid #333;
     border-bottom: 1px solid #333;
     padding: 8px;
+<<<<<<< HEAD
   } */
+=======
+  }
+  .btns{
+    margin: 0%;
+    width: 100%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+  }
+  .btn_back{
+    float: left;
+    background-color: #f1f1f1;
+    color: #333;
+    font-size: 14px;
+    text-align: center;
+    cursor: pointer;
+    padding: 1% 0%;
+    width: 15%;
+    border-radius: 5px;
+  }
+  .btn_save{
+    float: right;
+    background-color: #f1f1f1;
+    color: #333;
+    font-size: 14px;
+    text-align: center;
+    cursor: pointer;
+    padding: 1% 0%;
+    width: 25%;
+    border-radius: 5px;
+  }
+>>>>>>> f2276ed51b486467b39c2b84ae29ee01c4f4f7b3
 }

@@ -21,7 +21,7 @@
   <title>handongMMS</title>
 </head>
 <body>
-  <div class = "header" onclick="location.href='main.php'">
+  <div class = "header">
     <h1>HGU Meeting Management System (MMS)</h1>
     <br>
     <p>한동대학교 면담 예약 및 관리 시스템입니다.</p>
@@ -39,6 +39,9 @@
 
 
 
+
+
+
       <input class="btn_left" type="button" value="면담 신청하기"/>
 
       <form action="meetingSheet.php" method="post">
@@ -50,7 +53,6 @@
 
       <input class="btn_left" type="button" value="개인정보 수정하기"/>
       <input class="btn_left" type="button" value="면담승인 요청"/>
-      <input class="btn_left" type="button" value="로그아웃"/>
 
     </div>
     <div class="column middle">
