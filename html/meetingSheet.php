@@ -58,7 +58,6 @@
         <h3 class="right_subtitle">개인의 고유 링크 혹은 QR code</h3>
       </div>
 
-<<<<<<< HEAD
       <?php
       $conn = new mysqli("db4free.net","emawlrdl","toddlf930","mydata_21300506");
       // Check connection
@@ -66,7 +65,19 @@
           die("Connection failed: " . $conn->connect_error);
       }
         echo "Connected successfully <br>";
-
+        for($row=0; $row<=47; $row++) {
+          echo("<tr>");
+          if($row % 2 == 0){
+            echo("<td>".$row/2." : 00 ~ ".row/2." : 30</td>");
+          }
+          else{
+            echo("<td>" .($row/2-0.5). " : 30 ~ " .($row/2 + 0.5). " : 00</td>");
+          }
+          for($col=2; $col<=8; $col++) {
+            echo("<td bgcolor='Gainsboro' onclick=\'javascript:clickTrEvent(this)\"style='cursor:pointer'>OFF</td>");
+          }
+          document.write("</tr>");
+          }
           echo "<div style='float:left;'>";
           echo("<table width='1000'>");
           echo "<tr >";
@@ -160,10 +171,11 @@
             $cnt = $cnt+1;
             echo "</table>";
             echo "</div>";
-
-        } else {
+        }
+      }else {
             echo "0 results";
         }
+
         $conn->close();
       ?>
       <div class="btns">
