@@ -7,7 +7,7 @@ body{
   color: #58666e;
 }
 .header{
-  background-color: #f1f1f1;
+  background-color: black;
   padding: 20px;
   text-align: center;
   border-bottom: 3px solid #bbb;
@@ -72,22 +72,21 @@ body{
   border: 1px solid blue;
 }
 
-table{
+/* table{
   border-collapse: collapse;
-  width: 90%;
   text-align: center;
   margin-left: 5%;
   margin-right: 5%;
   margin-top: 50px;
   /* font-family: Arial, Helvetica, sans-serif; */
 }
-td, th{
+/* td, th{
   border-top: 1px solid #333;
   border-bottom: 1px solid #333;
   border: 1px solid #333;
   padding: 18px 10px;
-}
-tr:first-child{
+} */
+/* tr:first-child{
   background-color: #dddddd;
   border-top: 2px solid #aaa;
 }
@@ -103,7 +102,7 @@ td:first-child{
 }
 td:last-child{
   border-right: 2px solid #aaa;
-}
+} */
 .btns{
   text-align: center;
   border: 1px solid red;
@@ -200,7 +199,7 @@ td:last-child{
     /* margin-top: 50px; */
     /* border: 1px solid blue; */
   }
-  table{
+  /* table{
     border-collapse: collapse;
     width: 100%;
     text-align: center;
@@ -208,9 +207,9 @@ td:last-child{
     margin-top: 20px;
     /* font-family: Arial, Helvetica, sans-serif; */
   }
-  td, th{
+  /* td, th{
     border-top: 1px solid #333;
     border-bottom: 1px solid #333;
     padding: 8px;
-  }
+  } */
 }

@@ -51,37 +51,115 @@
         <h3 class="right_subtitle">개인의 고유 링크 혹은 QR code</h3>
       </div>
 
-      <script language="JavaScript">
-        document.write("<table class='table'>");
-        document.write("<tr>")
-        document.write("<th></th>")
-        for(col=2; col<=8; col++){
-          document.write("<th>날짜</th>");
+      <?php
+      $conn = new mysqli("db4free.net","emawlrdl","toddlf930","mydata_21300506");
+      // Check connection
+      if ($conn->connect_error) {
+          die("Connection failed: " . $conn->connect_error);
+      }
+        echo "Connected successfully <br>";
+
+          echo "<div style='float:left;'>";
+          echo("<table width='1000'>");
+          echo "<tr >";
+          echo "<td> </td>";
+          echo "</tr>";
+          echo "<tr>";
+          echo "<td> 시간 </td>";
+          echo "</tr>";
+          echo "<tr>";
+          echo "<td> 0 : 00 ~ 0 : 30  </td>";
+          echo "</tr>";
+          echo "<tr>";
+          echo "<td> 1 : 00 ~ 1 : 30  </td>";
+          echo "</tr>";
+          echo "<tr>";
+          echo "<td> 1 : 30 ~ 2 : 00  </td>";
+          echo "</tr>";
+          echo "<tr>";
+          echo "<td> 2 : 00 ~ 2 : 30  </td>";
+          echo "</tr>";
+          echo "<tr>";
+          echo "<td> 2 : 30 ~ 3 : 00  </td>";
+          echo "</tr>";
+          echo "<tr>";
+          echo "<td> 3 : 00 ~ 3 : 30  </td>";
+          echo "</tr>";
+          echo "<tr>";
+          echo "<td> 3 : 30 ~ 4 : 00  </td>";
+          echo "</tr>";
+          echo "<tr>";
+          echo "<td> 4 : 00 ~ 4 : 30  </td>";
+          echo "</tr>";
+          echo "<tr>";
+          echo "<td> 4 : 30 ~ 5 : 00  </td>";
+          echo "</tr>";
+          echo "<tr>";
+          echo "<td> 5 : 00 ~ 5 : 30  </td>";
+          echo "</tr>";
+          echo "<tr>";
+          echo "<td> 5 : 30 ~ 6 : 00  </td>";
+          echo "</tr>";
+          echo "<tr>";
+          echo "<td> 6 : 00 ~ 7 : 00  </td>";
+          echo "</tr>";
+          echo "</table>";
+          echo "</div>";
+
+
+        $sql = "SELECT db_date, day_name FROM time_dimension WHERE id between 20190101 and 20190103";
+        $result = $conn->query($sql);
+
+        if ($result->num_rows > 0) {
+          $cnt = 0;
+          while($cnt <3){
+            $row = $result->fetch_assoc();
+            echo "<div style='float:left;'>";
+            echo("<table class='table' width='200'>");
+            echo "<tr>";
+            echo "<td>" . $row["db_date"]. "</td>";
+            echo "</tr>";
+            echo "<tr>";
+            echo "<td>"  . $row["day_name"]. "</td>";
+            echo "</tr>";
+            echo "<tr>";
+            echo "<td>  off </td>";
+            echo "</tr>";
+            echo "<tr>";
+            echo "<td>  off </td>";
+            echo "</tr>";
+            echo "<tr>";
+            echo "<td>  off </td>";
+            echo "</tr>";
+            echo "<tr>";
+            echo "<td>  off </td>";
+            echo "</tr>";
+            echo "<tr>";
+            echo "<td>  off </td>";
+            echo "</tr>";
+            echo "<tr>";
+            echo "<td>  off </td>";
+            echo "</tr>";
+            echo "<tr>";
+            echo "<td>  off </td>";
+            echo "</tr>";
+            echo "<tr>";
+            echo "<td>  off </td>";
+            echo "</tr>";
+            echo "<tr>";
+            echo "<td>  off </td>";
+            echo "</tr>";
+            $cnt = $cnt+1;
+            echo "</table>";
+            echo "</div>";
         }
-        document.write("</tr><tr>")
-        document.write("<th>시간</th>")
-        for(col=2; col<=8; col++){
-          document.write("<th>요일</th>");
+        } else {
+            echo "0 results";
         }
-        document.write("</tr>");
-        for(row=0; row<=47; row++) {
-          document.write("<tr>");
-          if(row % 2 == 0){
-            document.write("<td>"+row/2+" : 00 ~ "+row/2+" : 30</td>")
-          }
-          else{
-            document.write("<td>"+(row/2-0.5)+" : 30 ~ "+(row/2 + 0.5)+" : 00</td>");
-          }
-          for(col=2; col<=8; col++) {
-            // document.write("<td bgcolor='#bbb'>&nbsp;</td>");
-            // TODO: 오프시 색깔/ 오픈시 색깔 추가하기
-            // TODO: 클릭 가능하게, 클릭하면 색깔 변화하게 만들기
-            document.write("<td bgcolor='#eee'>OFF</td>");
-          }
-          document.write("</tr>");
-          }
-        document.write("</table>");
-      </script>
+        $conn->close();
+      ?>
+
+    </div>
       <div class="btns">
         <input class="btn_back" type="button" value="돌아가기"/>
         <input class="btn_save" type="button" value="변경 사항 저장하기"/>
