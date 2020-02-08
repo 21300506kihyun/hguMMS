@@ -27,13 +27,23 @@
     <p>한동대학교 면담 예약 및 관리 시스템입니다.</p>
   </div>
 
+  <?php
+  session_start();
+  $name = $_POST['name1'];
+  $_SESSION["name"] = $name;
+  $email = $_POST['email1'];
+  $_SESSION["email"] = $email;
+  $img = $_POST['img1'];
+  $_SESSION["img"] = $img;
+   ?>
+
   <div class="row">
     <div class="column left">
-      <h1 class="icon"> <img src="<?php echo $_POST['img1']?>"></i></h1>
+      <h1 class="icon"> <img src="<?php echo $_SESSION['img']?>"></i></h1>
       <!-- <h1 class="icon"><i class="fas fa-snowman"></i></h1> -->
 
-      <h2><?php echo $_POST['name1']?> 님</h2>
-      <h3 class="info">E-mail : <?php echo $_POST['email1']?></h3>
+      <h2><?php echo $_SESSION['name']?> </h2>
+      <h3 class="info">E-mail : <?php echo $_SESSION['email']?></h3>
       <h3 class="info">오피스 위치 : none(영어?)</h3>
       <h3 class="info">개인 면담 시트 : 없음(한글?)</h3>
 
