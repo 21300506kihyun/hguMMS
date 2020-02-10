@@ -66,7 +66,7 @@
       <h3 class="info">오피스 위치 : none(영어?)</h3>
       <h3 class="info">개인 면담 시트 : 없음(한글?)</h3>
 
-      <input class="btn_left" type1="button" value="면담 신청하기"/>
+      <input class="btn_left" type="button" value="면담 신청하기"/>
       <input class="btn_left" type="button" value="개인 면담 시트 바로가기"/>
       <input class="btn_left" type="button" value="개인정보 수정하기"/>
       <input class="btn_left" type="button" value="면담승인 요청"/>
@@ -238,7 +238,7 @@
 
       </script>
 
-      <?php
+      <!-- <?php
 /*$conn = new mysqli("db4free.net","emawlrdl","toddlf930","mydata_21300506");
 // Check connection
 if ($conn->connect_error) {
@@ -296,7 +296,7 @@ if ($conn->connect_error) {
      echo "0 results";
  }
  $conn->close();*/
-?>
+?> -->
 
 
     </div>
