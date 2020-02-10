@@ -52,9 +52,6 @@
       <input class="btn_left" type="button" value="면담 신청하기"/>
 
       <form action="meetingSheet.php" method="post">
-        <input style="display: none" class="info" id = 'name1' name ="name1"  value ="<?php echo $_POST['name1']?>"  />
-        <input style="display: none" class="info" id = 'email1' name ="email1"  value ="<?php echo $_POST['email1']?>"/>
-        <input style="display: none" class="info" id = 'img1' name ="img1" value ="<?php echo $_POST['img1']?>"/>
         <input class="btn_left" type="submit" value="개인 면담 시트 바로가기"/>
       </form>
 

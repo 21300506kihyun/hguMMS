@@ -29,7 +29,7 @@
       width: 100px;
   }
   </style>
-  
+
   <script>
     function clickMore(str, info) {
       if(str.style.display=='none'){
@@ -41,6 +41,12 @@
       }
     }
   </script>
+  <?php
+  session_start();
+  $name = $_SESSION["name"];
+  $email = $_SESSION["email"];
+  $img = $_SESSION["img"];
+   ?>
   <title>handongMMS</title>
 </head>
 <body>
@@ -52,11 +58,11 @@
 
   <div class="row">
     <div class="column left">
-      <h1 class="icon"> <img src="<?php echo $_POST['img1']?>"></i></h1>
+      <h1 class="icon"> <img src="<?php echo $img?>"></i></h1>
       <!-- <h1 class="icon"><i class="fas fa-snowman"></i></h1> -->
 
-      <h2><?php echo $_POST['name1']?> 님</h2>
-      <h3 class="info">E-mail : <?php echo $_POST['email1']?></h3>
+      <h2><?php echo $name?> 님</h2>
+      <h3 class="info">E-mail : <?php echo $email?></h3>
       <h3 class="info">오피스 위치 : none(영어?)</h3>
       <h3 class="info">개인 면담 시트 : 없음(한글?)</h3>
 
@@ -70,7 +76,7 @@
     <div class="column middle">
       <h2 class="subtitle">개인 면담 일정</h2>
       <div>
-        <h3 class="left_subtitle"><?php echo $_POST['name1']?>님 개인 면담 시트</h3>
+        <h3 class="left_subtitle"><?php echo $name ?>님 개인 면담 시트</h3>
         <h3 class="right_subtitle">개인의 고유 링크 혹은 QR code</h3>
       </div>
 
@@ -94,7 +100,6 @@
           var $tdDay = null;
           var $tdSche = null;
           var jsonData = null;
-
           $(document).ready(function() {
               drawCalendar();
               initDate();
@@ -121,7 +126,6 @@
               }
               setTableHTML+='</table>';
               $("#cal_tab").html(setTableHTML);
-              document.write(setTableHTML);
           }
 
           //날짜 초기화
@@ -135,14 +139,15 @@
               if(month < 10){month = "0"+month;}
               firstDay = new Date(year,month-1,1);
               lastDay = new Date(year,month,0);
+              fd = lastDay.getDay();
           }
 
           //calendar 날짜표시
           function drawDays(){
               $("#cal_top_year").text(year);
               $("#cal_top_month").text(month);
-              for(var i=firstDay.getDay();i<firstDay.getDay()+lastDay.getDate();i++){
-                  $tdDay.eq(i).text(++dayCount);
+              for(var i=firstDay.getDay();i<firstDay.getDay()+lastDay.getDate();i++){ //getDay는 요일을 나타냄 getdate는 그날의 날짜
+                  $tdDay.eq(i).text(++dayCount); // eq는 tdDay의 index를 나타냄
               }
               for(var i=0;i<42;i+=7){
                   $tdDay.eq(i).css("color","red");
@@ -194,7 +199,7 @@
 
           //데이터 등록
           function setData(){
-              jsonData =
+              jsonData =  //json은 JavaScript Object Notation
               {
                   "2019":{
                       "07":{
@@ -233,67 +238,66 @@
 
       </script>
 
+      <?php
+/*$conn = new mysqli("db4free.net","emawlrdl","toddlf930","mydata_21300506");
+// Check connection
+if ($conn->connect_error) {
+   die("Connection failed: " . $conn->connect_error);
+}
+ echo "Connected successfully <br>";
 
+ $sql = "SELECT db_date, day_name FROM time_dimension WHERE id between 20190101 and 20190103";
+ $result = $conn->query($sql);
 
-      <!-- <?php
-      $conn = new mysqli("db4free.net","emawlrdl","toddlf930","mydata_21300506");
-      // Check connection
-      if ($conn->connect_error) {
-          die("Connection failed: " . $conn->connect_error);
-      }
-        echo "Connected successfully <br>";
+ if ($result->num_rows > 0) {
+   $cnt = 0;
+   while($cnt <3){
+     $row = $result->fetch_assoc();
+     echo "<div style='float:left;'>";
+     echo("<table class='table' width='200'>");
+     echo "<tr>";
+     echo "<td>" . $row["db_date"]. "</td>";
+     echo "</tr>";
+     echo "<tr>";
+     echo "<td>"  . $row["day_name"]. "</td>";
+     echo "</tr>";
+     echo "<tr>";
+     echo "<td>  off </td>";
+     echo "</tr>";
+     echo "<tr>";
+     echo "<td>  off </td>";
+     echo "</tr>";
+     echo "<tr>";
+     echo "<td>  off </td>";
+     echo "</tr>";
+     echo "<tr>";
+     echo "<td>  off </td>";
+     echo "</tr>";
+     echo "<tr>";
+     echo "<td>  off </td>";
+     echo "</tr>";
+     echo "<tr>";
+     echo "<td>  off </td>";
+     echo "</tr>";
+     echo "<tr>";
+     echo "<td>  off </td>";
+     echo "</tr>";
+     echo "<tr>";
+     echo "<td>  off </td>";
+     echo "</tr>";
+     echo "<tr>";
+     echo "<td>  off </td>";
+     echo "</tr>";
+     $cnt = $cnt+1;
+     echo "</table>";
+     echo "</div>";
+ }
+ } else {
+     echo "0 results";
+ }
+ $conn->close();*/
+?>
 
-        $sql = "SELECT db_date, day_name FROM time_dimension WHERE id between 20190101 and 20190103";
-        $result = $conn->query($sql);
-
-        if ($result->num_rows > 0) {
-          $cnt = 0;
-          while($cnt <3){
-            $row = $result->fetch_assoc();
-            echo "<div style='float:left;'>";
-            echo("<table class='table' width='200'>");
-            echo "<tr>";
-            echo "<td>" . $row["db_date"]. "</td>";
-            echo "</tr>";
-            echo "<tr>";
-            echo "<td>"  . $row["day_name"]. "</td>";
-            echo "</tr>";
-            echo "<tr>";
-            echo "<td>  off </td>";
-            echo "</tr>";
-            echo "<tr>";
-            echo "<td>  off </td>";
-            echo "</tr>";
-            echo "<tr>";
-            echo "<td>  off </td>";
-            echo "</tr>";
-            echo "<tr>";
-            echo "<td>  off </td>";
-            echo "</tr>";
-            echo "<tr>";
-            echo "<td>  off </td>";
-            echo "</tr>";
-            echo "<tr>";
-            echo "<td>  off </td>";
-            echo "</tr>";
-            echo "<tr>";
-            echo "<td>  off </td>";
-            echo "</tr>";
-            echo "<tr>";
-            echo "<td>  off </td>";
-            echo "</tr>";
-            echo "<tr>";
-            echo "<td>  off </td>";
-            echo "</tr>";
-            $cnt = $cnt+1;
-            echo "</table>";
-            echo "</div>";
-        }
-        } else {
-            echo "0 results";
-        }
-        $conn->close();
-      ?> -->
 
     </div>
       <div class="btns">
