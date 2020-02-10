@@ -19,6 +19,17 @@
       }
     }
   </script>
+  <?php
+  session_start();
+  if($_POST['name1'] !== NULL){
+    $name = $_POST['name1'];
+    $_SESSION["name"] = $name;
+    $email = $_POST['email1'];
+    $_SESSION["email"] = $email;
+    $img = $_POST['img1'];
+    $_SESSION["img"] = $img;
+  }
+  ?>
   <title>handongMMS</title>
 </head>
 <body>
@@ -30,25 +41,21 @@
 
   <div class="row">
     <div class="column left">
-      <h1 class="icon"> <img src="<?php echo $_POST['img1']?>"></i></h1>
-      <!-- <h1 class="icon"><i class="fas fa-snowman"></i></h1> -->
-
-      <h2><?php echo $_POST['name1']?> 님</h2>
-      <h3 class="info">E-mail : <?php echo $_POST['email1']?></h3>
+      <h1 class="icon"> <img src="<?php echo $_SESSION['img']?>"></i></h1>
+      <h2><?php echo $_SESSION['name']?> </h2>
+      <h3 class="info">E-mail : <?php echo $_SESSION['email']?></h3>
       <h3 class="info">오피스 위치 : none(영어?)</h3>
       <h3 class="info">개인 면담 시트 : 없음(한글?)</h3>
 
       <input class="btn_left" type="button" value="면담 신청하기"/>
       <form action="meetingSheet.php" method="post">
-        <input style="display: none" class="info" id = 'name1' name ="name1"  value ="<?php echo $_POST['name1']?>"  />
-        <input style="display: none" class="info" id = 'email1' name ="email1"  value ="<?php echo $_POST['email1']?>"/>
-        <input style="display: none" class="info" id = 'img1' name ="img1" value ="<?php echo $_POST['img1']?>"/>
         <input class="btn_left" type="submit" value="개인 면담 시트 바로가기"/>
       </form>
-      <input class="btn_left" type="button" value="개인정보 수정하기"/>
+      <form action="personalInfo.php" method="post">
+        <input class="btn_left" type="submit" value="개인정보 수정하기"/>
+      </form>
       <input class="btn_left" type="button" value="면담승인 요청"/>
       <input class="btn_left" type="button" value="로그아웃"/>
-
     </div>
 
     <div class="column middle">
