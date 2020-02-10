@@ -55,7 +55,11 @@
       <h2 class="subtitle">개인정보 수정</h2>
       <div class="content">
         <h3 class="category">이름 :</h3>
-        <input class="value" type="text">
+        <input class="value" type="text" value="Name">
+      </div>
+      <div class="content">
+        <h3 class="category">이름 :</h3>
+        <input class="value" type="text" value="Name">
       </div>
 
     </div>

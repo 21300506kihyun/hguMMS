@@ -68,29 +68,33 @@ body{
         /* border: 1px solid black; */
       }
       .content{
-        margin: 10px;
+        /* margin: 10px; */
         border: 1px solid black;
         /* text-align: center; */
         /* margin: 5% 30%; */
-        height: 100px;
+        height: 50px;
         /* width: 20%; */
-        padding-left: 40%;
-        padding-right: 40%;
+        /* margin-top: 1%; */
+        padding-left: 30%;
+        padding-right: 30%;
 
       }
         .category{
-          width: 50%;
+          width: 20%;
           float: left;
           text-align: left;
+          font-size: 150%;
           /* margin-left: 20px; */
           border: 1px solid black;
         }
         .value{
-          width : 50%;
+          width : 80%;
           float: right;
+          font-size : 150%;
+          text-align: center;
           /* align-items: center; */
           /* margin-right: 20px; */
-          border: 1px solid blue;
+          border: 1px solid #bbb;
         }
       .btns{
         width: 90%;
