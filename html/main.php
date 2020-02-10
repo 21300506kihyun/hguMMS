@@ -28,6 +28,15 @@
   </div>
 
   <?php
+  $conn = new mysqli("localhost","hgumms","handong11*","hgumms");
+  // Check connection
+  if ($conn->connect_error) {
+     die("Connection failed: " . $conn->connect_error);
+  }
+   echo "Connected successfully <br>";
+
+  // $sql = "SELECT db_date, day_name FROM time_dimension WHERE id between 20190101 and 20190103";
+   //$result = $conn->query($sql);
   session_start();
   if($_POST['name1'] !== NULL){
     $name = $_POST['name1'];
@@ -36,6 +45,14 @@
     $_SESSION["email"] = $email;
     $img = $_POST['img1'];
     $_SESSION["img"] = $img;
+  }
+
+  $sql = "insert into user_info (user_name,email) values ('$name','$email')";
+
+  if ($conn->query($sql) === TRUE) {
+      echo "New record created successfully";
+  } else {
+      echo "Error: " . $sql . "<br>" . $conn->error;
   }
   ?>
 
