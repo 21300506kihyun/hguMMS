@@ -238,73 +238,13 @@
 
       </script>
 
-      <!-- <?php
-/*$conn = new mysqli("db4free.net","emawlrdl","toddlf930","mydata_21300506");
-// Check connection
-if ($conn->connect_error) {
-   die("Connection failed: " . $conn->connect_error);
-}
- echo "Connected successfully <br>";
 
- $sql = "SELECT db_date, day_name FROM time_dimension WHERE id between 20190101 and 20190103";
- $result = $conn->query($sql);
-
- if ($result->num_rows > 0) {
-   $cnt = 0;
-   while($cnt <3){
-     $row = $result->fetch_assoc();
-     echo "<div style='float:left;'>";
-     echo("<table class='table' width='200'>");
-     echo "<tr>";
-     echo "<td>" . $row["db_date"]. "</td>";
-     echo "</tr>";
-     echo "<tr>";
-     echo "<td>"  . $row["day_name"]. "</td>";
-     echo "</tr>";
-     echo "<tr>";
-     echo "<td>  off </td>";
-     echo "</tr>";
-     echo "<tr>";
-     echo "<td>  off </td>";
-     echo "</tr>";
-     echo "<tr>";
-     echo "<td>  off </td>";
-     echo "</tr>";
-     echo "<tr>";
-     echo "<td>  off </td>";
-     echo "</tr>";
-     echo "<tr>";
-     echo "<td>  off </td>";
-     echo "</tr>";
-     echo "<tr>";
-     echo "<td>  off </td>";
-     echo "</tr>";
-     echo "<tr>";
-     echo "<td>  off </td>";
-     echo "</tr>";
-     echo "<tr>";
-     echo "<td>  off </td>";
-     echo "</tr>";
-     echo "<tr>";
-     echo "<td>  off </td>";
-     echo "</tr>";
-     $cnt = $cnt+1;
-     echo "</table>";
-     echo "</div>";
- }
- } else {
-     echo "0 results";
- }
- $conn->close();*/
-?> -->
-
-
-    </div>
-      <div class="btns">
+    <div class="btns">
         <input class="btn_back" type="button" value="돌아가기"/>
         <input class="btn_save" type="button" value="변경 사항 저장하기"/>
-      </div>
     </div>
+    </div>
+      
   </div>
 
 
