@@ -8,6 +8,28 @@
   <script src="https://apis.google.com/js/platform.js" async defer></script>
   <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
   <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+  <style type="text/css">
+
+  .cal_top{
+      text-align: center;
+      font-size: 30px;
+  }
+  .cal{
+      text-align: center;
+  }
+  table.calendar{
+      border: 1px solid black;
+      display: inline-table;
+      text-align: left;
+  }
+  table.calendar td{
+      vertical-align: top;
+      border: 1px solid skyblue;
+      width: 100px;
+  }
+  </style>
+  
   <script>
     function clickMore(str, info) {
       if(str.style.display=='none'){
@@ -51,25 +73,8 @@
         <h3 class="left_subtitle"><?php echo $_POST['name1']?>님 개인 면담 시트</h3>
         <h3 class="right_subtitle">개인의 고유 링크 혹은 QR code</h3>
       </div>
-      <style type="text/css">
-      .cal_top{
-          text-align: center;
-          font-size: 30px;
-      }
-      .cal{
-          text-align: center;
-      }
-      table.calendar{
-          border: 1px solid black;
-          display: inline-table;
-          text-align: left;
-      }
-      table.calendar td{
-          vertical-align: top;
-          border: 1px solid skyblue;
-          width: 100px;
-      }
-      </style>
+
+
       <div class="cal_top">
           <a href="#" id="movePrevMonth"><span id="prevMonth" class="cal_tit">&lt;</span></a>
           <span id="cal_top_year"></span>
@@ -116,6 +121,7 @@
               }
               setTableHTML+='</table>';
               $("#cal_tab").html(setTableHTML);
+              document.write(setTableHTML);
           }
 
           //날짜 초기화
