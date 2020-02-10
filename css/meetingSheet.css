@@ -78,14 +78,14 @@ body{
         /* border: 1px solid blue; */
       }
 
-      table{
+      /* table{
         border-collapse: collapse;
         width: 90%;
         text-align: center;
         margin-left: 5%;
         margin-right: 5%;
         margin-top: 50px;
-        /* font-family: Arial, Helvetica, sans-serif; */
+        font-family: Arial, Helvetica, sans-serif;
       }
       td, th{
         border-top: 1px solid #333;
@@ -112,7 +112,7 @@ body{
       }
       td:last-child{
         border-right: 2px solid #999;
-      }
+      } */
       .btns{
         width: 90%;
         margin: 5%;
@@ -209,19 +209,19 @@ body{
       float: right;
       margin-right: 0%;
     }
-    table{
+    /* table{
       border-collapse: collapse;
       width: 100%;
       text-align: center;
       margin: 0%;
       margin-top: 20px;
-      /* font-family: Arial, Helvetica, sans-serif; */
+      font-family: Arial, Helvetica, sans-serif;
     }
     td, th{
       border-top: 1px solid #333;
       border-bottom: 1px solid #333;
       padding: 8px;
-    }
+    } */
     .btns{
       margin: 0%;
       width: 100%;

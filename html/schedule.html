@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>스케쥴(달력)표</title>
+
+<style type="text/css">
+body,div,p,h1,h2,h3,h4,h5,h6,ul,ol,li,dl,dt,dd,table,th,td,form,fieldset,legend,input,textare,a,button,select{margin:0;padding:0}
+body,input,textarea,select,button,table{font-family:'돋움',dotum,AppleGothic,sans-serif;font-size:12px}
+body{word-break:break-all}
+a{text-decoration:none}
+a:hover,a:active,a:focus{text-decoration:underline}
+caption,legend,.blind{visibility:hidden;overflow:hidden;width:0;height:0;font-size:0;line-height:0;text-align:left}
+hr{display:none}
+table{border-collapse:collapse}
+th{font-weight:normal}
+.bbs_table{width:100%;border:1px solid #d0d4d9;line-height:16px;/* IE7 수정 */*border-right:0/* IE7 수정 */}
+.bbs_table th:first-child,.bbs_tbl_type2 td:first-child{border-left:0}
+.bbs_table th{padding:10px 9px 7px;border-width:0 0 0 1px;border-color:#dcdee2;border-style:solid;text-align:center;background-color:#eff0f2;color:#333}
+.bbs_table td{padding:10px 9px 7px;border-width:1px 0 0 1px;border-color:#edeef0 #dcdee2;border-style:solid;text-align:center;line-height:33px;color:#666;/* IE7 수정 */*border-left:0;*border-top:0;*border-bottom:1px solid #edeef0;*border-right:1px solid #dcdee2;/* IE7 수정 */}
+.bbs_table td input[type=text],.bbs_tbl_type2 td select,.bbs_tbl_type2 td a.fron{margin:-6px 0 -2px}
+.bbs_table td:hover{border:1px solid #666 !important}
+.bbs_table tr:first-child td{border-top:1px solid #dcdee2}
+.bbs_table tr:first-child td:hover{border-top:1px solid #666 !important}
+.schu_line_bg{border:1px solid #999 !important;background-color:#f9fafa}
+.schedule_area_v1{position:relative;/* IE7 수정 */*top:3px;/* IE7 수정 */padding:18px 5px 16px;line-height:18px;font-size:12px}
+.schedule_area_v1 a{display:block;position:relative;color:#333}
+.schedule_area_v1 a:hover{font-weight:bold}
+.schedule_close{display:block;position:absolute;top:2px;right:2px;width:15px;height:15px;cursor:pointer}
+</style>
+</head>
+
+<body>
+	<!-- bbs_tbl_type2 -->
+	<table class="bbs_table">
+	<!-- <caption>강의 시간표</caption> -->
+		<colgroup>
+			<col />
+			<col style="width:13%">
+			<col style="width:13%">
+			<col style="width:13%">
+			<col style="width:13%">
+			<col style="width:13%">
+			<col style="width:13%">
+			<col style="width:13%">
+		</colgroup>
+		<thead>
+			<tr class="schedule_lst">
+			<th scope="col"></th>
+			<th scope="col">월</th>
+			<th scope="col">화</th>
+			<th scope="col">수</th>
+			<th scope="col">목</th>
+			<th scope="col">금</th>
+			<th scope="col">토</th>
+			<th scope="col">일</th>
+			</tr>
+		</thead>
+
+		<tbody>
+			<tr>
+				<td>0교시 (08:00)</td>
+				<td class="schu_line_bg">
+					<div class="schedule_area_v1">
+						<a href="#">자바스크립트 (01반)</a>강의실A - 홍길동<span class="schedule_close">X</span>
+					</div>
+				</td>
+				<td class="schu_line_bg">
+					<div class="schedule_area_v1">
+						<a href="#">JAVA (02반)</a>강의실B - 홍길동<span class="schedule_close">X</span>
+					</div>
+				</td>
+				<td class="schu_line_bg">
+					<div class="schedule_area_v1">
+						<a href="#">C++ (03반)</a>강의실C - 홍길동<span class="schedule_close">X</span>
+					</div>
+				</td>
+				<td></td>
+				<td class="schu_line_bg">
+					<div class="schedule_area_v1">
+						<a href="#">유비쿼터스 (04반)</a>강의실D - 홍길동<span class="schedule_close">X</span>
+					</div>
+				</td>
+				<td></td>
+			</tr>
+
+			<tr>
+				<td>1교시 (09:00)</td>
+				<td></td>
+				<td class="schu_line_bg">
+					<div class="schedule_area_v1">
+						<a href="#">자바스크립트<br />jQuery API (01반)</a>강의실A - 홍길동<span class="schedule_close">X</span>
+					</div>
+				</td>
+				<td></td>
+				<td class="schu_line_bg">
+					<div class="schedule_area_v1">
+						<a href="#">Node.js<br />Dart.js</a>강의실E - 홍길동<span class="schedule_close">X</span>
+					</div>
+				</td>
+				<td></td>
+				<td class="schu_line_bg">
+					<div class="schedule_area_v1">
+						<a href="#">JAVASCRIPT<br />ACTIONSCRIPT<br />HTML/CSS<br />객체지향프로그램 (01반)</a>강의실1 - 홍길동<span class="schedule_close">X</span>
+					</div>
+				</td>
+			</tr>
+
+			<tr>
+			<td>2교시 (10:00)</td>
+			<td class="schu_line_bg"><div class="schedule_area_v1"><a href="#">자바스크립트1 (01반)</a>강의실1 - 홍길동<span class="schedule_close"></span></div></td>
+			<td></td>
+			<td class="schu_line_bg"><div class="schedule_area_v1"><a href="#">자바<br />스크립트1 (01반)</a>강의실1 - 홍길동<span class="schedule_close"></span></div></td>
+			<td></td>
+			<td class="schu_line_bg"><div class="schedule_area_v1"><a href="#">자바<br />스크<br />립트1 (01반)</a>강의실1 - 홍길동<span class="schedule_close"></span></div></td>
+			<td></td>
+			</tr>
+			<tr>
+			<td>3교시 (11:00)</td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			</tr>
+			<tr>
+			<td>4교시 (12:00)</td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			</tr>
+			<tr>
+			<td>5교시 (13:00)</td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			</tr>
+			<tr>
+			<td>6교시 (14:00)</td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			</tr>
+			<tr>
+			<td>7교시 (15:00)</td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			</tr>
+			<tr>
+			<td>8교시 (16:00)</td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			</tr>
+			<tr>
+			<td>9교시 (17:00)</td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			</tr>
+			<tr>
+			<td>10교시 (18:00)</td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			</tr>
+			<tr>
+			<td>11교시 (19:00)</td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			</tr>
+			<tr>
+			<td>12교시 (20:00)</td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			</tr>
+			<tr>
+			<td>13교시 (21:00)</td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			</tr>
+			<tr>
+			<td>14교시 (22:00)</td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			</tr>
+			<tr>
+			<td>15교시 (23:00)</td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			</tr>
+		</tbody>
+	</table>
+	<!-- //bbs_tbl_type2 -->
+</body>
+</html>

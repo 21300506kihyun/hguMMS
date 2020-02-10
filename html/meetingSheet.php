@@ -29,16 +29,45 @@
       width: 100px;
   }
   </style>
+  <style type="text/css">
+    body,div,p,h1,h2,h3,h4,h5,h6,ul,ol,li,dl,dt,dd,table,th,td,form,fieldset,legend,input,textare,a,button,select{margin:0;padding:0}
+    body,input,textarea,select,button
+    /* table{font-family:'돋움',dotum,AppleGothic,sans-serif;font-size:12px} */
+    body{word-break:break-all}
+    a{text-decoration:none}
+    a:hover,a:active,a:focus{text-decoration:underline}
+    caption,legend,.blind{visibility:hidden;overflow:hidden;width:0;height:0;font-size:0;line-height:0;text-align:left}
+    hr{display:none}
+    table{border-collapse: collapse;
+        width: 90%;
+        margin-top: 50px;
+    }
+    th{font-weight:normal}
+    .bbs_table{width:100%;border:1px solid #d0d4d9;line-height:16px;/* IE7 수정 */*border-right:0/* IE7 수정 */}
+    .bbs_table th:first-child,.bbs_tbl_type2 td:first-child{border-left:0}
+    .bbs_table th{padding:10px 9px 7px;border-width:0 0 0 1px;border-color:#dcdee2;border-style:solid;text-align:center;background-color:#eff0f2;color:#333}
+    .bbs_table td{padding:10px 9px 7px;border-width:1px 0 0 1px;border-color:#edeef0 #dcdee2;border-style:solid;text-align:center;line-height:33px;color:#666;/* IE7 수정 */*border-left:0;*border-top:0;*border-bottom:1px solid #edeef0;*border-right:1px solid #dcdee2;/* IE7 수정 */}
+    .bbs_table td input[type=text],.bbs_tbl_type2 td select,.bbs_tbl_type2 td a.fron{margin:-6px 0 -2px}
+    .bbs_table td:hover{border: 2px solid #777 !important}
+    .bbs_table tr:first-child td{border-top:1px solid #dcdee2}
+    .bbs_table tr:first-child td:hover{border-top:2px solid #777 !important}
+    .schu_line_bg{border:1px solid #999 !important;background-color:/*#f9fafa*/ Gainsboro; cursor:pointer}
+    .schedule_area_v1{position:relative;/* IE7 수정 */*top:3px;/* IE7 수정 */padding:18px 5px 16px;line-height:18px;font-size:12px}
+    .schedule_area_v1 a{display:block;position:relative;color:#333}
+    .schedule_area_v1 a:hover{font-weight:bold}
+    .schedule_close{display:block;position:absolute;top:2px;right:2px;width:15px;height:15px;cursor:pointer}
+  </style>
 
   <script>
-    function clickMore(str, info) {
-      if(str.style.display=='none'){
-        str.style.display='';
-        info.innerText = '닫기 ▲'
-      } else {
-        str.style.display = 'none';
-        info.innerText = '더 보기 ▼'
-      }
+    function clickTdEvent(obj){
+        if(obj.style.backgroundColor === "white"){
+            obj.style.backgroundColor = "Gainsboro";
+            obj.innerHTML = "<div class='schedule_area_v1'> <span class='schedule_close'>X</span> </div>";
+        }
+        else{
+            obj.style.backgroundColor = "white";
+            obj.innerHTML = "<div class='schedule_area_v1'> <span class='schedule_close'>O</span> </div>";
+        }
     }
   </script>
   <?php
@@ -64,7 +93,7 @@
   <div class="row">
     <div class="column left">
       <h1 class="icon"> <img src="<?php echo $_SESSION['img']?>"></i></h1>
-      <h2><?php echo $_SESSION['name']?> </h2>
+      <h2><?php echo $_SESSION['name']?></h2>
       <h3 class="info">E-mail : <?php echo $_SESSION['email']?></h3>
       <h3 class="info">오피스 위치 : none(영어?)</h3>
       <h3 class="info">개인 면담 시트 : 없음(한글?)</h3>
@@ -83,12 +112,68 @@
     <div class="column middle">
       <h2 class="subtitle">개인 면담 일정</h2>
       <div>
-        <h3 class="left_subtitle"><?php echo $name ?>님 개인 면담 시트</h3>
+        <h3 class="left_subtitle"><?php echo $_SESSION['name']?>님 개인 면담 시트</h3>
         <h3 class="right_subtitle">개인의 고유 링크 혹은 QR code</h3>
       </div>
 
 
-      <div class="cal_top">
+
+      <script language="JavaScript">
+        document.write("<table class='bbs_table'");
+          document.write("<colgroup>");
+            document.write("<col />")
+            for(col=1; col<=7; col++){
+              document.write("<col style='width:12%'>")
+            }
+          document.write("</colgroup>")
+
+          document.write("<thead>")
+            document.write("<tr class='schedult_lst'>")
+            document.write("<th scope='col'></th>")
+            for(date=1; date<=7; date++){
+              document.write("<th scope='col'>Date</th>")
+            }
+            document.write("</tr>")
+          document.write("</thead>")
+
+          document.write("<thead>")
+            document.write("<tr class='schedult_lst'>")
+            document.write("<th scope='col'></th>")
+            document.write("<th scope='col'>월</th>")
+            document.write("<th scope='col'>화</th>")
+            document.write("<th scope='col'>수</th>")
+            document.write("<th scope='col'>목</th>")
+            document.write("<th scope='col'>금</th>")
+            document.write("<th scope='col'>토</th>")
+            document.write("<th scope='col'>일</th>")
+            document.write("</tr>")
+          document.write("</thead>")
+
+          document.write("<tbody>")
+            for(row=0; row<=47; row++){
+              document.write("<tr>")
+              if(row % 2 == 0){
+                document.write("<td>"+row/2+" : 00 ~ "+row/2+" : 30</td>")
+              }
+              else{
+                document.write("<td>"+(row/2 - 0.5)+" : 30 ~ "+(row/2 + 0.5)+" : 00</td>")
+              }
+              for(col=1; col<=7; col++){
+                document.write("<td class='schu_line_bg' onclick='javascript:clickTdEvent(this)'>")
+                document.write("<div class='schedule_area_v1'>")
+                document.write("<span class='schedule_close'>X</span>")
+                document.write("</div></td>")
+              }
+              document.write("</tr>")
+            }
+            document.write("</tbody>")
+          document.write("</table>")
+      </script>
+
+
+
+
+      <!-- <div class="cal_top">
           <a href="#" id="movePrevMonth"><span id="prevMonth" class="cal_tit">&lt;</span></a>
           <span id="cal_top_year"></span>
           <span id="cal_top_month"></span>
@@ -243,7 +328,7 @@
               }
           }
 
-      </script>
+      </script> -->
 
 
     <div class="btns">
