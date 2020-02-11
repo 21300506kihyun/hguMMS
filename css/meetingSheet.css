@@ -114,8 +114,8 @@ body{
         border-right: 2px solid #999;
       } */
       .btns{
-        width: 90%;
-        margin: 5%;
+        width: 100%;
+        margin-top: 5%;
         padding-bottom: 1%;
       }
         .btn_back{

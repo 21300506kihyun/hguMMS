@@ -9,7 +9,7 @@
   <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
   <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 
-  <style type="text/css">
+  <!-- <style type="text/css">
 
   .cal_top{
       text-align: center;
@@ -28,35 +28,31 @@
       border: 1px solid skyblue;
       width: 100px;
   }
-  </style>
+  </style> -->
   <style type="text/css">
     body,div,p,h1,h2,h3,h4,h5,h6,ul,ol,li,dl,dt,dd,table,th,td,form,fieldset,legend,input,textare,a,button,select{margin:0;padding:0}
-    body,input,textarea,select,button
-    /* table{font-family:'돋움',dotum,AppleGothic,sans-serif;font-size:12px} */
+    /* body,input,textarea,select,button,table{font-family:'돋움',dotum,AppleGothic,sans-serif;font-size:12px} */
     body{word-break:break-all}
     a{text-decoration:none}
     a:hover,a:active,a:focus{text-decoration:underline}
     caption,legend,.blind{visibility:hidden;overflow:hidden;width:0;height:0;font-size:0;line-height:0;text-align:left}
     hr{display:none}
-    table{border-collapse: collapse;
-        width: 90%;
-        margin-top: 50px;
-    }
+    table{border-collapse:collapse}
     th{font-weight:normal}
     .bbs_table{width:100%;border:1px solid #d0d4d9;line-height:16px;/* IE7 수정 */*border-right:0/* IE7 수정 */}
     .bbs_table th:first-child,.bbs_tbl_type2 td:first-child{border-left:0}
     .bbs_table th{padding:10px 9px 7px;border-width:0 0 0 1px;border-color:#dcdee2;border-style:solid;text-align:center;background-color:#eff0f2;color:#333}
     .bbs_table td{padding:10px 9px 7px;border-width:1px 0 0 1px;border-color:#edeef0 #dcdee2;border-style:solid;text-align:center;line-height:33px;color:#666;/* IE7 수정 */*border-left:0;*border-top:0;*border-bottom:1px solid #edeef0;*border-right:1px solid #dcdee2;/* IE7 수정 */}
     .bbs_table td input[type=text],.bbs_tbl_type2 td select,.bbs_tbl_type2 td a.fron{margin:-6px 0 -2px}
-    .bbs_table td:hover{border: 2px solid #777 !important}
+    .bbs_table td.yes_hover:hover{border:2px solid #666 !important}
     .bbs_table tr:first-child td{border-top:1px solid #dcdee2}
-    .bbs_table tr:first-child td:hover{border-top:2px solid #777 !important}
+    .bbs_table tr:first-child td.yes_hover:hover{border-top:2px solid #666 !important}
     .schu_line_bg{border:1px solid #999 !important;background-color:/*#f9fafa*/ Gainsboro; cursor:pointer}
     .schedule_area_v1{position:relative;/* IE7 수정 */*top:3px;/* IE7 수정 */padding:18px 5px 16px;line-height:18px;font-size:12px}
     .schedule_area_v1 a{display:block;position:relative;color:#333}
     .schedule_area_v1 a:hover{font-weight:bold}
     .schedule_close{display:block;position:absolute;top:2px;right:2px;width:15px;height:15px;cursor:pointer}
-  </style>
+</style>
 
   <script>
     function clickTdEvent(obj){
@@ -98,7 +94,7 @@
       <h3 class="info">E-mail : <?php echo $_SESSION['email']?></h3>
       <h3 class="info">오피스 위치 : none(영어?)</h3>
       <h3 class="info">개인 면담 시트 : 없음(한글?)</h3>
-      
+
       <input class="btn_left" type="button" value="면담 신청하기"/>
       <form action="meetingSheet.php" method="post">
         <input class="btn_left" type="submit" value="개인 면담 시트 바로가기"/>
@@ -117,227 +113,92 @@
         <h3 class="right_subtitle">개인의 고유 링크 혹은 QR code</h3>
       </div>
 
+      <br>
 
+      <?php
+        $dt = new DateTime;
+        if (isset($_GET['year']) && isset($_GET['week'])) {
+          $dt->setISODate($_GET['year'], $_GET['week']); // 2020 , 0주차면 자동으로 2019 마지막 주차로 변환 하는듯.
+        } else {
+          $dt->setISODate($dt->format('o'), $dt->format('W'));
+        }
 
-      <script language="JavaScript">
-        document.write("<table class='bbs_table'");
-          document.write("<colgroup>");
-            document.write("<col />")
-            for(col=1; col<=7; col++){
-              document.write("<col style='width:12%'>")
-            }
-          document.write("</colgroup>")
+        //echo $dt -> format('y-m-d');
+        $year = $dt->format('o');
+        $week = $dt->format('W');  //1년중 몇번쨰 주차인지
 
-          document.write("<thead>")
-            document.write("<tr class='schedult_lst'>")
-            document.write("<th scope='col'></th>")
-            for(date=1; date<=7; date++){
-              document.write("<th scope='col'>Date</th>")
-            }
-            document.write("</tr>")
-          document.write("</thead>")
+        echo "<div style='text-align: center; font-size: 150%;'>";
+        // echo "<br>";
+        echo "<p>" . $year . "년 ";
+        echo $week . "주차</p></div>";
+      ?>
 
-          document.write("<thead>")
-            document.write("<tr class='schedult_lst'>")
-            document.write("<th scope='col'></th>")
-            document.write("<th scope='col'>월</th>")
-            document.write("<th scope='col'>화</th>")
-            document.write("<th scope='col'>수</th>")
-            document.write("<th scope='col'>목</th>")
-            document.write("<th scope='col'>금</th>")
-            document.write("<th scope='col'>토</th>")
-            document.write("<th scope='col'>일</th>")
-            document.write("</tr>")
-          document.write("</thead>")
-
-          document.write("<tbody>")
-            for(row=0; row<=47; row++){
-              document.write("<tr>")
-              if(row % 2 == 0){
-                document.write("<td>"+row/2+" : 00 ~ "+row/2+" : 30</td>")
-              }
-              else{
-                document.write("<td>"+(row/2 - 0.5)+" : 30 ~ "+(row/2 + 0.5)+" : 00</td>")
-              }
-              for(col=1; col<=7; col++){
-                document.write("<td id="+row+"-"+col+" class='schu_line_bg' onclick='javascript:clickTdEvent(this)'>")
-                document.write("<div class='schedule_area_v1'>")
-                document.write("<span class='schedule_close'>X</span>")
-                document.write("</div></td>")
-              }
-              document.write("</tr>")
-            }
-            document.write("</tbody>")
-          document.write("</table>")
-      </script>
-
-
-
-
-      <!-- <div class="cal_top">
-          <a href="#" id="movePrevMonth"><span id="prevMonth" class="cal_tit">&lt;</span></a>
-          <span id="cal_top_year"></span>
-          <span id="cal_top_month"></span>
-          <a href="#" id="moveNextMonth"><span id="nextMonth" class="cal_tit">&gt;</span></a>
+      <div style="font-size: 130%; ">
+        <a style="float: left; text-decoration: none; color: #58666e;" href="<?php echo $_SERVER['PHP_SELF'].'?week='.($week-1).'&year='.$year; ?>">◀ Prev Week </a> <!--Previous week-->
+        <a style="float: right; text-decoration: none; color: #58666e;" href="<?php echo $_SERVER['PHP_SELF'].'?week='.($week+1).'&year='.$year; ?>"> Next Week ▶</a> <!--Next week-->
       </div>
-      <div id="cal_tab" class="cal">
+      <br>
+
+      <?php
+        $count = 0;
+        echo '<table class="bbs_table">';
+          echo '<colgroup>';
+          echo '<col />';
+          for($col=1; $col<=7; $col++){
+            echo '<col style="width:12%">';
+          }
+          echo '</colgroup>';
+          echo '<thead>';
+            echo '<tr class="schedult_lst">';
+              echo '<th></th>';
+              // echo '<tr>';
+              // echo '<td> time   </td>';
+              do {
+                // 월요일부터 일요일까지 표시
+                // echo "<td>" . $dt->format('l') . "<br>" . $dt->format('d M Y') . "</td>\n";
+                echo "<th>" . $dt->format('l') . "<br>" . $dt->format('d M Y') . "</th>\n";
+                $dt->modify('+1 day');
+                $count ++;
+              } while ($week == $dt->format('W'));
+            echo '</tr>';
+          echo '</thead>';
+
+          echo '<tbody>';
+            $dt->modify('-7 day');  //날짜를 그 주의 처음으로 돌리기
+                //echo $dt->format('d M Y');
+            $th = 0; // 시작시간 설정
+            for($t =0; $t < 48; $t++){
+              $m = "00";
+              $m2 = "30";
+              $d = $t;
+              $d %= 2; // 홀수 짝수 구분
+              echo '<tr>';
+              if($d == 0){
+                echo "<td>" .$th.":".$m. "-".$th.":".$m2. "</td>";
+                $th = $th+1;
+              }else{
+                $th2 = $th-1;
+                echo "<td>" .$th2.":".$m2. "-".$th.":".$m. "</td>";
+              }
+              for($i = 0; $i < $count; $i++){
+                $var_dt = $dt->format('y-m-d')."-".$th."-".$m;
+                // echo "<td id =". $var_dt . " onClick= 'move(this.id)'>" . "off". "\n" ."</td>";
+                echo "<td id =". $var_dt . " class='schu_line_bg yes_hover' onClick='javascript:clickTdEvent(this)'>" . "<div class='schedule_area_v1'>" . "<span class='schedule_close'>X</span>" . "\n" ."</div></td>";
+                $dt->modify('+1 day');
+              }
+              echo '</tr>';
+              $dt->modify('-7 day');
+            }
+          echo '</tbody>';
+        echo '</table>';
+      ?>
+
+      <div class="btns">
+          <input class="btn_back" type="button" value="돌아가기" onclick="location.href='main.php'"/>
+          <input class="btn_save" type="button" value="변경 사항 저장하기"/>
       </div>
-
-      <script type="text/javascript">
-
-          var today = null;
-          var year = null;
-          var month = null;
-          var firstDay = null;
-          var lastDay = null;
-          var $tdDay = null;
-          var $tdSche = null;
-          var jsonData = null;
-          $(document).ready(function() {
-              drawCalendar();
-              initDate();
-              drawDays();
-              drawSche();
-              $("#movePrevMonth").on("click", function(){movePrevMonth();});
-              $("#moveNextMonth").on("click", function(){moveNextMonth();});
-          });
-
-          //Calendar 그리기
-          function drawCalendar(){
-              var setTableHTML = "";
-              setTableHTML+='<table class="calendar">';
-              setTableHTML+='<tr><th>SUN</th><th>MON</th><th>TUE</th><th>WED</th><th>THU</th><th>FRI</th><th>SAT</th></tr>';
-              for(var i=0;i<6;i++){
-                  setTableHTML+='<tr height="100">';
-                  for(var j=0;j<7;j++){
-                      setTableHTML+='<td style="text-overflow:ellipsis;overflow:hidden;white-space:nowrap">';
-                      setTableHTML+='    <div class="cal-day"></div>';
-                      setTableHTML+='    <div class="cal-schedule"></div>';
-                      setTableHTML+='</td>';
-                  }
-                  setTableHTML+='</tr>';
-              }
-              setTableHTML+='</table>';
-              $("#cal_tab").html(setTableHTML);
-          }
-
-          //날짜 초기화
-          function initDate(){
-              $tdDay = $("td div.cal-day")
-              $tdSche = $("td div.cal-schedule")
-              dayCount = 0;
-              today = new Date();
-              year = today.getFullYear();
-              month = today.getMonth()+1;
-              if(month < 10){month = "0"+month;}
-              firstDay = new Date(year,month-1,1);
-              lastDay = new Date(year,month,0);
-              fd = lastDay.getDay();
-          }
-
-          //calendar 날짜표시
-          function drawDays(){
-              $("#cal_top_year").text(year);
-              $("#cal_top_month").text(month);
-              for(var i=firstDay.getDay();i<firstDay.getDay()+lastDay.getDate();i++){ //getDay는 요일을 나타냄 getdate는 그날의 날짜
-                  $tdDay.eq(i).text(++dayCount); // eq는 tdDay의 index를 나타냄
-              }
-              for(var i=0;i<42;i+=7){
-                  $tdDay.eq(i).css("color","red");
-              }
-              for(var i=6;i<42;i+=7){
-                  $tdDay.eq(i).css("color","blue");
-              }
-          }
-
-          //calendar 월 이동
-          function movePrevMonth(){
-              month--;
-              if(month<=0){
-                  month=12;
-                  year--;
-              }
-              if(month<10){
-                  month=String("0"+month);
-              }
-              getNewInfo();
-              }
-
-          function moveNextMonth(){
-              month++;
-              if(month>12){
-                  month=1;
-                  year++;
-              }
-              if(month<10){
-                  month=String("0"+month);
-              }
-              getNewInfo();
-          }
-
-          //정보갱신
-          function getNewInfo(){
-              for(var i=0;i<42;i++){
-                  $tdDay.eq(i).text("");
-                  $tdSche.eq(i).text("");
-              }
-              dayCount=0;
-              firstDay = new Date(year,month-1,1);
-              lastDay = new Date(year,month,0);
-              drawDays();
-              drawSche();
-          }
-
-          //2019-08-27 추가본
-
-          //데이터 등록
-          function setData(){
-              jsonData =  //json은 JavaScript Object Notation
-              {
-                  "2019":{
-                      "07":{
-                          "17":"제헌절"
-                      }
-                      ,"08":{
-                          "7":"칠석"
-                          ,"15":"광복절"
-                          ,"23":"처서"
-                      }
-                      ,"09":{
-                          "13":"추석"
-                          ,"23":"추분"
-                      }
-                  }
-              }
-          }
-
-          //스케줄 그리기
-          function drawSche(){
-              setData();
-              var dateMatch = null;
-              for(var i=firstDay.getDay();i<firstDay.getDay()+lastDay.getDate();i++){
-                  var txt = "";
-                  txt =jsonData[year];
-                  if(txt){
-                      txt = jsonData[year][month];
-                      if(txt){
-                          txt = jsonData[year][month][i];
-                          dateMatch = firstDay.getDay() + i -1;
-                          $tdSche.eq(dateMatch).text(txt);
-                      }
-                  }
-              }
-          }
-
-      </script> -->
-
-
-    <div class="btns">
-        <input class="btn_back" type="button" value="돌아가기"/>
-        <input class="btn_save" type="button" value="변경 사항 저장하기"/>
     </div>
-    </div>
-      
+
   </div>
 
 
