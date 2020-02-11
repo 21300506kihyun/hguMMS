@@ -68,6 +68,7 @@
             obj.style.backgroundColor = "white";
             obj.innerHTML = "<div class='schedule_area_v1'> <span class='schedule_close'>O</span> </div>";
         }
+        alert(obj.id);
     }
   </script>
   <?php
@@ -159,7 +160,7 @@
                 document.write("<td>"+(row/2 - 0.5)+" : 30 ~ "+(row/2 + 0.5)+" : 00</td>")
               }
               for(col=1; col<=7; col++){
-                document.write("<td class='schu_line_bg' onclick='javascript:clickTdEvent(this)'>")
+                document.write("<td id="+row+"-"+col+" class='schu_line_bg' onclick='javascript:clickTdEvent(this)'>")
                 document.write("<div class='schedule_area_v1'>")
                 document.write("<span class='schedule_close'>X</span>")
                 document.write("</div></td>")
