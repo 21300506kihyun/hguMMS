@@ -8,52 +8,22 @@
   <script src="https://apis.google.com/js/platform.js" async defer></script>
   <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
   <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-
-  <!-- <style type="text/css">
-
-  .cal_top{
-      text-align: center;
-      font-size: 30px;
-  }
-  .cal{
-      text-align: center;
-  }
-  table.calendar{
-      border: 1px solid black;
-      display: inline-table;
-      text-align: left;
-  }
-  table.calendar td{
-      vertical-align: top;
-      border: 1px solid skyblue;
-      width: 100px;
-  }
-  </style> -->
   <style type="text/css">
-    body,div,p,h1,h2,h3,h4,h5,h6,ul,ol,li,dl,dt,dd,table,th,td,form,fieldset,legend,input,textare,a,button,select{margin:0;padding:0}
-    /* body,input,textarea,select,button,table{font-family:'돋움',dotum,AppleGothic,sans-serif;font-size:12px} */
-    body{word-break:break-all}
-    a{text-decoration:none}
-    a:hover,a:active,a:focus{text-decoration:underline}
-    caption,legend,.blind{visibility:hidden;overflow:hidden;width:0;height:0;font-size:0;line-height:0;text-align:left}
-    hr{display:none}
+    .year-week{text-align: center; font-size: 150%;}
     table{border-collapse:collapse}
     th{font-weight:normal}
-    .bbs_table{width:100%;border:1px solid #d0d4d9;line-height:16px;/* IE7 수정 */*border-right:0/* IE7 수정 */}
+    .bbs_table{width:100%;border:2px solid #d0d4d9;line-height:16px;/* IE7 수정 border-right:0 IE7 수정 */}
     .bbs_table th:first-child,.bbs_tbl_type2 td:first-child{border-left:0}
     .bbs_table th{padding:10px 9px 7px;border-width:0 0 0 1px;border-color:#dcdee2;border-style:solid;text-align:center;background-color:#eff0f2;color:#333}
-    .bbs_table td{padding:10px 9px 7px;border-width:1px 0 0 1px;border-color:#edeef0 #dcdee2;border-style:solid;text-align:center;line-height:33px;color:#666;/* IE7 수정 */*border-left:0;*border-top:0;*border-bottom:1px solid #edeef0;*border-right:1px solid #dcdee2;/* IE7 수정 */}
+    .bbs_table td{padding:10px 9px 7px;border-width:1px 0 0 1px;border-color:#edeef0 #dcdee2;border-style:solid;text-align:center;line-height:33px;color:#666;}
     .bbs_table td input[type=text],.bbs_tbl_type2 td select,.bbs_tbl_type2 td a.fron{margin:-6px 0 -2px}
-    .bbs_table td.yes_hover:hover{border:2px solid #666 !important}
-    .bbs_table tr:first-child td{border-top:1px solid #dcdee2}
-    .bbs_table tr:first-child td.yes_hover:hover{border-top:2px solid #666 !important}
-    .schu_line_bg{border:1px solid #999 !important;background-color:/*#f9fafa*/ Gainsboro; cursor:pointer}
-    .schedule_area_v1{position:relative;/* IE7 수정 */*top:3px;/* IE7 수정 */padding:18px 5px 16px;line-height:18px;font-size:12px}
+    .bbs_table td.yes_hover:hover{border:2px solid #777 !important}
+    .schu_line_bg{border:1px solid #ccc !important;background-color:/*#f9fafa*/ Gainsboro; cursor:pointer}
+    .schedule_area_v1{position:relative; padding:18px 5px 16px;line-height:18px;font-size:12px}
     .schedule_area_v1 a{display:block;position:relative;color:#333}
     .schedule_area_v1 a:hover{font-weight:bold}
     .schedule_close{display:block;position:absolute;top:2px;right:2px;width:15px;height:15px;cursor:pointer}
-</style>
-
+  </style>
   <script>
     function clickTdEvent(obj){
         if(obj.style.backgroundColor === "white"){
@@ -68,15 +38,15 @@
     }
   </script>
   <?php
-  session_start();
-  if($_POST['name1'] !== NULL){
-    $name = $_POST['name1'];
-    $_SESSION["name"] = $name;
-    $email = $_POST['email1'];
-    $_SESSION["email"] = $email;
-    $img = $_POST['img1'];
-    $_SESSION["img"] = $img;
-  }
+    session_start();
+    if($_POST['name1'] !== NULL){
+      $name = $_POST['name1'];
+      $_SESSION["name"] = $name;
+      $email = $_POST['email1'];
+      $_SESSION["email"] = $email;
+      $img = $_POST['img1'];
+      $_SESSION["img"] = $img;
+    }
   ?>
   <title>handongMMS</title>
 </head>
@@ -103,7 +73,7 @@
         <input class="btn_left" type="submit" value="개인정보 수정하기"/>
       </form>
       <input class="btn_left" type="button" value="면담승인 요청"/>
-      <input class="btn_left" type="button" value="로그아웃"/>
+      <!-- <input class="btn_left" type="button" value="로그아웃"/> -->
     </div>
 
     <div class="column middle">
@@ -127,8 +97,8 @@
         $year = $dt->format('o');
         $week = $dt->format('W');  //1년중 몇번쨰 주차인지
 
-        echo "<div style='text-align: center; font-size: 150%;'>";
-        // echo "<br>";
+        echo "<br>";
+        echo "<div class='year-week'>";
         echo "<p>" . $year . "년 ";
         echo $week . "주차</p></div>";
       ?>
@@ -150,12 +120,9 @@
           echo '</colgroup>';
           echo '<thead>';
             echo '<tr class="schedult_lst">';
-              echo '<th></th>';
-              // echo '<tr>';
-              // echo '<td> time   </td>';
+              echo '<th>Time</th>';
               do {
                 // 월요일부터 일요일까지 표시
-                // echo "<td>" . $dt->format('l') . "<br>" . $dt->format('d M Y') . "</td>\n";
                 echo "<th>" . $dt->format('l') . "<br>" . $dt->format('d M Y') . "</th>\n";
                 $dt->modify('+1 day');
                 $count ++;
@@ -182,7 +149,6 @@
               }
               for($i = 0; $i < $count; $i++){
                 $var_dt = $dt->format('y-m-d')."-".$th."-".$m;
-                // echo "<td id =". $var_dt . " onClick= 'move(this.id)'>" . "off". "\n" ."</td>";
                 echo "<td id =". $var_dt . " class='schu_line_bg yes_hover' onClick='javascript:clickTdEvent(this)'>" . "<div class='schedule_area_v1'>" . "<span class='schedule_close'>X</span>" . "\n" ."</div></td>";
                 $dt->modify('+1 day');
               }

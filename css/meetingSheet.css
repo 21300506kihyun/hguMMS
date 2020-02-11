@@ -2,6 +2,14 @@
   box-sizing: border-box;
   margin: 0; padding: 0;
 }
+/* body,div,p,h1,h2,h3,h4,h5,h6,ul,ol,li,dl,dt,dd,table,th,td,form,fieldset,
+legend,input,textare,a,button,select{margin:0;padding:0} */
+/* body,input,textarea,select,button,table{
+font-family:'돋움',dotum,AppleGothic,sans-serif;font-size:12px} */
+/* a{
+  text-decoration: none;
+  color: #58666e;
+} */
 body{
   /* font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; */
   color: #58666e;
@@ -77,42 +85,6 @@ body{
         margin-right: 20px;
         /* border: 1px solid blue; */
       }
-
-      /* table{
-        border-collapse: collapse;
-        width: 90%;
-        text-align: center;
-        margin-left: 5%;
-        margin-right: 5%;
-        margin-top: 50px;
-        font-family: Arial, Helvetica, sans-serif;
-      }
-      td, th{
-        border-top: 1px solid #333;
-        border-bottom: 1px solid #333;
-        border: 1px solid #333;
-        padding: 18px 10px;
-      }
-      tr:first-child{
-        background-color: #aaa;
-        border-top: 2px solid #999;
-        border-left: 2px solid #999;
-        border-right: 2px solid #999;
-      }
-      tr:nth-child(2){
-        background-color: #bbb;
-        border-left: 2px solid #999;
-        border-right: 2px solid #999;
-      }
-      tr:last-child{
-        border-bottom: 2px solid #999;
-      }
-      td:first-child{
-        border-left: 2px solid #999;
-      }
-      td:last-child{
-        border-right: 2px solid #999;
-      } */
       .btns{
         width: 100%;
         margin-top: 5%;

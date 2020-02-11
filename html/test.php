@@ -24,28 +24,32 @@
     </style> -->
     <style type="text/css">
       body,div,p,h1,h2,h3,h4,h5,h6,ul,ol,li,dl,dt,dd,table,th,td,form,fieldset,legend,input,textare,a,button,select{margin:0;padding:0}
-      body,input,textarea,select,button,table{font-family:'돋움',dotum,AppleGothic,sans-serif;font-size:12px}
+      body,input,textarea,select,button
+      /* table{font-family:'돋움',dotum,AppleGothic,sans-serif;font-size:12px} */
       body{word-break:break-all}
       a{text-decoration:none}
       a:hover,a:active,a:focus{text-decoration:underline}
       caption,legend,.blind{visibility:hidden;overflow:hidden;width:0;height:0;font-size:0;line-height:0;text-align:left}
       hr{display:none}
-      table{border-collapse:collapse}
+      table{border-collapse: collapse;
+          width: 90%;
+          margin-top: 50px;
+      }
       th{font-weight:normal}
-    .bbs_table{width:100%;border:2px solid #d0d4d9;line-height:16px;/* IE7 수정 */*border-right:0/* IE7 수정 */}
+      .bbs_table{width:100%;border:1px solid #d0d4d9;line-height:16px;/* IE7 수정 */*border-right:0/* IE7 수정 */}
       .bbs_table th:first-child,.bbs_tbl_type2 td:first-child{border-left:0}
-      .bbs_table th{padding:10px 9px 7px;border-width:0 0 0 2px;border-color:#dcdee2;border-style:solid;text-align:center;background-color:#eff0f2;color:#333}
-    .bbs_table td{padding:10px 9px 7px;border-width:2px 0 0 2px;border-color:#edeef0 #dcdee2;border-style:solid;text-align:center;line-height:33px;color:#666;/* IE7 수정 */*border-left:0;*border-top:0;*border-bottom:1px solid #edeef0;*border-right:1px solid #dcdee2;/* IE7 수정 */}
+      .bbs_table th{padding:10px 9px 7px;border-width:0 0 0 1px;border-color:#dcdee2;border-style:solid;text-align:center;background-color:#eff0f2;color:#333}
+      .bbs_table td{padding:10px 9px 7px;border-width:1px 0 0 1px;border-color:#edeef0 #dcdee2;border-style:solid;text-align:center;line-height:33px;color:#666;/* IE7 수정 */*border-left:0;*border-top:0;*border-bottom:1px solid #edeef0;*border-right:1px solid #dcdee2;/* IE7 수정 */}
       .bbs_table td input[type=text],.bbs_tbl_type2 td select,.bbs_tbl_type2 td a.fron{margin:-6px 0 -2px}
-      .bbs_table td:hover{border:3px solid black !important}
-      .bbs_table tr:first-child td{border-top:2px solid #dcdee2}
-      .bbs_table tr:first-child td:hover{border-top:3px solid black !important}
-      .schu_line_bg{border:2px solid #999 !important;background-color:#f9fafa}
+      .bbs_table td:hover{border: 1px solid black !important}
+      .bbs_table tr:first-child td{border-top:1px solid #dcdee2}
+      .bbs_table tr:first-child td:hover{border-top:1px solid #777 !important}
+      .schu_line_bg{border:1px solid #999 !important;background-color:/*#f9fafa*/ Gainsboro; cursor:pointer}
       .schedule_area_v1{position:relative;/* IE7 수정 */*top:3px;/* IE7 수정 */padding:18px 5px 16px;line-height:18px;font-size:12px}
       .schedule_area_v1 a{display:block;position:relative;color:#333}
       .schedule_area_v1 a:hover{font-weight:bold}
       .schedule_close{display:block;position:absolute;top:2px;right:2px;width:15px;height:15px;cursor:pointer}
-  </style>
+    </style>
 
     <script>
       function clickTdEvent(obj){
