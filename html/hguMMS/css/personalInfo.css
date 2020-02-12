@@ -1,0 +1,324 @@
+*{
+  box-sizing: border-box;
+  margin: 0; padding: 0;
+}
+body{
+  /* font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; */
+  color: #58666e;
+}
+  .header{
+    background-color: #f1f1f1;
+    padding: 20px;
+    text-align: center;
+    border-bottom: 3px solid #bbb;
+    cursor: pointer;
+  }
+  /* Clear floats after the columns */
+  .row:after{
+    content: "";
+    display: table;
+    clear: both;
+  }
+    .column{
+      float: left;
+      padding: 10px;
+      text-align: center;
+    }
+    .column.left{
+      width: 20%;
+      background-color: #fff;
+      bottom: 0;
+      border-right: 1px solid #bbb;
+    }
+      .icon{
+        margin-bottom: 50px;
+        margin-top: 50px;
+        font-size: 80px;
+      }
+      .info{
+        text-align: center;
+        margin: 10%;
+      }
+      .btn_left{
+        background-color: #f1f1f1;
+        color: #333;
+        font-size: 14px;
+        font-weight: bold;
+        padding: 5% 0%;
+        text-align: center;
+        margin: 10% 0%;
+        cursor: pointer;
+        width: 80%;
+        border-radius: 15px;
+        /* text-decoration: none; */
+        /* display: inline-block; */
+      }
+      .btn_left:hover{
+        background-color: #dddddd;
+        color: black;
+      }
+    .column.middle{
+      padding-top: 50px;
+      width: 80%;
+      text-align: center;
+      /* border-left: 1px solid #bbb; */
+    }
+      .subtitle{
+        margin: 10px;
+        font-size: 200%
+        /* border: 1px solid black; */
+      }
+      .content{
+        margin: 5%;
+        /* border: 1px solid black; */
+        padding:10px;
+        /* text-align: center; */
+        /* margin: 5% 30%; */
+        height: 50px;
+        /* width: 20%; */
+        padding-left: 20%;
+        padding-right: 20%;
+
+      }
+        .category{
+          width: 37%;
+          float: left;
+          text-align: left;
+          font-size: 150%;
+          /* margin-left: 20px; */
+          /* border: 1px solid black; */
+        }
+        .deli{
+          width: 3%;
+          float: left;
+          text-align: center;
+          font-size: 150%;
+          /* margin-left: 20px; */
+          /* border: 1px solid blue; */
+        }
+        .value{
+          width : 60%;
+          float: right;
+          font-size: 150%;
+          color: #aaa;
+          text-align: center;
+          /* align-items: center; */
+          /* margin-right: 20px; */
+          /* border: 1px solid blue; */
+        }
+        .checkbox{
+          width : auto;
+          height: auto;
+          cursor: pointer;
+          float: center;
+          font-size: 150%;
+          color: #aaa;
+          text-align: center;
+          display: "none";
+          background-color: black;
+          position: relative;
+          /* align-items: center; */
+          /* margin-right: 20px; */
+          /* border: 1px solid blue; */
+        }
+      .btns{
+        /* width: 150px; */
+        /* margin-left: 20%;
+        margin-right: 20%;
+        padding-bottom: 1%; */
+        margin: 5%;
+        /* border: 1px solid black; */
+        padding:10px;
+        /* text-align: center; */
+        /* margin: 5% 30%; */
+        height: 50px;
+        /* width: 20%; */
+        padding-left: 20%;
+        padding-right: 20%;
+
+        /* border: 1px solid black; */
+      }
+        .btn_back{
+          float: left;
+          background-color: #f1f1f1;
+          color: #333;
+          font-size: 100%;
+          text-align: center;
+          cursor: pointer;
+          padding: 1% 0%;
+          width: 25%;
+          border-radius: 5px;
+        }
+          .btn_back:hover{
+            background-color: #dddddd;
+          }
+        .btn_save{
+          float: right;
+          background-color: #f1f1f1;
+          color: #333;
+          font-size: 100%;
+          text-align: center;
+          cursor: pointer;
+          padding: 1% 0%;
+          width: 35%;
+          border-radius: 5px;
+        }
+          .btn_save:hover{
+            background-color: #dddddd;
+          }
+  .footer{
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #f1f1f1;
+    padding: 10px;
+    text-align: center;
+    border-top: 1px solid #bbb;
+  }
+
+
+
+
+
+
+
+
+/* Responsive layout - makes the three columns stack on top of each other instead of next to each other ------------------------------*/
+@media screen and (max-width: 930px){
+  .column.left{
+    width: 100%;
+    background-color: #fff;
+    border: 1px solid red;
+  }
+    .icon{
+      margin-bottom: 25px;
+      margin-top: 25px;
+      font-size: 50px;
+    }
+    .info{
+      text-align: center;
+      margin: 3%;
+    }
+    .btn_left{
+      background-color: #f1f1f1;
+      color: #333;
+      font-size: 14px;
+      font-weight: bold;
+      padding: 3% 0%;
+      text-align: center;
+      margin: 2%;
+      cursor: pointer;
+      width: 30%;
+      border-radius: 15px;
+    }
+  .column.middle{
+    margin-top: 20px;
+    width: 100%;
+    text-align: center;
+    /* margin-top: 50px; */
+    /* border: 1px solid blue; */
+  }
+    .subtitle{
+      margin: 0%;
+    }
+    .left_subtitle{
+      float: left;
+      margin-left: 0%;
+    }
+    .right_subtitle{
+      float: right;
+      margin-right: 0%;
+    }
+    table{
+      border-collapse: collapse;
+      width: 100%;
+      text-align: center;
+      margin: 0%;
+      margin-top: 20px;
+      /* font-family: Arial, Helvetica, sans-serif; */
+    }
+    td, th{
+      border-top: 1px solid #333;
+      border-bottom: 1px solid #333;
+      padding: 8px;
+    }
+    .content{
+      margin: 0%;
+      width: 100%;
+      padding-top: 2%;
+      padding-bottom: 2%;
+      padding-left: 10%;
+      padding-right: 10%;
+    }
+      .category{
+        width: 35%;
+        float: left;
+        text-align: left;
+        font-size: 150%;
+        /* margin-left: 20px; */
+        /* border: 1px solid black; */
+      }
+      .deli{
+        width: 5%;
+        float: left;
+        text-align: center;
+        font-size: 150%;
+        /* margin-left: 20px; */
+        /* border: 1px solid blue; */
+      }
+      .value{
+        width : 60%;
+        float: right;
+        font-size: 150%;
+        color: #aaa;
+        text-align: center;
+        /* align-items: center; */
+        /* margin-right: 20px; */
+        /* border: 1px solid blue; */
+      }
+      .checkbox{
+        width : auto;
+        height: auto;
+        cursor: pointer;
+        float: center;
+        font-size: 150%;
+        color: #aaa;
+        text-align: center;
+        display: "none";
+        background-color: black;
+        position: relative;
+        /* align-items: center; */
+        /* margin-right: 20px; */
+        /* border: 1px solid blue; */
+      }
+    .btns{
+      margin: 0%;
+      width: 100%;
+      padding-top: 2%;
+      padding-bottom: 2%;
+      padding-left: 10%;
+      padding-right: 10%;
+    }
+    .btn_back{
+      float: left;
+      background-color: #f1f1f1;
+      color: #333;
+      font-size: 14px;
+      text-align: center;
+      cursor: pointer;
+      padding: 1% 0%;
+      width: 25%;
+      border-radius: 5px;
+    }
+    .btn_save{
+      float: right;
+      background-color: #f1f1f1;
+      color: #333;
+      font-size: 14px;
+      text-align: center;
+      cursor: pointer;
+      padding: 1% 0%;
+      width: 35%;
+      border-radius: 5px;
+    }
+}

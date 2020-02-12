@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -35,6 +34,9 @@
             // The ID token you need to pass to your backend:
             var id_token = googleUser.getAuthResponse().id_token;
             console.log("ID Token: " + id_token);
+
+            next.style.display = '';
+
           }
         </script>
       </div>
@@ -43,7 +45,7 @@
         <input style="display: none" class="info" id = 'name1' name ="name1"  value ="wefwe"  />
         <input style="display: none" class="info" id = 'email1' name ="email1"  value ="wefe"/>
         <input style="display: none" class="info" id = 'img1' name ="img1" value =""/>
-        <input class="submit" type="submit" value="HGU MMS 접속하기"/>
+        <input id="next" class="submit" type="submit" value="HGU MMS 접속하기" style="display:none"/>
     </div>
 </body>
 </html>
