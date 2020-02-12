@@ -2,6 +2,9 @@
   box-sizing: border-box;
   margin: 0; padding: 0;
 }
+input::placeholder{
+  color: #aaa;
+}
 body{
   /* font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; */
   color: #58666e;
@@ -100,12 +103,13 @@ body{
           width : 60%;
           float: right;
           font-size: 150%;
-          color: #aaa;
+          color: #58666e;
           text-align: center;
           /* align-items: center; */
           /* margin-right: 20px; */
           /* border: 1px solid blue; */
         }
+
         .checkbox{
           width : auto;
           height: auto;
@@ -270,8 +274,6 @@ body{
         width : 60%;
         float: right;
         font-size: 150%;
-        color: #aaa;
-        text-align: center;
         /* align-items: center; */
         /* margin-right: 20px; */
         /* border: 1px solid blue; */
