@@ -96,7 +96,8 @@
       <table>
         <tr>
           <th>면담 시간</th>
-          <th>면담자</th>
+          <th>면담 제공자</th>
+          <th>면담 신청자</th>
           <th>오피스</th>
           <th>면담사유</th>
           <th>상태</th>
@@ -105,6 +106,7 @@
         <tr>
           <td>2020.02.03 (월) 17:00 ~ 17:30</td>
           <td>이강</td>
+          <td>학생 1</td>
           <td>NTH 406</td>
           <td>학부 행사 면담</td>
           <td>승인</td>
@@ -112,12 +114,13 @@
           <td><span id="moreInfo1" style="CURSOR: pointer" onclick="clickMore(more1, moreInfo1)">더 보기 ▼</span></td>
         </tr>
         <tr class="additional" id="more1" style="display: none">
-          <td colspan = "6" >hi</td colspan = "5">
+          <td colspan = "7" >hi</td>
         </tr>
 
         <tr>
           <td>2020.02.04 (화) 17:00 ~ 17:30</td>
           <td>이건</td>
+          <td>학생 2</td>
           <td>NTH 306</td>
           <td>학부 행사 면담</td>
           <td>승인</td>
@@ -125,12 +128,13 @@
           <td><span id="moreInfo2" style="CURSOR: pointer" onclick="clickMore(more2, moreInfo2)">더 보기 ▼</span></td>
         </tr>
         <tr class="additional" id="more2" style="display: none">
-          <td colspan = "6" >hi</td colspan = "5">
+          <td colspan = "7" >hi</td>
         </tr>
 
         <tr>
           <td>2020.02.05 (수) 17:00 ~ 17:30</td>
           <td>장소연</td>
+          <td>학생 3</td>
           <td>NTH 204</td>
           <td>학부 행사 면담</td>
           <td>승인</td>
@@ -138,12 +142,13 @@
           <td><span id="moreInfo3" style="CURSOR: pointer" onclick="clickMore(more3, moreInfo3)">더 보기 ▼</span></td>
         </tr>
         <tr class="additional" id="more3" style="display: none">
-          <td colspan = "6" >hi</td>
+          <td colspan = "7" >hi</td>
         </tr>
 
         <tr>
           <td>2020.02.06 (목) 17:00 ~ 17:30</td>
           <td>김광</td>
+          <td>학생 4</td>
           <td>NTH 203</td>
           <td>학부 행사 면담</td>
           <td>승인</td>
@@ -151,7 +156,7 @@
           <td><span id="moreInfo4" style="CURSOR: pointer" onclick="clickMore(more4, moreInfo4)">더 보기 ▼</span></td>
         </tr>
         <tr class="additional" id="more4" style="display: none">
-          <td colspan = "6" >메시지 기록</td>
+          <td colspan = "7" >메시지 기록</td>
         </tr>
       </table>
     </div>
