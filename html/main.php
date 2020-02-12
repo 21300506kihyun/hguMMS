@@ -47,7 +47,7 @@
     $_SESSION["img"] = $img;
   }
 
-  $sql = "insert into user_info (user_name,email) values ('$name','$email')";
+  $sql = "insert into user_info (name,email) select '$name','$email' from dual where not exists( select * from user_info where email = '$email')";
 
   if ($conn->query($sql) === TRUE) {
       echo "New record created successfully";

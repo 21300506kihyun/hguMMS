@@ -25,16 +25,25 @@
     .schedule_close{display:block;position:absolute;top:2px;right:2px;width:15px;height:15px;cursor:pointer}
   </style>
   <script>
+
+    var meeting_list = new Array();
     function clickTdEvent(obj){
         if(obj.style.backgroundColor === "white"){
             obj.style.backgroundColor = "Gainsboro";
             obj.innerHTML = "<div class='schedule_area_v1'> <span class='schedule_close'>X</span> </div>";
+            meeting_list.splice(meeting_list.indexOf(obj.id),1);
         }
         else{
             obj.style.backgroundColor = "white";
             obj.innerHTML = "<div class='schedule_area_v1'> <span class='schedule_close'>O</span> </div>";
-        }
+            meeting_list.push(obj.id);
+            //alert(meeting_list[0]);
+          }
         alert(obj.id);
+    }
+
+    function arrlist(){
+      meeting_list.forEach(element => console.log(element.substring(0,3)));
     }
   </script>
   <?php
@@ -148,7 +157,13 @@
                 echo "<td>" .$th2.":".$m2. "-".$th.":".$m. "</td>";
               }
               for($i = 0; $i < $count; $i++){
-                $var_dt = $dt->format('y-m-d')."-".$th."-".$m;
+                if($d == 0){
+                  $th = $th-1;
+                  $var_dt = $dt->format('y')."년".$dt->format('m')."월"."일".$th."시".$m."분"."~".$th."시".$m2."분".$dt->format('l');
+                  $th = $th+1;
+                } else{
+                  $var_dt = $dt->format('y')."년".$dt->format('m')."월".$dt->format('d')."일".$th2."시".$m2."분"."~".$th."시".$m."분".$dt->format('l');
+                }
                 echo "<td id =". $var_dt . " class='schu_line_bg yes_hover' onClick='javascript:clickTdEvent(this)'>" . "<div class='schedule_area_v1'>" . "<span class='schedule_close'>X</span>" . "\n" ."</div></td>";
                 $dt->modify('+1 day');
               }
@@ -161,7 +176,7 @@
 
       <div class="btns">
           <input class="btn_back" type="button" value="돌아가기" onclick="location.href='main.php'"/>
-          <input class="btn_save" type="button" value="변경 사항 저장하기"/>
+          <input class="btn_save" type="button" value="변경 사항 저장하기" onclick="javascript:arrlist()"/>
       </div>
     </div>
 
