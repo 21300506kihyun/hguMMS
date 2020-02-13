@@ -15,7 +15,7 @@
     <div class = "header">
       <h1 id = "title">HGU Meeting Management System (MMS)</h1>
       <br>
-      <p>한동대학교 면담 예약 및 관리 시스템입니다.</p>
+      <p>한동대학교 면담 예약 및 관리 시스템입니다 .</p>
     </div>
 
     <div class = "container">

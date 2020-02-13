@@ -24,30 +24,80 @@
     .schedule_area_v1 a:hover{font-weight:bold}
     .schedule_close{display:block;position:absolute;top:2px;right:2px;width:15px;height:15px;cursor:pointer}
   </style>
+
+  <?php
+    session_start();
+    $name = $_SESSION["name"];
+    $email = $_SESSION["email"] ;
+    $img = $_SESSION["img"] ;
+
+    $conn = new mysqli("localhost","hgumms","handong11*","hgumms");
+    // Check connection
+    if ($conn->connect_error) {
+       die("Connection failed: " . $conn->connect_error);
+    }
+     echo "Connected successfully <br>";
+
+   ?>
+   <?php
+   $sql = "select * from sheet_info where owner = '$email'";
+   $result = $conn->query($sql);
+
+   if ($result->num_rows > 0) {
+       // output data of each row
+       while($row = $result->fetch_assoc()) {
+           echo "id: " . $row["time"];
+       }
+   } else {
+       echo "0 results";
+   }
+   $conn->close();
+   ?>
   <script>
+    var meeting_list = new Array();
     function clickTdEvent(obj){
         if(obj.style.backgroundColor === "white"){
             obj.style.backgroundColor = "Gainsboro";
             obj.innerHTML = "<div class='schedule_area_v1'> <span class='schedule_close'>X</span> </div>";
+            meeting_list.splice(meeting_list.indexOf(obj.id),1);
         }
         else{
             obj.style.backgroundColor = "white";
             obj.innerHTML = "<div class='schedule_area_v1'> <span class='schedule_close'>O</span> </div>";
-        }
+            meeting_list.push(obj.id);
+            //alert(meeting_list[0]);
+            //$('#jb').html(obj.id);
+          }
         alert(obj.id);
     }
-  </script>
-  <?php
-    session_start();
-    if($_POST['name1'] !== NULL){
-      $name = $_POST['name1'];
-      $_SESSION["name"] = $name;
-      $email = $_POST['email1'];
-      $_SESSION["email"] = $email;
-      $img = $_POST['img1'];
-      $_SESSION["img"] = $img;
+
+    function savetime(){
+
+      meeting_list.forEach(function(element){
+        var user = "<?php echo $_SESSION['email']?>";
+        var day_list = element.split('-'); // 요일 표시
+          console.log(day_list[0],day_list[1],day_list[2]);  // 날짜. 시간, 요일 표시
+              var date= day_list[0];
+              var time= day_list[1];
+              var day= day_list[2];
+              $.ajax({
+                  url:'sheet_time.php',
+                  method:'POST',
+                  data:{
+                      user: user,
+                      date:date,
+                      time:time,
+                      day:day
+                  },
+                 success:function(data){
+                     alert(data);
+                 }
+          });
+      });
+      //meeting_list.forEach(element => console.log(element.substring(0,9),element.substring(9,15),element.substring(21,)));
     }
-  ?>
+  </script>
+
   <title>handongMMS</title>
 </head>
 <body>
@@ -122,7 +172,7 @@
             echo '<tr class="schedult_lst">';
               echo '<th>Time</th>';
               do {
-                // 월요일부터 일요일까지 표시
+                              // 월요일부터 일요일까지 표시
                 echo "<th>" . $dt->format('l') . "<br>" . $dt->format('d M Y') . "</th>\n";
                 $dt->modify('+1 day');
                 $count ++;
@@ -148,7 +198,13 @@
                 echo "<td>" .$th2.":".$m2. "-".$th.":".$m. "</td>";
               }
               for($i = 0; $i < $count; $i++){
-                $var_dt = $dt->format('y-m-d')."-".$th."-".$m;
+                if($d == 0){
+                  $th = $th-1;
+                  $var_dt = $dt->format('y')."년".$dt->format('m')."월".$dt->format('d')."일"."-".$th."시".$m."분"."~".$th."시".$m2."분"."-".$dt->format('l');
+                  $th = $th+1;
+                } else{
+                  $var_dt = $dt->format('y')."년".$dt->format('m')."월".$dt->format('d')."일"."-".$th2."시".$m2."분"."~".$th."시".$m."분"."-".$dt->format('l');
+                }
                 echo "<td id =". $var_dt . " class='schu_line_bg yes_hover' onClick='javascript:clickTdEvent(this)'>" . "<div class='schedule_area_v1'>" . "<span class='schedule_close'>X</span>" . "\n" ."</div></td>";
                 $dt->modify('+1 day');
               }
@@ -161,7 +217,7 @@
 
       <div class="btns">
           <input class="btn_back" type="button" value="돌아가기" onclick="location.href='main.php'"/>
-          <input class="btn_save" type="button" value="변경 사항 저장하기"/>
+          <input class="btn_save" type="button" value="변경 사항 저장하기" onclick="javascript:savetime()"/>
       </div>
     </div>
 
@@ -172,6 +228,12 @@
     <h3>Powered by WA lab 2020</h3>
     <p>문의 및 버그제보: abcd@gmail.com</p>
   </div>
+
+  <h1 id="jb" onclick="">Lorem Ipsum Dolor</h1>
+
+<script>
+  $( '#jb' ).html( 'color' );
+</script>
 
 </body>
 </html>
