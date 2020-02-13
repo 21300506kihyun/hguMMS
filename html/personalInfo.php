@@ -70,6 +70,7 @@
     $data = mysqli_fetch_assoc($result);
       echo $data['sid'];
       echo $data['name'];
+      echo $data['department'];
       echo $data['prof'];
       echo $data['sheet'];
       echo $data['email'];
@@ -104,6 +105,11 @@
         <h3 class="category">이름</h3>
         <h3 class="deli">:</h3>
         <input name="name" id="name" class="value" type="text" value="<?php echo $name ?>" readonly>
+      </div>
+      <div class="content">
+        <h3 class="category">학부</h3>
+        <h3 class="deli">:</h3>
+        <input name="department" id="department" class="value" type="text" placeholder="ex) 전산전자공학부" value="<?php echo $data['department'] ?>">
       </div>
       <div class="content">
         <h3 class="category">전화번호</h3>

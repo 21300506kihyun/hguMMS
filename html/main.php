@@ -51,6 +51,7 @@
     $data = mysqli_fetch_assoc($result);
     echo $data['sid'];
     echo $data['name'];
+    echo $data['department'];
     echo $data['prof'];
     echo $data['sheet'];
     echo $data['email'];
@@ -59,6 +60,7 @@
     echo "<br/>";
 
 
+    $_SESSION['department'] = $data['department'];
     $_SESSION['office'] = $data['office'];
     $_SESSION['prof'] = $data['prof'];
     $_SESSION['office'] = $data['office'];
@@ -80,6 +82,7 @@
       <h1 class="icon"> <img src="<?php echo $_SESSION['img']?>"></i></h1>
       <h2><?php echo $_SESSION['name']?> </h2>
       <h3 class="info">E-mail : <?php echo $_SESSION['email']?></h3>
+      <h3 class="info">소속 학부 : <?php if($_SESSION['department'] == ''){echo 'none';} else {echo $_SESSION['department'];}?></h3>
       <h3 class="info">오피스 위치 : <?php if($_SESSION['office'] == ''){echo 'none';} else {echo $_SESSION['office'];}?></h3>
       <h3 class="info">면담 제공 여부 : <?php if($_SESSION['prof'] == 'on'){echo 'O';} else{echo 'X';}?></h3>
       <h3 class="info">시트 제공 여부 : <?php if($_SESSION['sheet'] == 'on'){echo 'O';} else{echo 'X';}?></h3>
