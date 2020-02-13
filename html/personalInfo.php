@@ -71,6 +71,7 @@
       echo $data['sid'];
       echo $data['name'];
       echo $data['prof'];
+      echo $data['sheet'];
       echo $data['email'];
       echo $data['phone'];
       echo $data['office'];
@@ -117,12 +118,12 @@
       <div class="content">
         <h3 class="category" style="width:85%">개인 면담시트 개설 여부</h3>
         <h3 class="deli">:</h3>
-        <input name="is_sheet" class="checkbox" type="checkbox" id="is_sheet" checked>
+        <input name="is_sheet" class="checkbox" type="checkbox" id="is_sheet" <?if($data['sheet'] == "on"){ echo 'checked';} ?> />
       </div>
       <div class="content">
         <h3 class="category" style="width:85%">면담 제공 여부</h3>
         <h3 class="deli">:</h3>
-        <input name="is_prof" class="checkbox" type="checkbox" id="is_prof" checked>
+        <input name="is_prof" class="checkbox" type="checkbox" id="is_prof" <?if($data['prof'] == "on"){ echo 'checked';} ?> />
       </div>
 
       <div class="btns">

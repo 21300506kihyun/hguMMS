@@ -12,6 +12,7 @@
     $db_password = 'handong11*';
     $db_database = 'hgumms';
     $prof = $_POST['is_prof'];
+    $sheet = $_POST['is_sheet'];
     $phone = $_POST['phone'];
     $office = $_POST['office'];
     $email = $_SESSION['email'];
@@ -25,7 +26,7 @@
 
     //TODO: DB에서 prof value INT -> varchar로 바꿔야 함
     //TODO: DB에 면담 제공여부 + 면담시트 제공여부 만들어야할까?(어짜피 시트에서 긁어오는 건데 상관이 없겟다 그죠?)
-    $sql = "UPDATE user_info SET phone='$phone', office='$office' where email='$email'";
+    $sql = "UPDATE user_info SET prof='$prof', sheet='$sheet', phone='$phone', office='$office' where email='$email'";
 
     if($connect->query($sql) === TRUE){
       echo "<script charset=utf-8>alert('개인정보가 수정되었습니다.')</script>";
@@ -36,6 +37,9 @@
       echo "ERROR : " . $sql ." + " . $connect->error . ";;";
     }
 
+    $_SESSION['office'] = $office;
+    $_SESSION['prof'] = $prof;
+    $_SESSION['sheet'] = $sheet;
     $connect->close();
   ?>
 
