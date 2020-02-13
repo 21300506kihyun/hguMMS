@@ -39,25 +39,11 @@
      echo "Connected successfully <br>";
 
    ?>
-   <?php
-   $sql = "select * from sheet_info where owner = '$email'";
-   $result = $conn->query($sql);
 
-   if ($result->num_rows > 0) {
-       // output data of each row
-       while($row = $result->fetch_assoc()) {
-           echo "id: " . $row["time"];
-       }
-   } else {
-       echo "0 results";
-   }
-   $conn->close();
-   ?>
   <script>
-
     var meeting_list = new Array();
     function clickTdEvent(obj){
-        if(obj.style.backgroundColor === "white"){
+        if(obj.style.backgroundColor === "white" ){
             obj.style.backgroundColor = "Gainsboro";
             obj.innerHTML = "<div class='schedule_area_v1'> <span class='schedule_close'>X</span> </div>";
             meeting_list.splice(meeting_list.indexOf(obj.id),1);
@@ -67,6 +53,7 @@
             obj.innerHTML = "<div class='schedule_area_v1'> <span class='schedule_close'>O</span> </div>";
             meeting_list.push(obj.id);
             //alert(meeting_list[0]);
+            //$('#jb').html(obj.id);
           }
         alert(obj.id);
     }
@@ -94,7 +81,8 @@
                  }
           });
       });
-}
+      //meeting_list.forEach(element => console.log(element.substring(0,9),element.substring(9,15),element.substring(21,)));
+    }
   </script>
 
   <title>handongMMS</title>
@@ -135,6 +123,23 @@
       <br>
 
       <?php
+      $arr_cnt = 0;
+      $time_arr = array();
+      $sql = "select * from sheet_info where owner = '21300506@handong.edu'";
+      $result = $conn->query($sql);
+      if ($result->num_rows > 0) {
+          while($row = $result->fetch_assoc()) {
+              array_push($time_arr, $row);
+              $arr_cnt += 1;
+          }
+          //print_r($xx);
+          print_r($time_arr[0]['date']);
+          //print_r($time_arr[0]['time']); // 첫번째 요소가 안불러와짐
+          print_r($arr_cnt);
+      } else {
+          echo "0 results";
+      }
+
         $dt = new DateTime;
         if (isset($_GET['year']) && isset($_GET['week'])) {
           $dt->setISODate($_GET['year'], $_GET['week']); // 2020 , 0주차면 자동으로 2019 마지막 주차로 변환 하는듯.
@@ -150,6 +155,8 @@
         echo "<div class='year-week'>";
         echo "<p>" . $year . "년 ";
         echo $week . "주차</p></div>";
+
+        $conn->close();
       ?>
 
       <div style="font-size: 130%; ">
@@ -171,7 +178,7 @@
             echo '<tr class="schedult_lst">';
               echo '<th>Time</th>';
               do {
-                              // 월요일부터 일요일까지 표시
+                            // 월요일부터 일요일까지 표시
                 echo "<th>" . $dt->format('l') . "<br>" . $dt->format('d M Y') . "</th>\n";
                 $dt->modify('+1 day');
                 $count ++;
@@ -199,16 +206,32 @@
               for($i = 0; $i < $count; $i++){
                 if($d == 0){
                   $th = $th-1;
-
                   $var_dt = $dt->format('y')."년".$dt->format('m')."월".$dt->format('d')."일"."-".$th."시".$m."분"."~".$th."시".$m2."분"."-".$dt->format('l');
+                  $var_day = $dt->format('y')."년".$dt->format('m')."월".$dt->format('d')."일";
+                  $var_time = $th."시".$m."분"."~".$th."시".$m2."분";
                   $th = $th+1;
                 } else{
                   $var_dt = $dt->format('y')."년".$dt->format('m')."월".$dt->format('d')."일"."-".$th2."시".$m2."분"."~".$th."시".$m."분"."-".$dt->format('l');
-
+                  $var_day = $dt->format('y')."년".$dt->format('m')."월".$dt->format('d')."일";
+                  $var_time = $th2."시".$m2."분"."~".$th."시".$m."분";
                 }
-                echo "<td id =". $var_dt . " class='schu_line_bg yes_hover' onClick='javascript:clickTdEvent(this)'>" . "<div class='schedule_area_v1'>" . "<span class='schedule_close'>X</span>" . "\n" ."</div></td>";
-                $dt->modify('+1 day');
-              }
+                $todo = '';
+                $col = 0;
+                    for($j =0; $j <= $arr_cnt ; $j ++){
+                    if($time_arr[$j]['date'] == $var_day && $time_arr[$j]['time'] == $var_time){ //날짜와 시간이 맞는지 확인
+                      $todo = 'yes';
+                      $col = 1;
+                      }
+                  }
+                  if($col == 0){
+                    echo "<td id =". $var_dt . " class='schu_line_bg yes_hover' onClick='javascript:clickTdEvent(this)'>" .
+                    "<div class='schedule_area_v1'>" . "<span class='schedule_close'>X</span>" . "\n" ."</div>".$todo. "</td>";}
+                  else {
+                    echo "<td id =". $var_dt . " style ='background-color:white;' class='yes_hover' onClick='javascript:clickTdEvent(this)'>" .
+                    "<div class='schedule_area_v1'>" . "<span class='schedule_close'>X</span>" . "\n" ."</div>".$todo. "</td>";
+                  }
+                  $dt->modify('+1 day');
+                }
               echo '</tr>';
               $dt->modify('-7 day');
             }
@@ -218,9 +241,7 @@
 
       <div class="btns">
           <input class="btn_back" type="button" value="돌아가기" onclick="location.href='main.php'"/>
-
           <input class="btn_save" type="button" value="변경 사항 저장하기" onclick="javascript:savetime()"/>
-
       </div>
     </div>
 
