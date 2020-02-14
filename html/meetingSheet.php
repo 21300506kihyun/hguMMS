@@ -36,7 +36,7 @@
     if ($conn->connect_error) {
        die("Connection failed: " . $conn->connect_error);
     }
-     echo "Connected successfully <br>";
+     //echo "Connected successfully <br>";
 
    ?>
 
@@ -55,7 +55,7 @@
             //alert(meeting_list[0]);
             //$('#jb').html(obj.id);
           }
-        alert(obj.id);
+        //alert(obj.id);
     }
 
     function savetime(){
@@ -77,7 +77,7 @@
                       day:day
                   },
                  success:function(data){
-                     alert(data);
+                     //alert(data);
                  }
           });
       });
@@ -102,7 +102,7 @@
       <h3 class="info">오피스 위치 : none(영어?)</h3>
       <h3 class="info">개인 면담 시트 : 없음(한글?)</h3>
 
-      <input class="btn_left" type="button" value="면담 신청하기"/>
+      <input class="btn_left" onclick="location.href ='applypage.php'" type="button" value="면담 신청하기"/>
       <form action="meetingSheet.php" method="post">
         <input class="btn_left" type="submit" value="개인 면담 시트 바로가기"/>
       </form>
@@ -122,10 +122,10 @@
 
       <br>
 
-      <?php
+      <?php // user의 스케줄을 표시하기 위해서 DB에서 그 유저의 스케줄을 받아서 array에 저장
       $arr_cnt = 0;
       $time_arr = array();
-      $sql = "select * from sheet_info where owner = '21300506@handong.edu'";
+      $sql = "select * from sheet_info where owner = '$email'";
       $result = $conn->query($sql);
       if ($result->num_rows > 0) {
           while($row = $result->fetch_assoc()) {

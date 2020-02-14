@@ -15,7 +15,7 @@
     <div class = "header">
       <h1 id = "title">HGU Meeting Management System (MMS)</h1>
       <br>
-      <p>한동대학교 면담 예약 및 관리 시스템입니다 .</p>
+      <p>한동대학교 면담 예약 및 관리 시스템입니다.</p>
     </div>
 
     <div class = "container">
@@ -40,7 +40,15 @@
           }
         </script>
       </div>
-
+      <a href="#" onclick="signOut();">Sign out</a>
+      <script>
+        function signOut() {
+          var auth2 = gapi.auth2.getAuthInstance();
+          auth2.signOut().then(function () {
+            console.log('User signed out.');
+          });
+        }
+      </script>
       <form action="main.php" method="post">
         <input style="display: none" class="info" id = 'name1' name ="name1"  value ="wefwe"  />
         <input style="display: none" class="info" id = 'email1' name ="email1"  value ="wefe"/>
