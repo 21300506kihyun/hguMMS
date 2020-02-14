@@ -3,7 +3,7 @@
  <html>
  <head>
    <meta charset="UTF-8">
-   <link rel = "stylesheet" href = "../css/view_sheet.css"/>
+   <link rel = "stylesheet" href = "../css/no_sheet.css"/>
    <meta name="google-signin-scope" content="profile email">
    <meta name="google-signin-client_id" content="924098158115-3oevbe0lurkhouu0fb98br6paj7i5e1a.apps.googleusercontent.com">
    <script src="https://apis.google.com/js/platform.js" async defer></script>
@@ -127,127 +127,13 @@
          <h2 class='sub_subtitle'><?php echo $f_name ?> 님의 면담 시트일정</h2>
        </div>
 
-       <?php
-         $arr_cnt = 0;
-         $time_arr = array();
-         $sql = "select * from sheet_info where owner = '$f_email'";
-         echo $f_email;
-         $result = $conn->query($sql);
-         if ($result->num_rows > 0) {
-             while($row = $result->fetch_assoc()) {
-                 array_push($time_arr, $row);
-                 $arr_cnt += 1;
-             }
-             //print_r($xx);
-             //echo $time_arr[0]['date'];
-             //print_r($time_arr[0]['time']); // 첫번째 요소가 안불러와짐
-             //print_r($arr_cnt);
-         } else {
-             echo "0 results";
-         }
-
-         $dt = new DateTime;
-         if (isset($_GET['year']) && isset($_GET['week'])) {
-           $dt->setISODate($_GET['year'], $_GET['week']); // 2020 , 0주차면 자동으로 2019 마지막 주차로 변환 하는듯.
-         } else {
-           $dt->setISODate($dt->format('o'), $dt->format('W'));
-         }
-
-         //echo $dt -> format('y-m-d');
-         $year = $dt->format('o');
-         $week = $dt->format('W');  //1년중 몇번쨰 주차인지
-
-         echo "<br>";
-         echo "<div class='year-week'>";
-         echo "<p>" . $year . "년 ";
-         echo $week . "주차</p></div>";
-
-         $conn->close();
-       ?>
-
-       <div style="font-size: 130%; ">
-         <a style="float: left; text-decoration: none; color: #58666e;" href="<?php echo $_SERVER['PHP_SELF'].'?week='.($week-1).'&year='.$year; ?>">◀ Prev Week </a> <!--Previous week-->
-         <a style="float: right; text-decoration: none; color: #58666e;" href="<?php echo $_SERVER['PHP_SELF'].'?week='.($week+1).'&year='.$year; ?>"> Next Week ▶</a> <!--Next week-->
+       <div class='content'>
+         <p>개인 면담 시트가 없습니다.</p>
        </div>
-       <br>
-
-       <?php
-         $count = 0;
-         echo '<table class="bbs_table">';
-           echo '<colgroup>';
-           echo '<col />';
-           for($col=1; $col<=7; $col++){
-             echo '<col style="width:12%">';
-           }
-           echo '</colgroup>';
-           echo '<thead>';
-             echo '<tr class="schedult_lst">';
-               echo '<th>Time</th>';
-               do {
-                             // 월요일부터 일요일까지 표시
-                 echo "<th>" . $dt->format('l') . "<br>" . $dt->format('d M Y') . "</th>\n";
-                 $dt->modify('+1 day');
-                 $count ++;
-               } while ($week == $dt->format('W'));
-             echo '</tr>';
-           echo '</thead>';
-
-           echo '<tbody>';
-             $dt->modify('-7 day');  //날짜를 그 주의 처음으로 돌리기
-                 //echo $dt->format('d M Y');
-             $th = 0; // 시작시간 설정
-             for($t =0; $t < 24; $t++){ // 몇개의 시간단위로 쪼갤 것인지 // 각 요일에 맞게 시간 table 만들기
-               $m = "00";
-               $m2 = "30";
-               $d = $t;
-               $d %= 2; // 홀수 짝수 구분
-               echo '<tr>';
-               if($d == 0){
-                 echo "<td>" .$th.":".$m. "-".$th.":".$m2. "</td>";
-                 $th = $th+1;
-               }else{
-                 $th2 = $th-1;
-                 echo "<td>" .$th2.":".$m2. "-".$th.":".$m. "</td>";
-               }
-               for($i = 0; $i < $count; $i++){ //
-                 if($d == 0){
-                   $th = $th-1;
-                   $var_dt = $dt->format('y')."년".$dt->format('m')."월".$dt->format('d')."일"."-".$th."시".$m."분"."~".$th."시".$m2."분"."-".$dt->format('l');
-                   $var_day = $dt->format('y')."년".$dt->format('m')."월".$dt->format('d')."일";
-                   $var_time = $th."시".$m."분"."~".$th."시".$m2."분";
-                   $th = $th+1;
-                 } else{
-                   $var_dt = $dt->format('y')."년".$dt->format('m')."월".$dt->format('d')."일"."-".$th2."시".$m2."분"."~".$th."시".$m."분"."-".$dt->format('l');
-                   $var_day = $dt->format('y')."년".$dt->format('m')."월".$dt->format('d')."일";
-                   $var_time = $th2."시".$m2."분"."~".$th."시".$m."분";
-                 }
-                 $todo = '';
-                 $col = 0;
-                     for($j =0; $j <= $arr_cnt ; $j ++){ // 그 시간에 일정이 있는지 없는지, 일정이 있다면 표시하기
-                     if($time_arr[$j]['date'] == $var_day && $time_arr[$j]['time'] == $var_time){ //날짜와 시간이 맞는지 확인
-                       $todo = '';
-                       $col = 1;
-                       }
-                   }
-                   if($col == 0){
-                     echo "<td id =". $var_dt . " class='schu_line_bg yes_hover' onClick='javascript:clickTdEvent(this)'>" .
-                     "<div class='schedule_area_v1'>" . "<span class='schedule_close'>X</span>" . "\n" ."</div>".$todo. "</td>";}
-                   else {
-                     echo "<td id =". $var_dt . " style ='background-color:white;' class='yes_hover' onClick='javascript:clickTdEvent(this)'>" .
-                     "<div class='schedule_area_v1'>" . "<span class='schedule_close'>X</span>" . "\n" ."</div>".$todo. "</td>";
-                   }
-                   $dt->modify('+1 day');
-                 }
-               echo '</tr>';
-               $dt->modify('-7 day');
-             }
-           echo '</tbody>';
-         echo '</table>';
-       ?>
 
        <div class="btns">
            <input class="btn_back" type="button" value="돌아가기" onclick="location.href='applypage.php'"/>
-           <input class="btn_save" type="button" value="신청하기" onclick="javascript:savetime()"/>
+           <input class="btn_save" type="button" value="면담 일정 제안하기" onclick="javascript:savetime()"/>
        </div>
      </div>
    </div>

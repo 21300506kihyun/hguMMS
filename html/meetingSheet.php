@@ -24,7 +24,6 @@
     .schedule_area_v1 a:hover{font-weight:bold}
     .schedule_close{display:block;position:absolute;top:2px;right:2px;width:15px;height:15px;cursor:pointer}
   </style>
-
   <?php
     session_start();
     $name = $_SESSION["name"];
@@ -37,9 +36,7 @@
        die("Connection failed: " . $conn->connect_error);
     }
      //echo "Connected successfully <br>";
-
    ?>
-
   <script>
     var meeting_list = new Array();
     function clickTdEvent(obj){
@@ -57,9 +54,7 @@
           }
         //alert(obj.id);
     }
-
     function savetime(){
-
       meeting_list.forEach(function(element){
         var user = "<?php echo $_SESSION['email']?>";
         var day_list = element.split('-'); // 요일 표시
@@ -84,7 +79,6 @@
       //meeting_list.forEach(element => console.log(element.substring(0,9),element.substring(9,15),element.substring(21,)));
     }
   </script>
-
   <title>handongMMS</title>
 </head>
 <body>
@@ -97,10 +91,12 @@
   <div class="row">
     <div class="column left">
       <h1 class="icon"> <img src="<?php echo $_SESSION['img']?>"></i></h1>
-      <h2><?php echo $_SESSION['name']?></h2>
+      <h2><?php echo $_SESSION['name']?> </h2>
       <h3 class="info">E-mail : <?php echo $_SESSION['email']?></h3>
-      <h3 class="info">오피스 위치 : none(영어?)</h3>
-      <h3 class="info">개인 면담 시트 : 없음(한글?)</h3>
+      <h3 class="info">소속 학부 : <?php if($_SESSION['department'] == ''){echo 'none';} else {echo $_SESSION['department'];}?></h3>
+      <h3 class="info">오피스 위치 : <?php if($_SESSION['office'] == ''){echo 'none';} else {echo $_SESSION['office'];}?></h3>
+      <h3 class="info">면담 제공 여부 : <?php if($_SESSION['prof'] == 'on'){echo 'O';} else{echo 'X';}?></h3>
+      <h3 class="info">시트 제공 여부 : <?php if($_SESSION['sheet'] == 'on'){echo 'O';} else{echo 'X';}?></h3>
 
       <input class="btn_left" onclick="location.href ='applypage.php'" type="button" value="면담 신청하기"/>
       <form action="meetingSheet.php" method="post">
@@ -109,8 +105,10 @@
       <form action="personalInfo.php" method="post">
         <input class="btn_left" type="submit" value="개인정보 수정하기"/>
       </form>
-      <input class="btn_left" type="button" value="면담승인 요청"/>
-      <!-- <input class="btn_left" type="button" value="로그아웃"/> -->
+      <form action="meetingAccept.php" method="post">
+        <input class="btn_left" type="submit" value="면담승인 요청"/>
+      </form>
+      <input class="btn_left" onClick="location.href='login.php' "type="button" value="로그아웃"/>
     </div>
 
     <div class="column middle">
@@ -244,20 +242,11 @@
           <input class="btn_save" type="button" value="변경 사항 저장하기" onclick="javascript:savetime()"/>
       </div>
     </div>
-
   </div>
-
 
   <div class = "footer">
     <h3>Powered by WA lab 2020</h3>
     <p>문의 및 버그제보: abcd@gmail.com</p>
   </div>
-
-  <h1 id="jb" onclick="">Lorem Ipsum Dolor</h1>
-
-<script>
-  $( '#jb' ).html( 'color' );
-</script>
-
 </body>
 </html>

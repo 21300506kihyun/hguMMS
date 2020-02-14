@@ -32,7 +32,7 @@ body{
   height: 100%;
 }
 .submit{
-  background-color: #ccc; 
+  background-color: #00BFFF;
   color: #333;
   font-size: 15px;
   padding: 1%;
@@ -42,6 +42,20 @@ body{
   border-radius: 5px;
 }
 .submit:hover{
+  background-color: #7dc2ff;
+  color: black;
+}
+.logout{
+  background-color: #0080FF;
+  color: white;
+  font-size: 15px;
+  padding: 1%;
+  margin-top: 3%;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 5px;
+}
+.logout:hover{
   background-color: #7dc2ff;
   color: black;
 }
