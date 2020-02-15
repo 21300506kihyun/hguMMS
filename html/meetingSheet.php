@@ -60,10 +60,10 @@
       meeting_list.forEach(function(element){
         var user = "<?php echo $_SESSION['email']?>";
         var day_list = element.split('-'); // 요일 표시
-          console.log(day_list[0],day_list[1],day_list[2]);  // 날짜. 시간, 요일 표시
+          console.log(day_list[0],day_list[1]);  // 날짜. 시간 표시
               var date= day_list[0];
               var time= day_list[1];
-              var day= day_list[2];
+
               $.ajax({
                   url:'sheet_time_add.php',
                   method:'POST',
@@ -71,7 +71,7 @@
                       user: user,
                       date:date,
                       time:time,
-                      day:day
+
                   },
                  success:function(data){
                      //alert(data);
@@ -81,10 +81,9 @@
       modify_list.forEach(function(element){
         var user = "<?php echo $_SESSION['email']?>";
         var day_list = element.split('-'); // 요일 표시
-          console.log(day_list[0],day_list[1],day_list[2]);  // 날짜. 시간, 요일 표시
+          console.log(day_list[0],day_list[1]);  // 날짜. 시간 표시
               var date= day_list[0];
               var time= day_list[1];
-              var day= day_list[2];
               $.ajax({
                   url:'sheet_time_delete.php',
                   method:'POST',
@@ -92,7 +91,6 @@
                       user: user,
                       date:date,
                       time:time,
-                      day:day
                   },
                  success:function(data){
                      //alert();
@@ -100,6 +98,7 @@
           });
       });
       alert("저장되었습니다");
+      location.reload();
     }
   </script>
   <title>handongMMS</title>
@@ -210,8 +209,8 @@
           echo '<tbody>';
             $dt->modify('-7 day');  //날짜를 그 주의 처음으로 돌리기
                 //echo $dt->format('d M Y');
-            $th = 0; // 시작시간 설정
-            for($t =0; $t < 48; $t++){
+            $th = 8; // 시작시간 설정
+            for($t =0; $t < 24; $t++){  //몇개의 시간으로 나타낼지
               $m = "00";
               $m2 = "30";
               $d = $t;
@@ -227,12 +226,12 @@
               for($i = 0; $i < $count; $i++){
                 if($d == 0){
                   $th = $th-1;
-                  $var_dt = $dt->format('y')."년".$dt->format('m')."월".$dt->format('d')."일"."-".$th."시".$m."분"."~".$th."시".$m2."분"."-".$dt->format('l');
+                  $var_dt = $dt->format('y')."년".$dt->format('m')."월".$dt->format('d')."일"."-".$th."시".$m."분"."~".$th."시".$m2."분";
                   $var_day = $dt->format('y')."년".$dt->format('m')."월".$dt->format('d')."일";
                   $var_time = $th."시".$m."분"."~".$th."시".$m2."분";
                   $th = $th+1;
                 } else{
-                  $var_dt = $dt->format('y')."년".$dt->format('m')."월".$dt->format('d')."일"."-".$th2."시".$m2."분"."~".$th."시".$m."분"."-".$dt->format('l');
+                  $var_dt = $dt->format('y')."년".$dt->format('m')."월".$dt->format('d')."일"."-".$th2."시".$m2."분"."~".$th."시".$m."분";
                   $var_day = $dt->format('y')."년".$dt->format('m')."월".$dt->format('d')."일";
                   $var_time = $th2."시".$m2."분"."~".$th."시".$m."분";
                 }

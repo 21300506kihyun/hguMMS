@@ -9,7 +9,7 @@ if ($conn->connect_error) {
 $user=$_POST['user'];
 $date=$_POST['date'];
 $time=$_POST['time'];
-$day=$_POST['day'];
+
 
 $sql="delete from sheet_info where owner = '$user' and time = '$time' and date = '$date';";
 if ($conn->query($sql) === TRUE) {

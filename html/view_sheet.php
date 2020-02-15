@@ -51,44 +51,41 @@
    <script>
      var meeting_list = new Array();
      function clickTdEvent(obj){
+       //var day_list = obj.split('-');
+       //alert(day_list[0]);
          if(obj.style.backgroundColor === "white" ){
              obj.style.backgroundColor = "#b3daff";
              obj.innerHTML = "<div class='schedule_area_v1'> <span class='schedule_close'>X</span> </div>";
-             meeting_list.splice(meeting_list.indexOf(obj.id),1);
+             conf_msg = confirm(obj.id+"에 면담을 신청하시겠습니까?");
+
+            if(conf_msg==false){
+              location.reload();//취소된김에 한번 reloading^^
+            }
+            else{
+             // var URL="meeting_apply.php?date="+obj.id+"&&name=<?= $name ?>&&f_name=<?= $f_name ?>"; //delete.php는 삭제가 돌아가는 파일!! e_id는 삭제할 글번호
+             // location.href=URL;
+             var date = obj.id;
+             $.ajax({
+                 url:'meeting_apply.php',
+                 method:'POST',
+                 data:{
+                     name: "<?= $name ?>",
+                     f_name:"<?= $f_name ?>",
+                     date: date,
+
+                 },
+                success:function(data){
+                    alert("면담신청이 완료되었습니다");
+                    location.reload();
+                }
+              });
+
+          }
          }
-         else{
-             obj.style.backgroundColor = "white";
-             obj.innerHTML = "<div class='schedule_area_v1'> <span class='schedule_close'>O</span> </div>";
-             meeting_list.push(obj.id);
-             //alert(meeting_list[0]);
-             //$('#jb').html(obj.id);
-           }
+
 
      }
-     function savetime(){
-       meeting_list.forEach(function(element){
-         var user = "<?php echo $_SESSION['email']?>";
-         var day_list = element.split('-'); // 요일 표시
-           console.log(day_list[0],day_list[1],day_list[2]);  // 날짜. 시간, 요일 표시
-               var date= day_list[0];
-               var time= day_list[1];
-               var day= day_list[2];
-               $.ajax({
-                   url:'sheet_time.php',
-                   method:'POST',
-                   data:{
-                       user: user,
-                       date:date,
-                       time:time,
-                       day:day
-                   },
-                  success:function(data){
-                      //alert(data);
-                  }
-           });
-       });
-       //meeting_list.forEach(element => console.log(element.substring(0,9),element.substring(9,15),element.substring(21,)));
-     }
+
    </script>
    <title>handongMMS</title>
  </head>
@@ -137,6 +134,8 @@
          if ($result->num_rows > 0) {
              while($row = $result->fetch_assoc()) {
                  array_push($time_arr, $row);
+                // echo $time_arr[0]['date'];
+                // echo $time_arr[0]['time'];
                  $arr_cnt += 1;
              }
              //print_r($xx);
@@ -196,7 +195,7 @@
            echo '<tbody>';
              $dt->modify('-7 day');  //날짜를 그 주의 처음으로 돌리기
                  //echo $dt->format('d M Y');
-             $th = 0; // 시작시간 설정
+             $th = 8; // 시작시간 설정
              for($t =0; $t < 24; $t++){ // 몇개의 시간단위로 쪼갤 것인지 // 각 요일에 맞게 시간 table 만들기
                $m = "00";
                $m2 = "30";
@@ -213,12 +212,12 @@
                for($i = 0; $i < $count; $i++){ //
                  if($d == 0){
                    $th = $th-1;
-                   $var_dt = $dt->format('y')."년".$dt->format('m')."월".$dt->format('d')."일"."-".$th."시".$m."분"."~".$th."시".$m2."분"."-".$dt->format('l');
+                   $var_dt = $dt->format('y')."년".$dt->format('m')."월".$dt->format('d')."일"."-".$th."시".$m."분"."~".$th."시".$m2."분";
                    $var_day = $dt->format('y')."년".$dt->format('m')."월".$dt->format('d')."일";
                    $var_time = $th."시".$m."분"."~".$th."시".$m2."분";
                    $th = $th+1;
                  } else{
-                   $var_dt = $dt->format('y')."년".$dt->format('m')."월".$dt->format('d')."일"."-".$th2."시".$m2."분"."~".$th."시".$m."분"."-".$dt->format('l');
+                   $var_dt = $dt->format('y')."년".$dt->format('m')."월".$dt->format('d')."일"."-".$th2."시".$m2."분"."~".$th."시".$m."분";
                    $var_day = $dt->format('y')."년".$dt->format('m')."월".$dt->format('d')."일";
                    $var_time = $th2."시".$m2."분"."~".$th."시".$m."분";
                  }
