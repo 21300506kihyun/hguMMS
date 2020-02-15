@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <link rel = "stylesheet" href = "../css/main.css"/>
+  <link rel = "stylesheet" href = "../css/meetingAccept.css"/>
   <meta name="google-signin-scope" content="profile email">
   <meta name="google-signin-client_id" content="924098158115-3oevbe0lurkhouu0fb98br6paj7i5e1a.apps.googleusercontent.com">
   <script src="https://apis.google.com/js/platform.js" async defer></script>
@@ -97,7 +97,7 @@
     </div>
 
     <div class="column middle">
-      <h2 class="subtitle">면담 일정</h2>
+      <h2 class="subtitle">면담 승인 요청</h2>
       <br>
       <table>
         <tr>
@@ -111,11 +111,11 @@
         </tr>
         <tr>
           <td>2020.02.03 (월) 17:00 ~ 17:30</td>
-          <td>이강</td>
+          <td><?php echo $_SESSION['name']?></td>
           <td>학생 1</td>
           <td>NTH 406</td>
           <td>학부 행사 면담</td>
-          <td>승인</td>
+          <td>승인대기</td>
           <td><span id="moreInfo1" style="CURSOR: pointer" onclick="clickMore(more1, moreInfo1)">더 보기 ▼</span></td>
         </tr>
         <tr class="additional" id="more1" style="display: none">
@@ -123,11 +123,11 @@
         </tr>
         <tr>
           <td>2020.02.04 (화) 17:00 ~ 17:30</td>
-          <td>이건</td>
+          <td><?php echo $_SESSION['name']?></td>
           <td>학생 2</td>
           <td>NTH 306</td>
           <td>학부 행사 면담</td>
-          <td>승인</td>
+          <td>승인대기</td>
           <td><span id="moreInfo2" style="CURSOR: pointer" onclick="clickMore(more2, moreInfo2)">더 보기 ▼</span></td>
         </tr>
         <tr class="additional" id="more2" style="display: none">
@@ -135,11 +135,11 @@
         </tr>
         <tr>
           <td>2020.02.05 (수) 17:00 ~ 17:30</td>
-          <td>장소연</td>
+          <td><?php echo $_SESSION['name']?></td>
           <td>학생 3</td>
           <td>NTH 204</td>
           <td>학부 행사 면담</td>
-          <td>승인</td>
+          <td>승인대기</td>
           <td><span id="moreInfo3" style="CURSOR: pointer" onclick="clickMore(more3, moreInfo3)">더 보기 ▼</span></td>
         </tr>
         <tr class="additional" id="more3" style="display: none">
@@ -147,11 +147,11 @@
         </tr>
         <tr>
           <td>2020.02.06 (목) 17:00 ~ 17:30</td>
-          <td>김광</td>
+          <td><?php echo $_SESSION['name']?></td>
           <td>학생 4</td>
           <td>NTH 203</td>
           <td>학부 행사 면담</td>
-          <td>승인</td>
+          <td>승인대기</td>
           <td><span id="moreInfo4" style="CURSOR: pointer" onclick="clickMore(more4, moreInfo4)">더 보기 ▼</span></td>
         </tr>
         <tr class="additional" id="more4" style="display: none">

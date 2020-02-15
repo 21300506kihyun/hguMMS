@@ -2,9 +2,6 @@
   box-sizing: border-box;
   margin: 0; padding: 0;
 }
-input::placeholder{
-  color: #aaa;
-}
 body{
   /* font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; */
   color: #58666e;
@@ -64,40 +61,29 @@ body{
       padding-top: 50px;
       width: 80%;
       text-align: center;
-      /* border-left: 1px solid #bbb; */
     }
       .subtitle{
         margin: 10px;
         font-size: 200%
-        /* border: 1px solid black; */
       }
       .content{
         margin: 5%;
-        /* border: 1px solid black; */
         padding:10px;
-        /* text-align: center; */
-        /* margin: 5% 30%; */
         height: 50px;
-        /* width: 20%; */
         padding-left: 20%;
         padding-right: 20%;
-
       }
         .category{
           width: 37%;
           float: left;
           text-align: left;
           font-size: 150%;
-          /* margin-left: 20px; */
-          /* border: 1px solid black; */
         }
         .deli{
           width: 3%;
           float: left;
           text-align: center;
           font-size: 150%;
-          /* margin-left: 20px; */
-          /* border: 1px solid blue; */
         }
         .value{
           width : 60%;
@@ -105,11 +91,10 @@ body{
           font-size: 150%;
           color: #58666e;
           text-align: center;
-          /* align-items: center; */
-          /* margin-right: 20px; */
-          /* border: 1px solid blue; */
         }
-
+          .value::placeholder{
+            color: #aaa;
+          }
         .checkbox{
           width : auto;
           height: auto;
@@ -118,29 +103,14 @@ body{
           font-size: 150%;
           color: #aaa;
           text-align: center;
-          display: "none";
           background-color: black;
-          position: relative;
-          /* align-items: center; */
-          /* margin-right: 20px; */
-          /* border: 1px solid blue; */
         }
       .btns{
-        /* width: 150px; */
-        /* margin-left: 20%;
-        margin-right: 20%;
-        padding-bottom: 1%; */
         margin: 5%;
-        /* border: 1px solid black; */
         padding:10px;
-        /* text-align: center; */
-        /* margin: 5% 30%; */
         height: 50px;
-        /* width: 20%; */
         padding-left: 20%;
         padding-right: 20%;
-
-        /* border: 1px solid black; */
       }
         .btn_back{
           float: left;
@@ -192,7 +162,7 @@ body{
   .column.left{
     width: 100%;
     background-color: #fff;
-    border: 1px solid red;
+    border-bottom: 1px solid #bbb;
   }
     .icon{
       margin-bottom: 25px;
@@ -219,8 +189,6 @@ body{
     margin-top: 20px;
     width: 100%;
     text-align: center;
-    /* margin-top: 50px; */
-    /* border: 1px solid blue; */
   }
     .subtitle{
       margin: 0%;
@@ -239,7 +207,6 @@ body{
       text-align: center;
       margin: 0%;
       margin-top: 20px;
-      /* font-family: Arial, Helvetica, sans-serif; */
     }
     td, th{
       border-top: 1px solid #333;
@@ -259,39 +226,19 @@ body{
         float: left;
         text-align: left;
         font-size: 150%;
-        /* margin-left: 20px; */
-        /* border: 1px solid black; */
       }
       .deli{
         width: 5%;
         float: left;
         text-align: center;
         font-size: 150%;
-        /* margin-left: 20px; */
-        /* border: 1px solid blue; */
       }
       .value{
         width : 60%;
         float: right;
         font-size: 150%;
-        /* align-items: center; */
-        /* margin-right: 20px; */
-        /* border: 1px solid blue; */
-      }
-      .checkbox{
-        width : auto;
-        height: auto;
-        cursor: pointer;
-        float: center;
-        font-size: 150%;
         color: #aaa;
         text-align: center;
-        display: "none";
-        background-color: black;
-        position: relative;
-        /* align-items: center; */
-        /* margin-right: 20px; */
-        /* border: 1px solid blue; */
       }
     .btns{
       margin: 0%;
