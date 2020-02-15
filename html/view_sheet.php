@@ -55,7 +55,7 @@
      var meeting_list = new Array();
      function clickTdEvent(obj){
          if(obj.style.backgroundColor === "white" ){
-             obj.style.backgroundColor = "Gainsboro";
+             obj.style.backgroundColor = "#b3daff";
              obj.innerHTML = "<div class='schedule_area_v1'> <span class='schedule_close'>X</span> </div>";
              meeting_list.splice(meeting_list.indexOf(obj.id),1);
          }
@@ -66,7 +66,7 @@
              //alert(meeting_list[0]);
              //$('#jb').html(obj.id);
            }
-         alert(obj.id);
+
      }
 
      function savetime(){
@@ -88,7 +88,7 @@
                        day:day
                    },
                   success:function(data){
-                      alert(data);
+                      //alert(data);
                   }
            });
        });
@@ -203,7 +203,7 @@
              $dt->modify('-7 day');  //날짜를 그 주의 처음으로 돌리기
                  //echo $dt->format('d M Y');
              $th = 0; // 시작시간 설정
-             for($t =0; $t < 24; $t++){
+             for($t =0; $t < 24; $t++){ // 몇개의 시간단위로 쪼갤 것인지 // 각 요일에 맞게 시간 table 만들기
                $m = "00";
                $m2 = "30";
                $d = $t;
@@ -216,7 +216,7 @@
                  $th2 = $th-1;
                  echo "<td>" .$th2.":".$m2. "-".$th.":".$m. "</td>";
                }
-               for($i = 0; $i < $count; $i++){
+               for($i = 0; $i < $count; $i++){ //
                  if($d == 0){
                    $th = $th-1;
                    $var_dt = $dt->format('y')."년".$dt->format('m')."월".$dt->format('d')."일"."-".$th."시".$m."분"."~".$th."시".$m2."분"."-".$dt->format('l');
@@ -230,9 +230,9 @@
                  }
                  $todo = '';
                  $col = 0;
-                     for($j =0; $j <= $arr_cnt ; $j ++){
+                     for($j =0; $j <= $arr_cnt ; $j ++){ // 그 시간에 일정이 있는지 없는지, 일정이 있다면 표시하기
                      if($time_arr[$j]['date'] == $var_day && $time_arr[$j]['time'] == $var_time){ //날짜와 시간이 맞는지 확인
-                       $todo = 'yes';
+                       $todo = '';
                        $col = 1;
                        }
                    }
