@@ -38,12 +38,14 @@
      //echo "Connected successfully <br>";
    ?>
   <script>
-    var meeting_list = new Array();
+    var meeting_list = new Array(); // 새로운 일정 추가하는 array이
+    var modify_list = new Array(); // 기존에 DB에 있던 일정 수정(삭제)하는 array
     function clickTdEvent(obj){
         if(obj.style.backgroundColor === "white" ){
             obj.style.backgroundColor = "Gainsboro";
             obj.innerHTML = "<div class='schedule_area_v1'> <span class='schedule_close'>X</span> </div>";
             meeting_list.splice(meeting_list.indexOf(obj.id),1);
+            modify_list.push(obj.id);
         }
         else{
             obj.style.backgroundColor = "white";
@@ -63,7 +65,7 @@
               var time= day_list[1];
               var day= day_list[2];
               $.ajax({
-                  url:'sheet_time.php',
+                  url:'sheet_time_add.php',
                   method:'POST',
                   data:{
                       user: user,
@@ -76,7 +78,28 @@
                  }
           });
       });
-      //meeting_list.forEach(element => console.log(element.substring(0,9),element.substring(9,15),element.substring(21,)));
+      modify_list.forEach(function(element){
+        var user = "<?php echo $_SESSION['email']?>";
+        var day_list = element.split('-'); // 요일 표시
+          console.log(day_list[0],day_list[1],day_list[2]);  // 날짜. 시간, 요일 표시
+              var date= day_list[0];
+              var time= day_list[1];
+              var day= day_list[2];
+              $.ajax({
+                  url:'sheet_time_delete.php',
+                  method:'POST',
+                  data:{
+                      user: user,
+                      date:date,
+                      time:time,
+                      day:day
+                  },
+                 success:function(data){
+                     //alert();
+                 }
+          });
+      });
+      alert("저장되었습니다");
     }
   </script>
   <title>handongMMS</title>
