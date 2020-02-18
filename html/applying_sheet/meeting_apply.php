@@ -3,22 +3,12 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <link rel = "stylesheet" href = "../../css/main.css"/>
+  <link rel = "stylesheet" href = "../../css/meeting_apply.css"/>
   <meta name="google-signin-scope" content="profile email">
   <meta name="google-signin-client_id" content="924098158115-3oevbe0lurkhouu0fb98br6paj7i5e1a.apps.googleusercontent.com">
   <script src="https://apis.google.com/js/platform.js" async defer></script>
   <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
   <script>
-    function clickMore(str, info) {
-      if(str.style.display=='none'){
-        str.style.display='';
-        info.innerText = '닫기 ▲'
-      } else {
-        str.style.display = 'none';
-        info.innerText = '더 보기 ▼'
-      }
-    }
-
     // function m_apply(){
     //   var time = document.getElementById('m_date')
     //   var f_name = document.getElementById('f_name');
@@ -111,26 +101,51 @@
     <div class="column middle">
       <h2 class="subtitle">면담 일정</h2>
       <br>
-      <h3>면담 신청서 작성 </h3>
+      <h3 class="sub_subtitle">면담 신청서 작성 </h3>
 
-      <form method="post" action="<?php echo $_SERVER['PHP_SELF'] ?>">
-        면담제공자 : <input name ='prof_name' type="text" value="<?php echo $f_name?>" readonly><br>
-        면담 일자 : <input name ='meeting_date' type="text" value="<?php echo $date?>" style="width:250px"readonly/><br>
-        면담 신청자 : <input name ='stu_name' type="text" value="<?php echo $name?>" readonly><br>
-        공동 면담자 추가 : <input name ='tog_name' type="text" value="<?php echo $name?>" ><br>
-        면담 카테고리 :
-        <select name="category">
-          <option value="진로상담">진로상담</option>
-          <option value="전공상담">전공상담</option>
-          <option value="취업상담">취업상담</option>
-          <option value="기타">기타</option>
-        </select><br>
-        면담 사유 : <textarea name ='meeting_contents' rows="4" cols="50"></textarea>
-      <input type="submit" name="submit" value="면담 신청"><br>
-    </form>
+      <div class="form">
+        <form method="post" action="<?php echo $_SERVER['PHP_SELF'] ?>">
+          <div class="content">
+            <h4 class="category">면담 제공자</h4>
+            <input class="value" name ='prof_name' type="text" value="<?php echo $f_name?>" readonly>
+          </div>
+          <div class="content">
+            <h4 class="category">면담 일자</h4>
+            <input class="value" name ='meeting_date' type="text" value="<?php echo $date?>" readonly>
+          </div>
+          <div class="content">
+            <h4 class="category">면담 신청자</h4>
+            <input class="value" name ='stu_name' type="text" value="<?php echo $name?>" readonly>
+          </div>
+          <div class="content">
+            <h4 class="category">공동 면담자 추가</h4>
+            <input class='value' name ='tog_name' type="text" placeholder="공동 면담자를 추가해 주세요.">
+            <!-- value="<?php echo $name?>" > -->
+          </div>
+          <div class="content">
+            <h4 class="category">면담 카테고리</h4>
+            <select class="value" name="category">
+              <option value="진로상담">진로상담</option>
+              <option value="전공상담">전공상담</option>
+              <option value="취업상담">취업상담</option>
+              <option value="기타">기타</option>
+            </select>
+          </div>
+          <div class="content">
+            <h4 class="category">면담 사유</h4>
+            <textarea class="value" name ='meeting_contents' rows="4" cols="50" placeholder="면담 사유를 입력해 주세요."></textarea>
+          </div>
+          <div class="content">
+            <h4 class="category"></h4>
+            <input class="submit_btn" type="submit" name="submit" value="면담 신청"><br>
+          </div>
+        </form>
+      </div>
 
 
-      <?php
+
+
+    <?php
        // echo $date ."<br>";
        // echo $name ."<br>"  ;
        // echo $f_name;
@@ -145,6 +160,7 @@
       // }
        ?>
 
+    </div>
   </div>
 
   <div class = "footer">
