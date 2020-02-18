@@ -47,42 +47,50 @@
     }
     echo "Connected successfully <br>";
 
-    // $sql = "SELECT db_date, day_name FROM time_dimension WHERE id between 20190101 and 20190103";
-    // $result = $conn->query($sql);
+
+
+
     session_start();
-      $sql2 = "SELECT * FROM user_info where email='$email'";
-      $result = mysqli_query($conn, "SELECT * FROM user_info where email='$email'");
-      $data = mysqli_fetch_assoc($result);
+    $name = $_SESSION["name"];
+    $email = $_SESSION["email"] ;
+    $img = $_SESSION["img"] ;
 
-      $_SESSION['department'] = $data['department'];
-      $_SESSION['office'] = $data['office'];
-      $_SESSION['prof'] = $data['prof'];
-      $_SESSION['office'] = $data['office'];
+    $result = mysqli_query($conn, "SELECT * FROM user_info where email='$email'");
+    $data = mysqli_fetch_assoc($result);
 
-       $date = $_GET['date'];
-       $name = $_GET['name'];
-       $f_name = $_GET['f_name'];
+    $_SESSION['department'] = $data['department'];
+    $_SESSION['office'] = $data['office'];
+    $_SESSION['prof'] = $data['prof'];
+    $_SESSION['office'] = $data['office'];
+
+     $date = $_GET['date'];
+     $stu_email = $_GET['stu_email'];
+     $prof_email = $_GET['prof_email'];
+     $stu_name = $_GET['stu_name'];
+     $prof_name = $_GET['prof_name'];
 
 
-       if(isset($_POST['submit'])){
-          $prof_name = $_POST['prof_name'];
-         $stu_name = $_POST['stu_name'];
-         $meeting_date = $_POST['meeting_date'];
-         $category = $_POST['category'];
-         $contents = $_POST['meeting_contents'];
-         //echo $prof_name;
+     if(isset($_POST['submit'])){
+       $prof_email = $_POST['prof_email'];
+       $stu_email = $_POST['stu_email'];
+       $prof_name = $_POST['prof_name'];
+       $stu_name = $_POST['stu_name'];
+       $meeting_date = $_POST['meeting_date'];
+       $category = $_POST['category'];
+       $contents = $_POST['meeting_contents'];
+       //echo $prof_name;
 
-       $sql="insert into meeting_info (stu_name,prof_name, time, state, category, extra)
-                values ('$stu_name','$prof_name', '$meeting_date', 0,'$category','$contents')";
-       if ($conn->query($sql) === TRUE) {
-          echo "<script>alert(\"신청이 완료되었습니다\")</script>";
-          echo "<script>location.href='../main/main.php'</script>";
-       }
-       else
-       {
-           echo $conn->error;;
-       }
+     $sql="insert into meeting_info (stu_name,prof_name, time, state, category, extra, stu_email, prof_email)
+              values ('$stu_name','$prof_name', '$meeting_date', 0,'$category','$contents', '$stu_email','$prof_email')";
+     if ($conn->query($sql) === TRUE) {
+        echo "<script>alert(\"신청이 완료되었습니다\")</script>";
+        echo "<script>location.href='../main/main.php'</script>";
      }
+     else
+     {
+         echo $conn->error;;
+     }
+   }
   ?>
 
   <div class="row">
@@ -114,9 +122,11 @@
       <h3>면담 신청서 작성 </h3>
 
       <form method="post" action="<?php echo $_SERVER['PHP_SELF'] ?>">
-        면담제공자 : <input name ='prof_name' type="text" value="<?php echo $f_name?>" readonly><br>
+        면담제공자 : <input name ='prof_name' type="text" value="<?php echo $prof_name?>" readonly>
+                    <input name ='prof_email' type="hidden" value="<?php echo $prof_email?>"/><br>
         면담 일자 : <input name ='meeting_date' type="text" value="<?php echo $date?>" style="width:250px"readonly/><br>
-        면담 신청자 : <input name ='stu_name' type="text" value="<?php echo $name?>" readonly><br>
+        면담 신청자 : <input name ='stu_name' type="text" value="<?php echo $stu_name?>" readonly>
+                    <input name ='stu_email' type="hidden" value="<?php echo $stu_email?>" readonly><br>
         공동 면담자 추가 : <input name ='tog_name' type="text" value="<?php echo $name?>" ><br>
         면담 카테고리 :
         <select name="category">

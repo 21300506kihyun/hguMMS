@@ -33,10 +33,6 @@
     if ($conn->connect_error) {
        die("Connection failed: " . $conn->connect_error);
     }
-    //echo "Connected successfully <br>";
-
-    // $sql = "SELECT db_date, day_name FROM time_dimension WHERE id between 20190101 and 20190103";
-    // $result = $conn->query($sql);
     session_start();
     if($_POST['name1'] !== NULL){
       $name = $_POST['name1'];
@@ -45,23 +41,28 @@
       $_SESSION["email"] = $email;
       $img = $_POST['img1'];
       $_SESSION["img"] = $img;
-
-      $sql2 = "SELECT * FROM user_info where email='$email'";
-      $result = mysqli_query($conn, "SELECT * FROM user_info where email='$email'");
-      $data = mysqli_fetch_assoc($result);
-
-      $_SESSION['department'] = $data['department'];
-      $_SESSION['office'] = $data['office'];
-      $_SESSION['prof'] = $data['prof'];
-      $_SESSION['office'] = $data['office'];
     }
+      $log_email = $_SESSION["email"];
+    //  else {
+    //   echo "<script>alert('로그인 해주세요')</script>";
+    //   echo "<script>location.href = '../login/login.php'</script>";
+    // }
 
-    $sql = "insert into user_info (name,email) select '$name','$email' from dual where not exists( select * from user_info where email = '$email')";
+    $sql = "insert into user_info (name,email) select '$name','$email' from dual where not exists( select * from user_info where email = '$log_email')";
     if ($conn->query($sql) === TRUE) {
         //echo "New record created successfully<br>";
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }
+
+    $result = mysqli_query($conn, "SELECT * FROM user_info where email='$log_email'");
+
+    $data = mysqli_fetch_assoc($result);
+
+    $_SESSION['department'] = $data['department'];
+    $_SESSION['office'] = $data['office'];
+    $_SESSION['prof'] = $data['prof'];
+    $_SESSION['office'] = $data['office'];
   ?>
 
   <div class="row">
@@ -100,54 +101,42 @@
           <th>상태</th>
           <th></th>
         </tr>
-        <tr>
-          <td>2020.02.03 (월) 17:00 ~ 17:30</td>
-          <td>이강</td>
-          <td>학생 1</td>
-          <td>NTH 406</td>
-          <td>학부 행사 면담</td>
-          <td>승인</td>
-          <td><span id="moreInfo1" style="CURSOR: pointer" onclick="clickMore(more1, moreInfo1)">더 보기 ▼</span></td>
-        </tr>
-        <tr class="additional" id="more1" style="display: none">
-          <td colspan = "7" >hi</td>
-        </tr>
-        <tr>
-          <td>2020.02.04 (화) 17:00 ~ 17:30</td>
-          <td>이건</td>
-          <td>학생 2</td>
-          <td>NTH 306</td>
-          <td>학부 행사 면담</td>
-          <td>승인</td>
-          <td><span id="moreInfo2" style="CURSOR: pointer" onclick="clickMore(more2, moreInfo2)">더 보기 ▼</span></td>
-        </tr>
-        <tr class="additional" id="more2" style="display: none">
-          <td colspan = "7" >hi</td>
-        </tr>
-        <tr>
-          <td>2020.02.05 (수) 17:00 ~ 17:30</td>
-          <td>장소연</td>
-          <td>학생 3</td>
-          <td>NTH 204</td>
-          <td>학부 행사 면담</td>
-          <td>승인</td>
-          <td><span id="moreInfo3" style="CURSOR: pointer" onclick="clickMore(more3, moreInfo3)">더 보기 ▼</span></td>
-        </tr>
-        <tr class="additional" id="more3" style="display: none">
-          <td colspan = "7" >hi</td>
-        </tr>
-        <tr>
-          <td>2020.02.06 (목) 17:00 ~ 17:30</td>
-          <td>김광</td>
-          <td>학생 4</td>
-          <td>NTH 203</td>
-          <td>학부 행사 면담</td>
-          <td>승인</td>
-          <td><span id="moreInfo4" style="CURSOR: pointer" onclick="clickMore(more4, moreInfo4)">더 보기 ▼</span></td>
-        </tr>
-        <tr class="additional" id="more4" style="display: none">
-          <td colspan = "7" >메시지 기록</td>
-        </tr>
+      <?php
+        $sql = "SELECT * FROM meeting_info where stu_email='$log_email' or prof_email='$log_email'";
+        $result = $conn->query($sql);
+        if ($result->num_rows > 0) {
+            while($row = $result->fetch_assoc()) {
+              echo "<tr>";
+              echo "<td> $row[time] </td>";
+              echo  "<td>$row[prof_name]</td>";
+              echo  "<td>$row[stu_name]</td>";
+              echo  "<td>$row[office]</td>";
+              echo  "<td>$row[category]</td>";
+              if($row['state'] == 0){
+              echo  "<td>승인대기</td>";
+              }
+              if($row['state'] == 1){
+              echo  "<td>승인</td>";
+              }
+              if($row['state'] == 2){
+              echo  "<td>승인거절</td>";
+              }
+              echo "<td><span id=\"moreInfo1\" style=\"CURSOR: pointer\" onclick=\"clickMore(more1, moreInfo1)\">더 보기 ▼</span></td>";
+              echo "</tr>";
+              echo "<tr class=\"additional\" id=\"more1\" style=\"display: none\">";
+                echo "<td colspan = \"7\" >hi</td>";
+              echo "</tr>";
+            }
+            //print_r($xx);
+            //echo $time_arr[0]['date'];
+            //print_r($time_arr[0]['time']); // 첫번째 요소가 안불러와짐
+            //print_r($arr_cnt);
+        } else {
+            echo "0 results";
+        }
+
+
+       ?>
       </table>
     </div>
   </div>

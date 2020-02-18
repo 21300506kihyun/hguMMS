@@ -34,13 +34,13 @@
      if(isset($_POST['prof_name']) && isset($_POST['prof_email'])){ // 보고자 하는 교수님에 대한 정보 저장
        //echo $_POST['prof_name'];
        //echo $_POST['prof_email'];
-       $_SESSION["view_name"] = $_POST['prof_name'];
-       $_SESSION["view_email"] = $_POST['prof_email'];
+       $_SESSION["prof_name"] = $_POST['prof_name'];
+       $_SESSION["prof_email"] = $_POST['prof_email'];
      }
-     $f_name = $_SESSION["view_name"];
-     $f_email = $_SESSION["view_email"];
-     //echo $f_name;
-     //echo $f_email;
+     $prof_name = $_SESSION["prof_name"];
+     $prof_email = $_SESSION["prof_email"];
+     echo $prof_name;
+     echo $prof_email;
      $conn = new mysqli("localhost","hgumms","handong11*","hgumms");
      // Check connection
      if ($conn->connect_error) {
@@ -62,7 +62,7 @@
               location.reload();//취소된김에 한번 reloading^^
             }
             else{
-             var URL="meeting_apply.php?date="+obj.id+"&&name=<?= $name ?>&&f_name=<?= $f_name ?>";
+             var URL="meeting_apply.php?date="+obj.id+"&&stu_email=<?= $email ?>&&prof_email=<?= $prof_email ?>&&stu_name=<?= $name ?>&&prof_name=<?= $prof_name ?> ";
              location.href=URL;
              // var date = obj.id;
              // $.ajax({
@@ -122,14 +122,14 @@
      <div class="column middle">
        <h2 class="subtitle">면담 신청하기</h2>
        <div>
-         <h2 class='sub_subtitle'><?php echo $f_name ?> 님의 면담 시트일정</h2>
+         <h2 class='sub_subtitle'><?php echo $prof_name ?> 님의 면담 시트일정</h2>
        </div>
 
        <?php
          $arr_cnt = 0;
          $time_arr = array();
-         $sql = "select * from sheet_info where owner = '$f_email'";
-         echo $f_email;
+         $sql = "select * from sheet_info where owner = '$prof_email'";
+         //echo $f_email;
          $result = $conn->query($sql);
          if ($result->num_rows > 0) {
              while($row = $result->fetch_assoc()) {

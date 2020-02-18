@@ -89,10 +89,10 @@
           <th>면담 신청</th>
         </tr>
         <?php
-          $name = $_POST['search_name'];
+          $prof_name = $_POST['search_name'];
           //echo "name=". $name . ";<br><br>";
           // TODO: 면담 제공을 허가한 사람들만 검색하도록 sql문 쓰기.
-          $sql = "select *  from user_info where name = '$name'";
+          $sql = "select *  from user_info where name = '$prof_name'";
           $result = $conn->query($sql);
           //echo $result->num_rows;
           if ($result->num_rows > 0 && $name != ''){
@@ -104,14 +104,22 @@
                 echo "<th>"; if($row['sheet'] == NULL){echo "-";} else { echo $row['sheet']; } echo "</th>";
                 echo "<th>"; if($row['office'] == NULL){echo "-";} else { echo $row['office']; } echo "</th>";
                 echo "<th>"; if($row['email'] == NULL){echo "-";} else { echo $row['email']; } echo "</th>";
-                $temp = $row["email"]; // 교수님 이메일
+                $p_email = $row["email"]; // 교수님 이메일
+                $p_name = $row['name'];
 
-                // TODO: 시트정보 함수로 넘겨서 action 결정하기....
+                if($row['sheet'] != NULL){
                 echo  "<th>". "<form name=\"go_sheet\" method=\"post\" action=\"../applying_sheet/view_sheet.php\" >
-                  <input type=\"hidden\" name=\"prof_name\" value = \"$name\">
-                  <input type=\"hidden\" name=\"prof_email\" value = \"$temp\">
+                  <input type=\"hidden\" name=\"prof_name\" value = \"$p_name\">
+                  <input type=\"hidden\" name=\"prof_email\" value = \"$p_email\">
                   <input type=\"hidden\" id='sheet' name=\"sheet\" value = \"$sheet\">
                   <input class='select' type=\"submit\" value=\"신청\"/>" . "</th>";
+                } else {
+                  echo  "<th>". "<form name=\"go_sheet\" method=\"post\" action=\"../applying_sheet/no_sheet.php\" >
+                    <input type=\"hidden\" name=\"prof_name\" value = \"$p_name\">
+                    <input type=\"hidden\" name=\"prof_email\" value = \"$p_email\">
+                    <input type=\"hidden\" id='sheet' name=\"sheet\" value = \"$sheet\">
+                    <input class='select' type=\"submit\" value=\"신청\"/>" . "</th>";
+                }
                 echo  '</tr>';
               } echo '</table>';
           } else {

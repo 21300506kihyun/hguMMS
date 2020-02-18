@@ -11,7 +11,7 @@ $date=$_POST['date'];
 $time=$_POST['time'];
 
 
-$sql="insert into sheet_info (owner,time, date) values ('$user','$time', '$date')";
+$sql="insert into sheet_info (owner,time, date, state) values ('$user','$time', '$date',0)";
 if ($conn->query($sql) === TRUE) {
     echo "data inserted";
 }
