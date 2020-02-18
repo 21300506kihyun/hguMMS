@@ -3,22 +3,12 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <link rel = "stylesheet" href = "../../css/main.css"/>
+  <link rel = "stylesheet" href = "../../css/meeting_apply.css"/>
   <meta name="google-signin-scope" content="profile email">
   <meta name="google-signin-client_id" content="924098158115-3oevbe0lurkhouu0fb98br6paj7i5e1a.apps.googleusercontent.com">
   <script src="https://apis.google.com/js/platform.js" async defer></script>
   <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
   <script>
-    function clickMore(str, info) {
-      if(str.style.display=='none'){
-        str.style.display='';
-        info.innerText = '닫기 ▲'
-      } else {
-        str.style.display = 'none';
-        info.innerText = '더 보기 ▼'
-      }
-    }
-
     // function m_apply(){
     //   var time = document.getElementById('m_date')
     //   var f_name = document.getElementById('f_name');
@@ -119,6 +109,7 @@
     <div class="column middle">
       <h2 class="subtitle">면담 일정</h2>
       <br>
+<<<<<<< HEAD
       <h3>면담 신청서 작성 </h3>
 
       <form method="post" action="<?php echo $_SERVER['PHP_SELF'] ?>">
@@ -140,21 +131,8 @@
     </form>
 
 
-      <?php
-       // echo $date ."<br>";
-       // echo $name ."<br>"  ;
-       // echo $f_name;
 
-      // $sql="insert into meeting_info (stu_name,prof_name, time, state) values ('$name','$f_name', '$date', 0)";
-      // if ($conn->query($sql) === TRUE) {
-      //     echo "data inserted";
-      // }
-      // else
-      // {
-      //     echo $conn->error;;
-      // }
-       ?>
-
+    </div>
   </div>
 
   <div class = "footer">
