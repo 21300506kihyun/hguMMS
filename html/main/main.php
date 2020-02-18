@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <link rel = "stylesheet" href = "../css/main.css"/>
+  <link rel = "stylesheet" href = "../../css/main.css"/>
   <meta name="google-signin-scope" content="profile email">
   <meta name="google-signin-client_id" content="924098158115-3oevbe0lurkhouu0fb98br6paj7i5e1a.apps.googleusercontent.com">
   <script src="https://apis.google.com/js/platform.js" async defer></script>
@@ -33,7 +33,7 @@
     if ($conn->connect_error) {
        die("Connection failed: " . $conn->connect_error);
     }
-    echo "Connected successfully <br>";
+    //echo "Connected successfully <br>";
 
     // $sql = "SELECT db_date, day_name FROM time_dimension WHERE id between 20190101 and 20190103";
     // $result = $conn->query($sql);
@@ -49,15 +49,6 @@
       $sql2 = "SELECT * FROM user_info where email='$email'";
       $result = mysqli_query($conn, "SELECT * FROM user_info where email='$email'");
       $data = mysqli_fetch_assoc($result);
-      echo $data['sid'];
-      echo $data['name'];
-      echo $data['department'];
-      echo $data['prof'];
-      echo $data['sheet'];
-      echo $data['email'];
-      echo $data['phone'];
-      echo $data['office'];
-      echo "<br/>";
 
       $_SESSION['department'] = $data['department'];
       $_SESSION['office'] = $data['office'];
@@ -67,7 +58,7 @@
 
     $sql = "insert into user_info (name,email) select '$name','$email' from dual where not exists( select * from user_info where email = '$email')";
     if ($conn->query($sql) === TRUE) {
-        echo "New record created successfully<br>";
+        //echo "New record created successfully<br>";
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }
@@ -83,17 +74,17 @@
       <h3 class="info">면담 제공 여부 : <?php if($_SESSION['prof'] == 'on'){echo 'O';} else{echo 'X';}?></h3>
       <h3 class="info">시트 제공 여부 : <?php if($_SESSION['sheet'] == 'on'){echo 'O';} else{echo 'X';}?></h3>
 
-      <input class="btn_left" onclick="location.href ='applypage.php'" type="button" value="면담 신청하기"/>
-      <form action="meetingSheet.php" method="post">
+      <input class="btn_left" onclick="location.href ='../apply_meeting/applypage.php'" type="button" value="면담 신청하기"/>
+      <form action="../personal_meeting_sheet/meetingSheet.php" method="post">
         <input class="btn_left" type="submit" value="개인 면담 시트 바로가기"/>
       </form>
-      <form action="personalInfo.php" method="post">
+      <form action="../personal_info/personalInfo.php" method="post">
         <input class="btn_left" type="submit" value="개인정보 수정하기"/>
       </form>
       <form action="meetingAccept.php" method="post">
         <input class="btn_left" type="submit" value="면담승인 요청"/>
       </form>
-      <input class="btn_left" onClick="location.href='login.php' "type="button" value="로그아웃"/>
+      <input class="btn_left" onClick="location.href='../login/login.php' "type="button" value="로그아웃"/>
     </div>
 
     <div class="column middle">

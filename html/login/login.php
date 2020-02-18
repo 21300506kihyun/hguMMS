@@ -5,8 +5,7 @@
   <meta name="google-signin-client_id" content="924098158115-3oevbe0lurkhouu0fb98br6paj7i5e1a.apps.googleusercontent.com">
   <script src="https://apis.google.com/js/platform.js" async defer></script>
   <meta charset="utf-8">
-  <script type="text/javascript" src ="../JS/script.js"></script>
-  <link rel = "stylesheet" href = "../css/login.css"/>
+  <link rel = "stylesheet" href = "../../css/login.css"/>
   <title>handongMMS</title>
   <script>
     function onSignIn(googleUser) {
@@ -44,7 +43,7 @@
   <div class = "container">
     <h2 class="subtitle">Google Login</h2>
     <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
-    <form action="main.php" method="post">
+    <form action="../main/main.php" method="post">
       <input style="display: none" class="info" id = 'name1' name ="name1"  value ="wefwe"  />
       <input style="display: none" class="info" id = 'email1' name ="email1"  value ="wefe"/>
       <input style="display: none" class="info" id = 'img1' name ="img1" value =""/>

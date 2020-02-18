@@ -29,7 +29,7 @@
 
     if($connect->query($sql) === TRUE){
       echo "<script charset=utf-8>alert('개인정보가 수정되었습니다.')</script>";
-      echo "<script>location.href='main.php'</script>";
+      echo "<script>location.href='../main/main.php'</script>";
       // echo "SUCCESS";
     }
     else{

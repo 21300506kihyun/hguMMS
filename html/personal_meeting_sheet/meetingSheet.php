@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <link rel = "stylesheet" href = "../css/meetingSheet.css"/>
+  <link rel = "stylesheet" href = "../../css/meetingSheet.css"/>
   <meta name="google-signin-scope" content="profile email">
   <meta name="google-signin-client_id" content="924098158115-3oevbe0lurkhouu0fb98br6paj7i5e1a.apps.googleusercontent.com">
   <script src="https://apis.google.com/js/platform.js" async defer></script>
@@ -120,17 +120,17 @@
       <h3 class="info">면담 제공 여부 : <?php if($_SESSION['prof'] == 'on'){echo 'O';} else{echo 'X';}?></h3>
       <h3 class="info">시트 제공 여부 : <?php if($_SESSION['sheet'] == 'on'){echo 'O';} else{echo 'X';}?></h3>
 
-      <input class="btn_left" onclick="location.href ='applypage.php'" type="button" value="면담 신청하기"/>
-      <form action="meetingSheet.php" method="post">
+      <input class="btn_left" onclick="location.href ='../apply_meeting/applypage.php'" type="button" value="면담 신청하기"/>
+      <form action="../personal_meeting_sheet/meetingSheet.php" method="post">
         <input class="btn_left" type="submit" value="개인 면담 시트 바로가기"/>
       </form>
-      <form action="personalInfo.php" method="post">
+      <form action="../personal_info/personalInfo.php" method="post">
         <input class="btn_left" type="submit" value="개인정보 수정하기"/>
       </form>
       <form action="meetingAccept.php" method="post">
         <input class="btn_left" type="submit" value="면담승인 요청"/>
       </form>
-      <input class="btn_left" onClick="location.href='login.php' "type="button" value="로그아웃"/>
+      <input class="btn_left" onClick="location.href='../login/login.php' "type="button" value="로그아웃"/>
     </div>
 
     <div class="column middle">
@@ -260,7 +260,7 @@
       ?>
 
       <div class="btns">
-          <input class="btn_back" type="button" value="돌아가기" onclick="location.href='main.php'"/>
+          <input class="btn_back" type="button" value="돌아가기" onclick="location.href='../main/main.php'"/>
           <input class="btn_save" type="button" value="변경 사항 저장하기" onclick="javascript:savetime()"/>
       </div>
     </div>

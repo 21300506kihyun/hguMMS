@@ -3,7 +3,7 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <link rel = "stylesheet" href = "../css/applypage.css"/>
+  <link rel = "stylesheet" href = "../../css/applypage.css"/>
   <meta name="google-signin-scope" content="profile email">
   <meta name="google-signin-client_id" content="924098158115-3oevbe0lurkhouu0fb98br6paj7i5e1a.apps.googleusercontent.com">
   <script src="https://apis.google.com/js/platform.js" async defer></script>
@@ -30,12 +30,12 @@
     if ($conn->connect_error) {
        die("Connection failed: " . $conn->connect_error);
     }
-     echo "Connected successfully <br>";
+     //echo "Connected successfully <br>";
    ?>
   <title>handongMMS</title>
 </head>
 <body>
-  <div class = "header" onclick="location.href='main.php'">
+  <div class = "header" onclick="location.href='../main/main.php'">
     <h1>HGU Meeting Management System (MMS)</h1>
     <br>
     <p>한동대학교 면담 예약 및 관리 시스템입니다.</p>
@@ -51,17 +51,17 @@
       <h3 class="info">면담 제공 여부 : <?php if($_SESSION['prof'] == 'on'){echo 'O';} else{echo 'X';}?></h3>
       <h3 class="info">시트 제공 여부 : <?php if($_SESSION['sheet'] == 'on'){echo 'O';} else{echo 'X';}?></h3>
 
-      <input class="btn_left" onclick="location.href ='applypage.php'" type="button" value="면담 신청하기"/>
-      <form action="meetingSheet.php" method="post">
+      <input class="btn_left" onclick="location.href ='../apply_meeting/applypage.php'" type="button" value="면담 신청하기"/>
+      <form action="../personal_meeting_sheet/meetingSheet.php" method="post">
         <input class="btn_left" type="submit" value="개인 면담 시트 바로가기"/>
       </form>
-      <form action="personalInfo.php" method="post">
+      <form action="../personal_info/personalInfo.php" method="post">
         <input class="btn_left" type="submit" value="개인정보 수정하기"/>
       </form>
       <form action="meetingAccept.php" method="post">
         <input class="btn_left" type="submit" value="면담승인 요청"/>
       </form>
-      <input class="btn_left" onClick="location.href='login.php' "type="button" value="로그아웃"/>
+      <input class="btn_left" onClick="location.href='../login/login.php' "type="button" value="로그아웃"/>
     </div>
 
     <div class="column middle">
@@ -90,11 +90,11 @@
         </tr>
         <?php
           $name = $_POST['search_name'];
-          echo "name=". $name . ";<br><br>";
+          //echo "name=". $name . ";<br><br>";
           // TODO: 면담 제공을 허가한 사람들만 검색하도록 sql문 쓰기.
           $sql = "select *  from user_info where name = '$name'";
           $result = $conn->query($sql);
-          echo $result->num_rows;
+          //echo $result->num_rows;
           if ($result->num_rows > 0 && $name != ''){
               // output data of each row
               while($row = $result->fetch_assoc()) {
@@ -107,7 +107,7 @@
                 $temp = $row["email"]; // 교수님 이메일
 
                 // TODO: 시트정보 함수로 넘겨서 action 결정하기....
-                echo  "<th>". "<form name=\"go_sheet\" method=\"post\" action=\"view_sheet.php\" >
+                echo  "<th>". "<form name=\"go_sheet\" method=\"post\" action=\"../applying_sheet/view_sheet.php\" >
                   <input type=\"hidden\" name=\"prof_name\" value = \"$name\">
                   <input type=\"hidden\" name=\"prof_email\" value = \"$temp\">
                   <input type=\"hidden\" id='sheet' name=\"sheet\" value = \"$sheet\">
@@ -115,14 +115,14 @@
                 echo  '</tr>';
               } echo '</table>';
           } else {
-              echo "0 results";
+              //echo "0 results";
           }
           $conn->close();
          ?>
       </table>
 
       <div class="btns">
-          <input class="btn_back" type="button" value="돌아가기" onclick="location.href='main.php'"/>
+          <input class="btn_back" type="button" value="돌아가기" onclick="location.href='../main/main.php'"/>
       </div>
     </div>
   </div>
