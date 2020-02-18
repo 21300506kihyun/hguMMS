@@ -77,16 +77,15 @@
           <input name="office" id="office" class="value" type="text" placeholder="ex) NTH 415 or None" value="<?php echo $data['office']?>">
         </div>
         <div class="content">
-          <h3 class="category" style="width:85%">개인 면담시트 개설 여부</h3>
-          <h3 class="deli">:</h3>
-          <input name="is_sheet" class="checkbox" type="checkbox" id="is_sheet" <?if($data['sheet'] == "on"){ echo 'checked';} ?> />
-        </div>
-        <div class="content">
           <h3 class="category" style="width:85%">면담 제공 여부</h3>
           <h3 class="deli">:</h3>
           <input name="is_prof" class="checkbox" type="checkbox" id="is_prof" <?if($data['prof'] == "on"){ echo 'checked';} ?> />
         </div>
-
+        <div class="content">
+          <h3 class="category" style="width:85%">개인 면담시트 개설 여부</h3>
+          <h3 class="deli">:</h3>
+          <input name="is_sheet" class="checkbox" type="checkbox" id="is_sheet" <?if($data['sheet'] == "on"){ echo 'checked';} ?> />
+        </div>
         <div class="btns">
             <input class="btn_back" type="button" value="돌아가기" onclick="location.href='../main/main.php'"/>
             <input class="btn_save" type="submit" value="변경 사항 저장하기"/>

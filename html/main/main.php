@@ -53,7 +53,7 @@
       $_SESSION['department'] = $data['department'];
       $_SESSION['office'] = $data['office'];
       $_SESSION['prof'] = $data['prof'];
-      $_SESSION['office'] = $data['office'];
+      $_SESSION['sheet'] = $data['sheet'];
     }
 
     $sql = "insert into user_info (name,email) select '$name','$email' from dual where not exists( select * from user_info where email = '$email')";
