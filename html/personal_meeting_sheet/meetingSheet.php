@@ -74,7 +74,7 @@
 
                   },
                  success:function(data){
-                     alert(data);
+                     //alert(data);
                  }
           });
       });
@@ -153,9 +153,26 @@
               $arr_cnt += 1;
           }
           //print_r($xx);
-          print_r($time_arr[0]['date']);
+          //print_r($time_arr[0]['date']);
           //print_r($time_arr[0]['time']); // 첫번째 요소가 안불러와짐
-          print_r($arr_cnt);
+          //print_r($arr_cnt);
+      } else {
+          echo "0 results";
+      }
+
+      $list_cnt = 0; // user의 meeting 정보를 받아와서 sheet 정보에 반영하기
+      $meeting_list = array();
+      $sql = "select * from meeting_info where stu_email = '$email' or prof_email = '$email'";
+      $result = $conn->query($sql);
+      if ($result->num_rows > 0) {
+          while($row = $result->fetch_assoc()) {
+              array_push($meeting_list, $row);
+              $list_cnt += 1;
+          }
+          //print_r($xx);
+          print_r($meeting_list[1]['time']);
+          //print_r($time_arr[0]['time']); // 첫번째 요소가 안불러와짐
+          //print_r($arr_cnt);
       } else {
           echo "0 results";
       }
@@ -236,20 +253,43 @@
                   $var_time = $th2."시".$m2."분"."~".$th."시".$m."분";
                 }
                 $todo = '';
-                $col = 0;
-                    for($j =0; $j <= $arr_cnt ; $j ++){
-                    if($time_arr[$j]['date'] == $var_day && $time_arr[$j]['time'] == $var_time){ //날짜와 시간이 맞는지 확인
-                      $todo = 'yes';
-                      $col = 1;
-                      }
+                $case = 0;
+                for($j =0; $j <= $arr_cnt ; $j ++){
+                  if($time_arr[$j]['date'] == $var_day && $time_arr[$j]['time'] == $var_time){ //날짜와 시간이 맞는지 확인
+                    $case =1;
+                    }
+                }
+
+                for($k =0; $k < $list_cnt ; $k ++){ // 그 날짜와 시간에 미팅 약속이 있는지 확인
+                  $strTok =explode('-' , $meeting_list[$k]['time']);
+                  if( $strTok[0] == $var_day  &&  $strTok[1] == $var_time ){
+                    if($meeting_list[$k]['stu_email'] == $email){
+                      $todo = $meeting_list[$k]['prof_name'] ."과 면담";
+                    } else {
+                      $todo = $meeting_list[$k]['stu_name'] ."과 면담";
+                    }
+                    $case = 2;
+                    break;
                   }
-                  if($col == 0){
+                }
+
+                  switch ($case) {
+                    case 0:
                     echo "<td id =". $var_dt . " class='schu_line_bg yes_hover' onClick='javascript:clickTdEvent(this)'>" .
-                    "<div class='schedule_area_v1'>" . "<span class='schedule_close'>X</span>" . "\n" ."</div>".$todo. "</td>";}
-                  else {
+                    "<div class='schedule_area_v1'>" . "<span class='schedule_close'>X</span>" . "\n" ."</div>" ."</td>";
+                    break;
+
+                    case 1:
                     echo "<td id =". $var_dt . " style ='background-color:white;' class='yes_hover' onClick='javascript:clickTdEvent(this)'>" .
+                    "<div class='schedule_area_v1'>" . "<span class='schedule_close'>O</span>" . "\n" ."</div>" ."</td>";
+                    break;
+
+                    case 2:
+                    echo "<td id =". $var_dt . " style ='background-color:#999999;' >" .
                     "<div class='schedule_area_v1'>" . "<span class='schedule_close'>X</span>" . "\n" ."</div>".$todo. "</td>";
+                    break;
                   }
+
                   $dt->modify('+1 day');
                 }
               echo '</tr>';
