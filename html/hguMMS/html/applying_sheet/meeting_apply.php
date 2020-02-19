@@ -9,16 +9,6 @@
   <script src="https://apis.google.com/js/platform.js" async defer></script>
   <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
   <script>
-    function clickMore(str, info) {
-      if(str.style.display=='none'){
-        str.style.display='';
-        info.innerText = '닫기 ▲'
-      } else {
-        str.style.display = 'none';
-        info.innerText = '더 보기 ▼'
-      }
-    }
-
     // function m_apply(){
     //   var time = document.getElementById('m_date')
     //   var f_name = document.getElementById('f_name');
@@ -116,7 +106,6 @@
     <div class="column middle">
       <h2 class="subtitle">면담 일정</h2>
       <br>
-
       <h3 class="sub_subtitle">면담 신청서 작성 </h3>
 
       <div class="form">
@@ -161,6 +150,25 @@
         </form>
       </div>
 
+
+
+
+    <?php
+       // echo $date ."<br>";
+       // echo $name ."<br>"  ;
+       // echo $f_name;
+
+      // $sql="insert into meeting_info (stu_name,prof_name, time, state) values ('$name','$f_name', '$date', 0)";
+      // if ($conn->query($sql) === TRUE) {
+      //     echo "data inserted";
+      // }
+      // else
+      // {
+      //     echo $conn->error;;
+      // }
+    ?>
+
+    </div>
   </div>
 
   <div class = "footer">
